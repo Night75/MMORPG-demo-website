@@ -1,0 +1,404 @@
+/* CSS document */
+
+body
+{
+	margin:0px;
+	position:static;
+}
+
+@font-face 
+{
+	font-family:nyala;
+	src: url('../fonts/nyala.ttf');
+}
+
+p,span,a,td,li
+{
+	margin:0px;
+	padding:0px;
+	color:#414242;
+	font-family:nyala;
+	font-size:22px;
+}
+
+/*----------- _______Styles du header______ ---------------*/
+
+#head_background
+{
+	background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.11, rgb(222,228,235)),
+    color-stop(0.75, rgb(166,168,167))
+);
+background-image: -moz-linear-gradient(
+    center bottom,
+    rgb(222,228,235) 11%,
+    rgb(166,168,167) 75%
+);
+}
+
+header
+{
+	box-shadow:0 0 20px black;
+	width:936px;
+	height:175px;	
+	background-image:url('../images/purple_header.png');
+	margin:0 auto;
+	position:relative;
+}
+
+#logo
+{
+	position:absolute;
+	left:40px;
+	top:20px;
+}
+
+#text_logo
+{
+	position:absolute;
+	left:140px;
+}
+
+h1
+{
+	margin:0px;
+	position:absolute;
+	right:30px;
+	top:75px;
+	font-family:nyala;
+	color:white;
+	font-size:23px;
+	text-shadow: white 0px 0px 4px;
+}
+
+/*----------- Styles uniques de la page index ---------------*/
+/*
+#index #main
+{
+	
+}
+*/
+
+/*----------- Styles uniques de la page cv  ---------------*/
+
+td
+{
+	vertical-align:top;
+}
+
+table .leftcell
+{
+	width: 100px;
+	text-align:center;
+	padding-right:10px;
+}
+
+table .description
+{
+	margin-left:5px;
+	color:gray;
+}
+
+/*----------- Styles uniques de la page apropos---------------*/
+
+/*
+#apropos #main
+{
+	
+}
+*/
+
+/*----------- Styles uniques de la page contact---------------*/
+
+#textcontent a
+{
+	margin-right:2px;
+	padding:0px;
+	color:#414242;
+	font-family:nyala;
+	font-size:22px;
+}
+
+.vcard span,a,img,li,ul
+{
+	vertical-align: top;
+	line-height:28px;
+	display:inline-block;
+	margin:0;
+	padding:0;
+}
+
+.vcard span 
+{
+	color:gray;
+	padding:0px 2px;
+}
+
+/*#contact li */
+li 
+{
+	list-style: none;
+	display:inline;
+	text-decoration:none;
+}
+
+/*-----------________ Styles du main_______---------------*/
+#main-background
+{
+	background:#DEE4EB;
+}
+
+#main
+{
+	min-height:680px;
+	position:relative;
+	background:white;
+	border-bottom:1px solid gray;
+}
+
+div.mainborder
+{
+	position:relative;
+	top:-15px;
+	width:936px;
+	margin:0 auto;
+	padding:12px;
+	background:rgba(255,255,255,0.3);
+	box-shadow: 3px 3px 12px #555;
+	z-index:5;
+}
+
+/*----------- barre de navigation---------------*/
+nav
+{
+	position:absolute;
+	top:-15px;
+	margin-left:50px;
+	display:table;
+	table-layout:fixed;
+	width:460px;
+	z-index:10;
+	border-spacing:3px;
+	}
+
+nav>p
+{
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+	border:1px solid gray;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}
+
+nav>p>a
+{
+	color:white;
+	background-color:rgba(40, 43, 43, 0.4);
+	display:block;
+	padding:15px 0;
+	text-decoration: none;
+	-webkit-transition: all .4s ease-in;
+    -moz-transition: all .4s ease-in;
+    transition: all .4s ease-in;
+}
+
+nav>p>a:hover
+{
+	color:#414242;
+	background-color:rgba(200, 200, 200, 0.4);
+}
+
+/*----------- contenu principal---------------*/
+#content
+{
+	display:table;
+	position:relative;
+	height:100%;
+    background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    right bottom,
+    color-stop(0.37, rgb(240,240,240)),
+    color-stop(0.69, rgb(255,255,255))
+	);
+	background-image: -moz-linear-gradient(
+    left center,
+    rgb(240,240,240) 37%,
+    rgb(255,255,255) 69%
+	);
+
+}
+
+#content>div
+{
+	display:table-cell;
+	vertical-align: top;
+}
+
+/*----------- ruban de gauche---------------*/
+.insetborder
+{
+	width:50px;
+	background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.17, rgb(155,49,58)),
+    color-stop(0.59, rgb(207,94,104))
+	);
+	
+	background-image: -moz-linear-gradient(
+    center top,
+    rgb(155,49,58) 17%,
+    rgb(207,94,104) 59%
+	);
+}
+
+/*----------- contenu textuel---------------*/
+.textcontent
+{
+	width:485px;
+	padding:50px 0px 40px 25px;
+}
+
+.textcontent>h2:first-letter
+{
+	color:#304B81;
+	font-size:31px;
+	text-shadow:0.2em -0.2em #C2D1EE, -0.2em 0.2em 0.2em #ACB3C1;
+}
+
+.textcontent>h2
+{
+	color:#304B81;
+	font-size:23px;
+	margin:35px 0 0 0;
+	padding:10px 0px;
+	border-top:4px ridge gray;
+}
+
+/*----------- image de droite---------------*/
+.asidepicture 
+{
+	width:340px;
+	position:relative;
+	right:-20px;
+}
+
+.asidepicture>img
+{
+	position:relative;
+}
+
+/*----------- _______Styles du footer______ ---------------*/
+#bot-wrapper
+{
+	position:relative;
+}
+
+#foot-background
+{
+	z-index:3;
+	position:absolute;
+	width:100%;
+	top:-27px;
+	
+	background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.11, rgb(222,228,235)),
+    color-stop(0.75, rgb(166,168,167))
+);
+background-image: -moz-linear-gradient(
+    center top,
+    rgb(222,228,235) 11%,
+    rgb(166,168,167) 75%
+);
+
+}
+
+footer
+{
+	height:120px;
+	width:880px;
+	background-image:url('../images/purple_header.png');
+	box-shadow:0 0 20px black;
+	margin:0px auto;	
+	padding:30px 0px 30px 56px;
+	position:relative;
+}
+
+.left_foot p, p.copyright
+{
+	margin:0px;
+	padding:0px;
+	font-family:nyala;
+	color:white;
+	font-size:18px;
+}
+
+/*----------- partie gauche footer---------------*/
+.left_foot
+{
+	float:left;
+	width:500px;
+	margin-bottom:10px;
+}
+
+.right_foot
+{
+	float:right;
+	margin-right:30px;
+}
+
+
+.left_foot>h3
+{
+	margin:0 0 10px 0;
+	padding:0px;
+	font-family:nyala;
+	color:white;
+	font-size:23px;
+}
+
+/*----------- partie droite footer---------------*/
+.nav_foot
+{
+	display:table;
+}
+
+.nav_foot>p
+{
+	display:table-cell;
+}
+
+.nav_foot a
+{
+	margin:0px;
+	padding:0px;
+	font-family:nyala;
+	color:white;
+	font-size:18px;
+	text-decoration:none;
+	margin-left:10px;
+}
+
+.nav_foot a:hover
+{
+	color:white;
+	font-size:18px;
+	text-shadow: white 0.1em 0.1em 0.3em;
+	text-decoration:underline;
+}
+
+/*----------- copyright---------------*/
+p.copyright
+{
+	clear:both;
+}

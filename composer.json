@@ -2,7 +2,10 @@
     "name": "symfony/framework-standard-edition",
     "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-0": { 
+      	  "Acme": "src/",
+      	  "Wms": "src/",
+        }
     },
     "require": {
         "php": ">=5.3.3",

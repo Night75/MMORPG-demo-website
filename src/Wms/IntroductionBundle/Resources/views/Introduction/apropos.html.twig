@@ -1,0 +1,32 @@
+{% extends "WmsIntroductionBundle::layout.html.twig" %}
+
+{% set path_public = asset('bundles/wmsintroduction/') %}
+
+{% block content %}
+
+<div class="textcontent">
+	
+	<h2>MA PERSONNALITE</h2>
+  	  <p>En ce qui concerne les bons points de ma personalité, je me vois comme quelqu’un de calme et réfléchi, 
+    		je suis motivé dans tous les projets que j'entreprends et investi dans mon travail.
+    		De nature curieuse, j’apprécie les activités riches en enseignements.<br>
+			Quant à mes défauts... je ne préfère pas tout dévoiler en ligne sous les yeux de tous!
+	</p>
+			
+    <h2>MES CENTRES D’INTERETS</h2>
+    <p>J’ai pratiqué régulièrement  le tennis de table, football et basketball pendant plus de 6ans. Mon sport du moment est le roller (slalom, randonnées, street hockey).<br>
+		Mes autres passions sont les jeux vidéos, les séries TV, la culture japonaise et bien sûr l’informatique!
+	</p>
+			
+    <h2>MON PROJET PROFFESSIONNEL</h2>
+    <p>Mon rêve est de maîtriser toutes les technologies du web possibles, j’espère devenir dans un futur proche développeur web confirmé.<br>
+		Mais dans l’immédiat je souhaite me constituer de solides bases et ainsi occpuper un poste en contrat de professionnalisation.
+	</p>
+
+</div> <!-- fin de textcontent-->
+	
+<div class="asidepicture">
+	<img src="{{path_public}}images/asidepicture3.png" alt="A PROPOS DE...">
+ </div>
+
+{% endblock %}

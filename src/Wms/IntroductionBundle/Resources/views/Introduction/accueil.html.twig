@@ -1,0 +1,23 @@
+{% extends "WmsIntroductionBundle::layout.html.twig" %}
+
+{% set path_public = asset('bundles/wmsintroduction/') %}
+
+{% block content %}
+
+<div class="textcontent">
+	<h2 >BIENVENUE</h2>
+    		<p>Je m’appelle LAI Jean-François, j’intègre cette année une formation développeur WEB/SQL en contrat de professionnalisation à l’IT-SI. <br/>
+			Diplomé d’un M2 en Génie Civil et Infrastructures, mais surtout passioné par l’informatique, je décide de me réorienter vers le développement Web.<br/>
+			A présent totalement satisfait de ce choix, je porte de réelles ambitions de réussite et d’épanouissement dans le secteur.<br/>
+			Je vous propose donc mes services en tant qu'intégrateur web en contrat de professionnalisation.<br/>
+			Vous trouverez à travers ce site des informations sur mon parcours, quelques renseignements personnels ainsi que mes coordonnées.<br/><br/>
+			Bonne navigation!
+			</p>		
+</div> <!-- fin de textcontent-->
+	
+<div class="asidepicture">
+	<img src="{{path_public}}images/asidepicture1.png" alt="ACCUEIL">
+</div>
+
+
+{% endblock %}				

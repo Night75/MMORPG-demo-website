@@ -1,0 +1,7 @@
+parameters:
+#    wms_introduction.example.class: Wms\IntroductionBundle\Example
+
+services:
+#    wms_introduction.example:
+#        class: %wms_introduction.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

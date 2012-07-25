@@ -1,0 +1,96 @@
+{% extends "::base.html.twig" %}
+{% set path_public = asset('bundles/wmsintroduction/') %}
+
+{% block meta %} 
+	<meta name="description" content="WebMixingShapes, Site personnel de Lai Jean-François, étudiant en développement WEB/SQL, en recherche d'un contrat de professionnalisation" />
+	<Meta name="Keywords" content="webmixingshapes,html5,html 5,css3,css 3,web,developpement,sql,php"> 
+	<meta name="author" content="Lai Jean-François" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0"/>
+	<meta name="Date" content="Sun, 29 April 2012"> 
+	<link rel="shortcut icon" href="{{path_public}}images/logo.png" />
+{% endblock%}
+
+{% block title %}
+	WebMixingShapes
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{path_public}}css/styles.css"/>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript" src="{{path_public}}js/jquery.js"></script>
+{% endblock %}
+
+{% block body %}
+
+	<div id="head_background">
+		<header>
+			{% block header %}
+				<div id="logo">
+					<a href="{{path('wmsintroduction_accueil')}}"><img src="{{path_public}}images/logo.png" alt="Logo_webmixingshapes"></a>
+				</div>
+				<div id="text_logo">
+					<a href="{{path('wmsintroduction_accueil')}}"><img src="{{path_public}}images/text_logo.png" title="webmixingshapes" alt="WebMixingShapes"></a>
+				</div>
+				<h1>Site personnel de LAI Jean-François <br/>Développeur Web-PHP/SQL en auto formation</h1>
+			{% endblock %}
+		</header>
+	</div>
+	
+	
+	<div id="main-background">	
+		<div class="mainborder"><!--bordure transparente du main-->
+			<div id="main">
+				
+				<!-- __________________ ----------------- ************ MENU ************----------------- __________________ -->
+				{% block menu %}
+					<nav>
+						<p><a href="{{path('wmsintroduction_accueil')}}">Accueil</a></p>
+						<p><a href="{{path('wmsintroduction_cv')}}">CV</a></p>
+						<p><a href="{{path('wmsintroduction_apropos')}}">A propos</a></p>
+						<p><a href="{{path('wmsintroduction_contact')}}">Contact</a></p>
+					</nav>
+				{% endblock %}
+				
+				<!-- __________________ ----------------- ************ CONTENT ************----------------- __________________ -->
+				<div id="content">
+					<div class="insetborder"><!--bordure rouge intérieure--></div>	
+					{% block content %}
+					{% endblock %}  
+				</div><!--fin de content-->
+			
+			</div> <!--fin de main-->
+		</div><!-- fin de mainborder-->
+
+	
+	
+		<!-- __________________ ----------------- ************ FOOTER ************----------------- __________________ -->
+		<div id="bot-wrapper"><!--permet le recentrage du footer-->		
+			<div id="foot-background">
+				<footer>
+				
+					{% block footer %}
+						<div class="left_foot">
+							 <h3>A  propos de WebMixingShapes </h3>
+							 <p>
+							 	Site personnel de Lai Jean-François, en recherche d’un contrat de professionnalisation Développeur Web-PHP/SQL.<br/>
+								Si vous êtes intéressé par mon profil, contactez moi!
+							 </p>
+						</div> 		
+						<div class="right_foot">
+							<div class="nav_foot">
+								<p><a href="{{path('wmsintroduction_accueil')}}">Accueil</a></p>
+								<p><a href="{{path('wmsintroduction_cv')}}">CV</a></p>
+								<p><a href="{{path('wmsintroduction_apropos')}}">A propos</a></p>
+								<p><a href="{{path('wmsintroduction_contact')}}">Contact</a></p>
+							</div>
+						</div>	
+						<p class="copyright">&copy; Copyright 2011 by WebMixingShapes</p>	
+					{% endblock %}
+					
+				</footer>
+			</div>	
+		</div>
+	</div><!-- fin de main-background-->
+{% endblock %}
