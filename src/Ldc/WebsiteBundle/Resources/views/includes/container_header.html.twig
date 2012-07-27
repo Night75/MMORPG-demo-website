@@ -1,0 +1,45 @@
+<div class="gn-panel-container">
+					 
+	<div class="txt-path-nav"><a href="">Accueil</a></div>
+	<div class="login">
+	
+		{% if error %}
+			<div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+		{% endif %}
+		
+		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				<span>Connecté en tant que {{ app.user.username }} - </span><a class="bt-logout bt-upcase" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+		{% else %}
+		<form id="form-login" action="{{ path("fos_user_security_check") }}" method="post">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+			<!-- <input type="hidden" name="_target_path" value="/" /> -->
+			{% for key, message in app.session.getFlashes() %}
+				<div class="{{ key }} txt-flash">
+						{{ message|trans({}, 'LdcUserBundle') }}
+				</div>
+			{% endfor %}
+			<div class="bk-input-login">
+				<div>
+					<input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Identifiant" />
+					<input type="password" id="password" name="_password"  placeholder="Mot de passe" />
+				</div>          
+				<div>   
+					<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+					<label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+				</div>           
+			</div>
+			<div class="bk-bt-login">
+				<div class="bt-wrapper-login-validation">
+					<div class="bt-validation">
+						<input type="image" name="_submit" src="{{path_img}}bt_dore_long.png"/>
+						<a>Connexion</a>
+					</div>
+				</div>
+				<a class="bt-upcase" href="{{path('fos_user_registration_register')}}">s'inscrire</a>
+			</div>
+		</form>
+		{% endif %}
+	</div>
+	
+</div>
+

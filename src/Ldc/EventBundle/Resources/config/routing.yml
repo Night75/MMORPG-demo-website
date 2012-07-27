@@ -1,0 +1,27 @@
+ldceventbundle_new:
+    pattern:  /new
+    defaults: { _controller: LdcEventBundle:EventAdmin:new}
+
+ldceventbundle_create:
+    pattern: /create
+    defaults: { _controller: LdcEventBundle:EventAdmin:create}
+
+ldceventbundle_edit:
+    pattern: /edit/{id}
+    defaults: { _controller: LdcEventBundle:EventAdmin:edit}
+
+ldceventbundle_update:
+    pattern: /update/{id}
+    defaults: { _controller: LdcEventBundle:EventAdmin:update}
+
+ldceventbundle_delete:
+    pattern: /delete/{id}
+    defaults: { _controller: LdcEventBundle:EventAdmin:delete}
+
+ldceventbundle_list:
+    pattern: /list
+    defaults: { _controller: LdcEventBundle:EventAdmin:list}
+
+ldceventbundle_confirmed:
+    pattern: /confirmed
+    defaults: { _controller: LdcEventBundle:EventAdmin:confirmed}

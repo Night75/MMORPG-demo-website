@@ -1,0 +1,52 @@
+{% extends "LdcEventBundle::layout.html.twig" %}
+{% set path_public = asset("bundles/ldcwebsite/") %}
+{% set path_img =  asset("bundles/ldcwebsite/images/") %}
+
+{% block body %}
+
+<form action="{{ path('ldceventbundle_create') }}" method="post" class="form_event">
+	
+	<h2>Ajout d'evenement</h2>
+	
+	{{form_errors(form) }}
+
+	<!-- ========== Champ Date -->	
+	<div>
+		{{ form_label(form.date_event, "Date de l'evenement") }}<!--
+	-->{{ form_widget(form.date_event) }}
+		{% if form_errors(form.date_event) is not empty  %}
+			<div class="error">{{ form_errors(form.date_event) }}</div>
+		{% endif %}
+	</div>
+	
+	<!-- ========== Champ titre -->	
+	<div>
+		{{ form_label(form.title, "Titre") }}<!--
+	-->{{ form_widget(form.title) }}
+		{% if form_errors(form.title) is not empty  %}
+			<div class="error">{{ form_errors(form.title) }}</div>
+		{% endif %}
+	</div>
+	
+	<!-- ========== Champ description -->	
+	<div>
+		{{ form_label(form.description, "Description") }}<!--
+	-->{{ form_widget(form.description) }}
+		{% if form_errors(form.description) is not empty  %}
+			<div class="error">{{ form_errors(form.description) }}</div>
+		{% endif %}
+	</div>
+	
+	<!-- ========== Bouton validation -->
+    <div class="bt-container-validation">
+		<div class="bt-wrapper-validation">
+			<div class="bt-validation">
+				<input type="image" src="{{path_img}}bt_dore_long.png" name="_submit">		
+				<a>Creer</a>
+			</div>
+		</div>
+	</div>
+	 {{ form_rest(form) }}
+</form>
+
+{% endblock %}

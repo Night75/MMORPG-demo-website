@@ -1,0 +1,50 @@
+{% extends "LdcArticleBundle::layout.html.twig" %}
+{% set path_public = asset("bundles/ldcwebsite/") %}
+{% set path_img =  asset("bundles/ldcwebsite/images/") %}
+
+{% block body %}
+<form method="post" {{ form_enctype(form) }} enctype="multipart/form-data" class="form_article">
+	
+	<h2>Ajout d'article</h2>
+	
+	{{form_errors(form) }}
+
+	<!-- ========== Champ image -->	
+	<div>
+		{{ form_label(form.image, "Image") }}<!--
+	-->{{ form_widget(form.image) }}
+		{% if form_errors(form.image) is not empty  %}
+			<div class="error">{{ form_errors(form.image) }}</div>
+		{% endif %}
+	</div>
+	
+	<!-- ========== Champ titre -->	
+	<div>
+		{{ form_label(form.title, "Titre") }}<!--
+	-->{{ form_widget(form.title) }}
+		{% if form_errors(form.title) is not empty  %}
+			<div class="error">{{ form_errors(form.title) }}</div>
+		{% endif %}
+	</div>
+	
+	<!-- ========== Champ Contenu -->	
+	<div class="article-content">
+		{{ form_label(form.content, "Contenu de l'article") }}<!--
+	-->{{ form_widget(form.content) }}
+		{% if form_errors(form.content) is not empty  %}
+			<div class="error">{{ form_errors(form.content) }}</div>
+		{% endif %}
+	</div>
+	
+	<!-- ========== Bouton validation -->
+    <div class="bt-container-validation">
+		<div class="bt-wrapper-validation">
+			<div class="bt-validation">
+				<input type="image" src="{{path_img}}bt_dore_long.png" name="_submit">		
+				<a>Creer</a>
+			</div>
+		</div>
+	</div>
+	 {{ form_rest(form) }}
+</form>
+{% endblock %}

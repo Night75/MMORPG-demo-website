@@ -1,10 +1,11 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: security.yml }
+    - { resource: security.yml}
+    - { resource: @LdcUserBundle/Resources/config/services.yml}
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -15,7 +16,7 @@ framework:
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
     default_locale:  %locale%
     trust_proxy_headers: false # Should Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
-    session:         ~
+    session: ~
 
 # Twig Configuration
 twig:
@@ -57,3 +58,19 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Ldc\UserBundle\Entity\User
+    registration:
+        form:
+            type: ldc_user_registration
+
+services:
+    authentication_handler:
+        class: Ldc\UserBundle\Handler\AuthenticationHandler
+    twig.extension.debug:
+        class: Twig_Extensions_Extension_Debug
+        tags:
+            - { name: twig.extension }

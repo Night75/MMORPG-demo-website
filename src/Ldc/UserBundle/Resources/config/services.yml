@@ -1,0 +1,7 @@
+# src/Acme/UserBundle/Resources/config/services.yml
+services:
+    ldc_user.registration.form.type:
+        class: Ldc\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: ldc_user_registration }

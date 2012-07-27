@@ -5,3 +5,42 @@
 WmsIntroductionBundle:
     resource: "@WmsIntroductionBundle/Resources/config/routing.yml"
     prefix: /wms
+
+LdcWebsiteBundle:
+    resource: "@LdcWebsiteBundle/Resources/config/routing.yml"
+    prefix: /ldc
+
+LdcArticleBundle_admin:
+    resource: "@LdcArticleBundle/Resources/config/routing.yml"
+    prefix: /ldc/article
+
+LdcArticleBundle_admin:
+    resource: "@LdcArticleBundle/Resources/config/routing_admin.yml"
+    prefix: /ldc/admin/article
+
+LdcEventBundle:
+    resource: "@LdcEventBundle/Resources/config/routing.yml"
+    prefix: /ldc/event
+
+LdcUserBundle_admin:
+    resource: "@LdcUserBundle/Resources/config/routing_admin.yml"
+    prefix: /ldc/admin/user
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile

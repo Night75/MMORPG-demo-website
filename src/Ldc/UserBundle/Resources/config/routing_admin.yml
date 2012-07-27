@@ -1,0 +1,11 @@
+ldc_user_admin_list:
+    pattern:  /list
+    defaults: { _controller: LdcUserBundle:Admin:list }
+
+ldc_user_admin_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: LdcUserBundle:Admin:edit }
+    
+ldc_user_admin_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: LdcUserBundle:Admin:delete }

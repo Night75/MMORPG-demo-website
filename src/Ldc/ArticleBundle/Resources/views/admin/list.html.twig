@@ -1,0 +1,34 @@
+{% extends "LdcEventBundle::layout.html.twig" %}
+{% set path_img = asset("images/") %}
+
+{% block event %}
+	<h2>Evenements</h2>
+	{% for events in eventGroups %}
+		<div class="gn-panel-container">
+			<div class="calendar-month">    
+				<div class="title-small">
+					{% set month = "month." ~ events[0].dateEvent | date("F") | lower %}
+					{{ month|trans({}) }}
+				</div>
+				<div><div class="hr-line-right"></div></div>
+			</div>
+			<ul>  
+			{% for event in events %}     
+				<li>
+					<div class="calendar-day"><span class="icon-day">{{event.dateEvent | date("d")}}</span></div>
+					<div class="calendar-info">
+						<span >{{event.dateEvent | date("H:i")}} : {{event.title}}.</span>
+						<span class="txt-legend-i">{{event.description}} </span>
+					</div>
+					<div class="bk-bt-tool">
+						<a href="{{path('ldceventbundle_edit', { 'id': event.id })}}"><img class="bt-tool" src="{{path_img}}icon_edit.png"></a>
+						<a href="{{path('ldceventbundle_delete', { 'id': event.id })}}"><img class="bt-tool" src="{{path_img}}icon_trash.png"></a>
+					</div>
+				</li>
+			{% endfor %}
+			</ul>
+		</div>
+	{% endfor %}
+
+{% endblock %}
+

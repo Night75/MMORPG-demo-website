@@ -1,0 +1,30 @@
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+    	
+    	<!-- ========== Erreurs Generales-->	
+		<div class="error">
+			{{ form_errors(form) }}
+		</div>
+		
+		<!-- ========== Champ Email -->	
+		<div>
+			{% if form_errors(form.user.email) is not empty  %}
+				<div class="error">{{ form_errors(form.user.email) }}</div>
+			{% endif %}
+			{{ form_label(form.user.email, "Email") }}<!--
+		-->{{ form_widget(form.user.email) }}
+		</div>
+		
+		
+		<!-- ========== Champ Password -->	
+		<div>
+			{% if form_errors(form.current) is not empty  %}
+				<div class="error">{{ form_errors(form.current) }}</div>
+			{% endif %}
+			{{ form_label(form.current, "Mot de passe") }}<!--
+		-->{{ form_widget(form.current) }}
+		</div>
+		
+    <div>
+        <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+    </div>
+</form>

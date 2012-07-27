@@ -1,0 +1,6 @@
+ldcwebsitebundle_accueil:
+    pattern:  /
+    defaults: { _controller: LdcWebsiteBundle:Website:index }
+LdcWebsiteBundle_test:
+    pattern: /test
+    defaults: {_controller: LdcWebsiteBundle:Website:test}

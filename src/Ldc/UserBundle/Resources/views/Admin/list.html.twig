@@ -1,0 +1,51 @@
+{% extends "LdcWebsiteBundle::layout_admin.html.twig" %}
+
+{% set path_img = asset("images/") %}
+
+{% block body %}
+<div class="users-list">
+	<h2>Liste des utilisateurs</h2>
+	<div class="msg-flash">
+		  {% for key, message in app.session.getFlashes() %}
+		        <p class="{{ key }}">
+		            {{ message }}
+		        </p>
+		 {% endfor %}
+	</div>
+	<table>
+		<caption></caption>
+		<tr>
+			<th>Nom d'utilisateur</th>
+			<th>Date d'inscription</th>
+			<th>Age</th>
+			<th>Sexe</th>
+			<th>Adresse email</th>
+			<th>Dernière connection</th>
+			<th>Role</th>
+			<th>Editer</th>
+			<th>Supprimer</th>
+		</tr>	
+	{% for user in users %}
+		<tr>
+			<td>{{user.username}}</td> 
+			<td>le {{user.registerDate |date ("d/m/Y \\à H:i") }}</td>
+			<td>{{ ( "now"| date("Y")) - (user.birthday | date("Y")) }} ans</td>
+			<td>{{user.gender}}</td>
+			<td>{{user.email }}</td>
+			<td>le {{user.lastLogin |date ("d/m/Y \\à H:i") }}</td>
+			<td>
+				{% for role in user.roles %}
+				{{ role }} -
+				{% endfor %}
+			</td>
+			<td class="edit"><a href="{{path('ldceventbundle_edit', { 'id': user.id })}}"><img src="{{path_img}}icon_edit.png"></a></td>
+			<td class="delete">
+				<form method="post" action="{{ path('ldceventbundle_delete', { 'id': user.id} ) }}">
+					<input type="image" src="{{path_img}}icon_trash.png" alt="Connexion" name="delete_user" value="{{user.username}}"/>
+				</form>
+			</td>
+		</tr>
+	{% endfor%}
+	</table>
+</div>
+{% endblock %}

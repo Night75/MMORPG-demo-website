@@ -1,0 +1,73 @@
+{% set path_img =  asset("bundles/ldcwebsite/images/") %}
+
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST"
+			id ="user-register-form" class="fos_user_registration_register">
+		
+		<h2>Inscription</h2>
+		<!-- ========== Erreurs Generales-->	
+		<div class="error">
+			{{ form_errors(form) }}
+		</div>
+		
+		<!-- ========== Champ Username -->	
+		<div>
+			{{ form_label(form.username, "Nom d'utilisateur") }}<!--
+		-->{{ form_widget(form.username) }}
+			{% if form_errors(form.username) is not empty  %}
+				<div class="error">{{ form_errors(form.username) }}</div>
+			{% endif %}
+		</div>
+		
+		<!-- ========== Champ Email -->	
+		<div>
+			{{ form_label(form.email, "Email") }}<!--
+		-->{{ form_widget(form.email) }}
+			{% if form_errors(form.email) is not empty  %}
+				<div class="error">{{ form_errors(form.email) }}</div>
+			{% endif %}
+		</div>
+		
+		<!-- ========== Champ Civilite -->	
+		<div>
+			{{ form_label(form.gender, "Civilité") }}<!--
+		-->{{ form_widget(form.gender) }}
+			{% if form_errors(form.gender) is not empty  %}
+				<div class="error">{{ form_errors(form.gender) }}</div>
+			{% endif %}
+		</div>
+		
+		<!-- ========== Champ Date de naissance -->		
+		<div>
+			{{ form_label(form.birthday, "Date de naissance") }}<!--
+		-->{{ form_widget(form.birthday) }}
+			{% if form_errors(form.birthday) is not empty  %}
+				<div class="error">{{ form_errors(form.birthday) }}</div>
+			{% endif %}
+		</div>
+		
+		<!-- ========== Champ Mot de passe -->	
+		<div class="bk-password">
+			{{ form_label(form.plainPassword.first, "Mot de passe") }}<!--
+		-->{{ form_widget(form.plainPassword.first) }}
+			{% if form_errors(form.plainPassword) is not empty  %}
+				<div class="error">{{ form_errors(form.plainPassword) }}</div>
+			{% endif %}
+		</div>
+		
+		<div>
+			{{ form_label(form.plainPassword.second, "Confirmation du mot de passe") }}<!--
+		-->{{ form_widget(form.plainPassword.second) }}
+		</div>
+		
+		<!-- ========== Bouton Validation -->	
+		{{ form_rest(form) }}
+		<div class="bt-container-validation">
+			<div class="bt-wrapper-validation">
+				<div class="bt-validation">
+					<input type="image" name="_submit" src="{{path_img}}bt_dore_long.png">
+					<a>Valider</a>
+				</div>
+			</div>
+		</div>
+		
+</form>

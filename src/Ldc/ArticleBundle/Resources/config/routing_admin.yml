@@ -1,0 +1,19 @@
+ldcarticlebundle_new:
+    pattern: /new
+    defaults: { _controller: LdcArticleBundle:ArticleAdmin:new}
+
+ldcarticlebundle_edit:
+    pattern: /edit/{id}
+    defaults: { _controller: LdcArticleBundle:ArticleAdmin:edit}
+
+ldcarticlebundle_delete:
+    pattern: /delete/{id}
+    defaults: { _controller: LdcArticleBundle:ArticleAdmin:delete}
+
+ldcarticlebundle_list:
+    pattern: /list
+    defaults: { _controller: LdcArticleBundle:ArticleAdmin:list}
+    
+ldcarticlebundle_confirmed:
+    pattern: /confirmed
+    defaults: { _controller: LdcArticleBundle:ArticleAdmin:confirmed}

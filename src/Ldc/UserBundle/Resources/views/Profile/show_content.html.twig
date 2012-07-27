@@ -1,0 +1,20 @@
+<div id="user-profile-show">
+	<ul>
+	    <li>
+	    	<span>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}</span>
+	    	<span>{{ user.username }}</span>
+	    </li>
+	     <li>
+	    	<span>Civilité</span>
+	    	<span>{{ user.gender }}</span>
+	    </li>
+	    <li>
+	    	<span>Derniere connection</span>
+	    	<span>Le {{ user.lastLogin|date("d/m/Y \\a H\\hi") }}</span>
+	    </li>
+	     <li>
+	    	<span>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}</span>
+	    	<span>{{ user.email }}</span>
+	    </li>
+	</ul>
+</div>

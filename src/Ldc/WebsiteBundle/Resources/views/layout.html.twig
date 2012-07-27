@@ -1,0 +1,115 @@
+{% set path_public = asset("bundles/ldcwebsite/") %}
+{% set path_img =  asset("bundles/ldcwebsite/images/") %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>{% block title %}Ldc{% endblock %}</title>
+	{% block stylesheets %}
+		<link rel="stylesheet" href="{{path_public}}css/ldc.css" type="text/css" />
+	{% endblock %}
+	{% block script %}
+		<script type="text/javascript" src="{{path_public}}js/jquery.js"></script>
+		<script type="text/javascript" src="{{path_public}}js/ldc.js"></script>
+	{% endblock%}
+</head>
+
+<body>
+	<div id="container-full">
+		
+		<!-- __________________ ----------------- ************ HEADER ************----------------- __________________ -->
+		<header>
+			<div id="ldc-logo"><img src="{{path_img}}logo.png" alt=""/></div>
+			<div id="ldc-title">
+				<h1 title="Lightning Demons Chronicles">
+					<img src="{{path_img}}Lightning_demons_chronicles.png" alt="Lightning_demons_chronicles"/>
+				</h1>  
+			</div>	
+			<div class="border_header"></div>
+		</header>
+		
+		<div id="container-main">
+			<!-- __________________ ----------------- ************ MENU ************----------------- __________________ -->
+			<nav>
+				<ul>
+					<li class="bt-menu">
+						<a href="{{path('ldcwebsitebundle_accueil')}}">Accueil</a>
+					</li>
+					<li class="bt-menu">
+						<a href="">News</a>
+					</li>
+					<li class="bt-menu">
+						<a href="">Objets</a>
+					</li>
+					<li class="bt-menu">
+						<a href="">Classes</a>
+					</li>
+					<li class="bt-menu">
+						<a href="">Forum</a>
+					</li>
+				</ul>
+			</nav>
+			
+			<!-- __________________ ----------------- ************ SUB HEADER ************----------------- __________________ -->
+			 <section id="panel-head" class="gn-panel-wrapper">		
+			 	{% block container_header %}
+			 	{% endblock %} 
+			</section>
+			
+			<!-- __________________ ----------------- ************ CONTENU ************----------------- __________________ -->
+			<div id="container-content">
+				{% block body %}
+				{% endblock %}
+			</div> <!-- ========== Fin de #container-content -->
+			
+		</div> <!-- ========== Fin de #container-main -->		
+		
+		<!-- __________________ ----------------- ************ FOOTER ************----------------- __________________ -->
+		{% block footer %}
+		<footer>
+			<div class="border-footer"></div>
+			<div id="footer-content">
+				<div id="footer-left-part">
+					<h4>Navigation</h4>
+					<ul>
+						<li><a>Accueil</a></li><!--
+					 --><li><a>News</a></li><!--
+					 --><li><a>Objets</a></li><!--
+					 --><li><a>Classes</a></li>
+						<li><a>Forum</a></li>
+					</ul>
+				</div>
+				<div id="footer-mid-part">
+					<div class="hr-line-top"></div>
+					<div class="footer-mid-content">
+						<h4>Suivez nous</h4>
+						<ul>
+							<li><span class="icon-footer icon-twitter"></span><a>Twitter</a></li>
+							<li><span class="icon-footer icon-facebook"></span><a>Facebook</a></li>
+							<li><span class="icon-footer icon-youtube"></span><a>Youtube</a></li>
+						</ul>
+					</div>
+					<div class="hr-line-top"></div>
+				</div>
+				<div id="footer-right-part">
+					<h4>A propos</h4>
+					<ul>
+						<p>De nombreuses suites <a class="txt-legend">logicielles</a> de mise en page ou éditeurs de sites Web
+							ont fait du Lorem Ipsum leur faux texte par <a class="txt-legend">défaut</a>, et une recherche pour
+							<a class="txt-legend">'Lorem Ipsum'</a> vous conduira vers de nombreux sites qui n'en sont encore qu'à 
+							leur phase de construction. Plusieurs <a class="txt-legend">versions</a> sont apparues avec le temps.</p>
+					</ul>
+				</div>
+			</div>	
+			<div id="copyright"><p>Copyright © 2009-2011 Lightning Demons Chronicles. All Rights Reserved.</p></div>
+		</footer>
+		{% endblock footer %}
+</body>
+
+{% block javascripts %}
+{# Ajoutez ce javascript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+<script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+{% endblock %}
+
+</html>

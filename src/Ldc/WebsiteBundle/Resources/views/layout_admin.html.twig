@@ -1,0 +1,21 @@
+{% extends "LdcWebsiteBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('bundles/ldcwebsite/css/admin.css') }}" type="text/css" />
+{% endblock %}
+
+{% block script %}
+	<script type="text/javascript" src="{{asset('bundles/ldcwebsite/js/jquery.js')}}"></script>
+	<script type="text/javascript" src="{{asset('bundles/ldcwebsite/js/admin.js')}}"></script>
+{% endblock%}
+	
+{% block title %}
+	 {{ parent() }} 
+{% endblock %}
+
+{% block footer %}
+<footer>	
+	<div class="border-footer"></div>
+	<div id="copyright"><p>Copyright © 2009-2011 Lightning Demons Chronicles. All Rights Reserved.</p></div>
+</footer>
+{% endblock %}

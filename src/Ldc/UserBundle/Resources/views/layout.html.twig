@@ -1,0 +1,17 @@
+{% extends "LdcWebsiteBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('bundles/ldcwebsite/css/formulaire.css') }}" type="text/css" />
+{% endblock %}
+	
+{% block title %}
+	 {{ parent() }} 
+{% endblock %}
+
+{% block body %}
+	 <section class="fos-user-content">
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+    </section>
+{% endblock %}

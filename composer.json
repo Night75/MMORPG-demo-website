@@ -5,6 +5,7 @@
         "psr-0": { 
       	  "Acme": "src/",
       	  "Wms": "src/",
+      	  "Ldc": "src/"
         }
     },
     "require": {
@@ -20,7 +21,8 @@
         "sensio/framework-extra-bundle": "dev-master",
         "sensio/generator-bundle": "dev-master",
         "jms/security-extra-bundle": "1.1.*",
-        "jms/di-extra-bundle": "1.0.*"
+        "jms/di-extra-bundle": "1.0.*",
+        "friendsofsymfony/user-bundle": "*"
     },
     "scripts": {
         "post-install-cmd": [
@@ -42,6 +44,6 @@
     "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
-        "symfony-web-dir": "web"
+        "symfony-web-dir": "www"
     }
 }

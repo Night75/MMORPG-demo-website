@@ -1,0 +1,294 @@
+{% extends "LdcWebsiteBundle::layout.html.twig" %}
+
+{% set path_img =  asset("bundles/ldcwebsite/") %}
+{% set path_slider_img = asset("bundles/ldcwebsite/images/widgets/sliding_image_panel/") %}
+{% set path_includes = "../includes/container_header.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent()}}
+	<style type="text/css">
+        
+        #slider-img input.cr-selector-img-1:checked ~ .cr-bgimg,
+        .cr-bgimg div span:nth-child(1){
+                background-image: url({{path_slider_img}}1.jpg);
+        }
+       #slider-img input.cr-selector-img-2:checked ~ .cr-bgimg,
+        .cr-bgimg div span:nth-child(2){
+                background-image: url({{path_slider_img}}2.jpg);
+        }
+         #slider-img input.cr-selector-img-3:checked ~ .cr-bgimg,
+        .cr-bgimg div span:nth-child(3){
+                background-image: url({{path_slider_img}}3.jpg);
+        }
+        #slider-img input.cr-selector-img-4:checked ~ .cr-bgimg,
+        .cr-bgimg div span:nth-child(4){
+                background-image: url({{path_slider_img}}4.jpg);
+        }
+    </style>
+		
+{% endblock %}
+	
+{% block title %}
+	{{ parent() }} - {{ page }}
+{% endblock %}
+	
+
+{% block container_header %}
+<!-- *************** ------------------- _____________________ PANNEAU DE LOGIN _____________________ ------------------ ***************-->		
+	{% include "LdcWebsiteBundle::includes/container_header.html.twig" %}
+{% endblock %} 
+
+{% block body %}	
+	
+	<div id="top-section">
+        <!-- *************** ------------------- _____________________ SLIDER IMAGE  _____________________ ------------------ ***************-->		
+		<section id="slider-img"> 
+			<div class="gn-panel-container">
+
+				<input id="select-img-1" name="radio-set-1" type="radio" class="cr-selector-img-1" checked/>
+				<label for="select-img-1" class="cr-label-img-1"><img src="{{path_slider_img}}1.jpg"></label>
+
+				<input id="select-img-2" name="radio-set-1" type="radio" class="cr-selector-img-2" />
+				<label for="select-img-2" class="cr-label-img-2"><img src="{{path_slider_img}}2.jpg"></label>
+
+				<input id="select-img-3" name="radio-set-1" type="radio" class="cr-selector-img-3" />
+				<label for="select-img-3" class="cr-label-img-3"><img src="{{path_slider_img}}3.jpg"></label>
+
+				<input id="select-img-4" name="radio-set-1" type="radio" class="cr-selector-img-4" />
+				<label for="select-img-4" class="cr-label-img-4"><img src="{{path_slider_img}}4.jpg"></label>
+
+				<div class="cr-bgimg">		
+					<div>
+						<span>Slice 1 - Image 1</span>
+						<span>Slice 1 - Image 2</span>
+						<span>Slice 1 - Image 3</span>
+						<span>Slice 1 - Image 4</span>
+					</div>	
+					<div>
+						<span>Slice 2 - Image 1</span>
+						<span>Slice 2 - Image 2</span>
+						<span>Slice 2 - Image 3</span>
+						<span>Slice 2 - Image 4</span>
+					</div>
+					<div>
+						<span>Slice 3 - Image 1</span>
+						<span>Slice 3 - Image 2</span>
+						<span>Slice 3 - Image 3</span>
+						<span>Slice 3 - Image 4</span>
+					</div>
+					<div>
+						<span>Slice 4 - Image 1</span>
+						<span>Slice 4 - Image 2</span>
+						<span>Slice 4 - Image 3</span>
+						<span>Slice 4 - Image 4</span>
+					</div>
+				</div>
+
+				<div class="cr-titles">
+					<h3><span>Rejoignez Ldc, super slogan in here!</span><span>Communauté de joueurs chics, parrainage des nouveaux venus, etc...</span></h3>
+					<h3><span>Adventure</span><span>Where the fun begins</span></h3>
+					<h3><span>Nature</span><span>Unforgettable eperiences</span></h3>
+					<h3><span>Serenity</span><span>When silence touches nature</span></h3>
+				</div>
+
+			</div>  <!-- ========== Fin de .gn-panel-container -->	
+		</section> <!-- ========== Fin de #slider-img -->	
+		
+		  <!-- *************** ------------------- _____________________ CALENDRIER  _____________________ ------------------ ***************-->
+		<section id="calendar">
+			
+			<h2>Evenements à venir</h2>
+			
+			<div class="gn-panel-wrapper">
+
+				<div class="bdr-top-right"></div>
+				<div class="bdr-bot-right"></div>
+
+				<div class="gn-panel-container">
+
+					<div class="calendar-month">    
+						<div class="title-small">Juin</div>
+						<div><div class="hr-line-right"></div></div>
+					</div>
+						<ul>          
+							<li>
+								<div class="calendar-day"><span class="icon-day">12</span></div>
+								<div class="calendar-info">
+									<span >20 h 30 : Distribution des items du coffre.</span>
+									<span class="txt-legend-i">Distribution mensuelle des objets </span>
+								</div>
+							</li>       
+							<li>
+								<div class="calendar-day"><span class="icon-day">25</span></div>
+								<div class="calendar-info">
+									<span>12 h 00 : Tournoi PVP inter clan.</span>
+									<span class="txt-legend-i">Monarch shield a remporter </span>
+								</div>
+							</li>
+							<li>
+								<div class="calendar-day"><span class="icon-day">30</span></div>
+								<div class="calendar-info">
+									<span>18 h 30 : Streaming de Greyced.</span>
+									<span class="txt-legend-i">Venez suivre les aventures du redoutable barbare. </span>
+								</div>
+							</li>
+						</ul>
+					<div class="calendar-bt">
+						<div><div class="hr-line-left"></div></div>
+						<div class="bt-arrow-up"></div>
+						<div class="bt-arrow-down"></div>
+					</div>
+
+				</div>  <!-- ========== Fin de .gn-panel-container  -->	
+
+			</div> <!-- ========== Fin de .gn-panel-wrapper  -->	
+		</section> <!-- ========== Fin de #calendar -->	
+			
+    </div> <!-- ========== Fin de #mid-section -->		
+		
+		
+	<div id="bottom-section">
+		
+	  <!-- *************** ------------------- _____________________ FORUM: LISTE DES TOPICS _____________________ ------------------ ***************-->		
+		<section id="forum-summary">
+			
+			<h2>Forum</h2>
+			<div class="gn-panel-wrapper">
+				<div class="bdr-top-left"></div>
+				<div class="bdr-top-right"></div>
+				
+				<div class="gn-panel-container">
+					<div class="forum-summary-title"><h3>Derniers topics</h3></div>
+					<ul>
+						<li>
+							<span>Louer un bot pour farmer?</span>
+							<span class="txt-legend">par Dyonisos</span>
+							<div class="hr-line-right"></div>
+						</li>
+						<li>
+							<span>Problème de souris</span>
+							<span class="txt-legend">par Hades</span>
+							<div class="hr-line-right"></div>
+						</li>
+						<li>
+							<span>Spell order pour guerrier</span>
+							<span class="txt-legend">par Karthus</span>
+							<div class="hr-line-right"></div>
+						</li>
+						<li>
+							<span>Fetichiste OP?</span>
+							<span class="txt-legend">par Xena</span>
+							<div class="hr-line-right"></div>
+						</li>
+						<li>
+							<span>Blabla encore du blabla?</span>
+							<span class="txt-legend">par Inconnu</span>
+						</li>			
+					</ul>
+				</div><!-- ========== Fin de .panel-container -->	
+				
+			</div><!-- ========== Fin de .panel-wrapper -->	
+		</section> <!-- ========== Fin de #forum-summary-->	
+		
+		
+	  <!-- *************** ------------------- _____________________  NEWS  _____________________ ------------------ ***************-->	
+		<section id="articles-summary">
+			<h2>Dernières News</h2>
+			
+			<div class="article gn-panel-wrapper">
+				<div class="bdr-top-left"></div>
+				<div class="bdr-bot-right"></div>
+				
+				<div class="gn-panel-container">
+					<div class="article-img"><img src="{{path_img}}news_img1.jpg"/></div>
+					<div class="article-txt">
+						<div class="article-txt-wrapper">
+							<div class="article-title">
+								<h3><a href="">Guide des pouvoirs du sorcier</a></h3>
+								<p><span class="txt-annotation">Le 30/11/2012, par</span><a class="txt-legend"> Vengeful Spirit</a></p>
+							</div>
+							<div class="article-content">
+								<p>
+									It is a long established fact that a reader will be distracted 
+									by the readable content of a page when looking at its layout. 
+									The point of using Lorem Ipsum is that it has a ms, as ...
+								</p>
+							</div>
+						</div>
+					</div><!-- ========== Fin de .article-txt -->	
+				</div><!-- ========== Fin de .panel-container -->	
+			</div><!-- ========== Fin de .panel-wrapper -->	
+			
+			
+			<div class="article gn-panel-wrapper">
+				<div class="bdr-top-left"></div>
+				<div class="bdr-bot-right"></div>
+				
+				<div class="gn-panel-container">
+					<div class="article-img"><img src="{{path_img}}news_img2.jpg"/></div>
+					<div class="article-txt">
+						<div class="article-title">
+							<h3><a href="">Meilleur parrain du mois</a></h3>
+							<p><span class="txt-annotation">Le 30/12/2012, par</span><a class="txt-legend"> Shadow Fiend</a></p>
+						</div>
+						<div class="article-content">
+							<p>
+								ny feedback is always appreciated  As I said in the OP,
+								if you'd like to see any other change made, or if you'd like
+								some change reverted, j if I can make a flashable zip for...
+							</p>
+						</div>
+					</div><!-- ========== Fin de .article-txt -->	
+				</div><!-- ========== Fin de .gn-panel-container -->		
+			</div><!-- ========== Fin de .gn-panel-wrapper -->	
+			
+		</section>
+		  <!-- *************** ------------------- _____________________ SONDAGE _____________________ ------------------ ***************-->		
+		<section id="survey">
+			
+			<h2>Sondage</h2>
+			
+			<div class="gn-panel-wrapper">
+				<div class="bdr-top-left"></div>
+				<div class="bdr-top-right"></div>
+				
+				<div class="gn-panel-container">
+					<div class="survey-question">    
+						<h3 class="title-small">Comptez-vous changer de PC avant la sortie de Diablo III (15 mai) ?</h3>
+					</div>
+						<form id="survey-data">
+							<div class="survey-answers">
+								<p>
+									<input id="survey-answer-1" type="radio" name="survey-answer" value="1"/>
+									<label for="survey-answer-1">Oui, ma config a plus de deux ans</label>
+									<div><div class="hr-line-left"></div></div>
+								</p>
+								<p>
+									<input id="survey-answer-2" type="radio" name="survey-answer" value="2"/>
+									<label for="survey-answer-2">Oui, ma config a entre un an et deux ans</label>
+									<div><div class="hr-line-left"></div></div>
+								</p>
+								<p>
+									<input id="survey-answer-3" type="radio" name="survey-answer" value="3"/>
+									<label for="survey-answer-3">Oui, ma config a moins d'un an</label>
+									<div><div class="hr-line-left"></div></div>
+								</p>
+								<p>
+									<input id="survey-answer-4" type="radio" name="survey-answer" value="5"/>
+									<label for="survey-answer-4">Non, ma config est trop récente</label>
+								</p>		
+							</div>
+							<div class="bt-wrapper-survey-validation">
+								<div class="bt-validation">
+									<input type="image" src="{{path_img}}bt_dore_long.png" />
+									<a>Vote</a>
+								</div>
+							</div>
+						</form>
+					
+				</div><!-- ========== Fin de .panel-container -->		
+			</div><!-- ========== Fin de .panel-wrapper -->	
+		</section>
+		
+	</div> <!-- ========== Fin de #bottom-section-->
+{% endblock %}

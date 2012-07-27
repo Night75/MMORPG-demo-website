@@ -1,0 +1,15 @@
+{% extends "LdcEventBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent()}}
+	<link rel="stylesheet" href="{{ asset('bundles/ldcwebsite/css/user.css') }}" type="text/css" />
+{% endblock %}
+
+{% block event %}
+<div>
+	{% for key, flash in app.session.getFlashes() %}
+	   <p> {{ flash }} </p>
+	{% endfor %}
+    <p><a class="title-small" href="{{path('ldceventbundle_list')}}">Retour a la liste des evenements</a></p>
+</div>
+{% endblock %}
