@@ -22,6 +22,10 @@ LdcEventBundle:
     resource: "@LdcEventBundle/Resources/config/routing.yml"
     prefix: /ldc/event
 
+LdcSliderImageBundle_admin:
+    resource: "@LdcSliderImageBundle/Resources/config/routing_admin.yml"
+    prefix: /ldc/admin/slider
+
 LdcUserBundle_admin:
     resource: "@LdcUserBundle/Resources/config/routing_admin.yml"
     prefix: /ldc/admin/user

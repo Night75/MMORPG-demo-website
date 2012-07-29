@@ -5,18 +5,36 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Ldc\WebsiteBundle\Handler\DataLoginHandler;
 use Symfony\Component\HttpFoundation\Response;
+use Ldc\ArticleBundle\Entity\Article;
 
 class WebsiteController extends Controller
 {   
     public function indexAction()
     {
+    	$em = $this->getDoctrine()->getEntityManager();	
     	//$this->container->get('session')->setLocale('fr');
     	$data = array("page" => "accueil");
-		$loginData = new DataLoginHandler($this->container);
-     	$data = array_merge($data, $loginData->getData());
-		return $this->render('LdcWebsiteBundle:Website:accueil.html.twig', $data );
 		
-		//return new Response(var_dump($data));
+		//======== Chargement des infos User
+		$loginData = new DataLoginHandler($this->container);		
+		
+		//======== Chargement des sliders
+		$sliders = $em->getRepository("LdcSliderImageBundle:SliderImage")->findAll();
+
+		//======== Chargement des Articles						
+		$articles = $em->getRepository("LdcArticleBundle:Article")->getArticlesLimit(1,2);	
+		
+		//======== Chargement des Evenements
+		$events = $em->getRepository("LdcEventBundle:Event")->findLatestEvents(new \Datetime("now"));
+		$eventGroups = $em->getRepository("LdcEventBundle:Event")->groupByMonth($events);
+		
+		//======== Hydratation du tableau de donnees
+		$data = array_merge($data, $loginData->getData()); 
+		$data["articles"] = $articles;
+		$data["eventGroups"] = $eventGroups;
+     	$data["sliders"] = $sliders;
+		
+		return $this->render('LdcWebsiteBundle:website:index.html.twig', $data );
         return $this->container->get('templating')->renderResponse('designJFLdcBundle:Ldc:accueil.html.'.$this->container->getParameter('fos_user.template.engine'),
         		$data );
     }

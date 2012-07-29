@@ -1,1 +1,259 @@
-Hello {{ name }}!
+{% extends "LdcWebsiteBundle::layout.html.twig" %}
+
+{% set path_public = asset("bundles/ldcwebsite/") %}
+{% set path_img =  asset("bundles/ldcwebsite/") %}
+{% set path_img_articles =  asset("bundles/ldcwebsite/images/articles/") %}
+{% set path_slider_img = asset("bundles/ldcwebsite/images/slider/") %}
+{% set path_includes = "../includes/container_header.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent()}}
+	
+	<!-- *************** ------------------- SLIDER: Affectation des images *************** ------------------->
+	<style type="text/css">
+       
+        {% for slider in sliders %} 
+        	#slider-img input.cr-selector-img-{{loop.index}}:checked ~ .cr-bgimg,
+	        .cr-bgimg div span:nth-child({{loop.index}}){
+	                background-image: url({{path_slider_img}}{{slider.image | default('default.png')}});
+	        }
+        {% endfor %}
+        /*	Exemple de rendu 
+            #slider-img input.cr-selector-img-1:checked ~ .cr-bgimg,
+	        .cr-bgimg div span:nth-child(1){
+	                background-image: url(path/1.jpg);
+	        }
+	     */
+    </style>
+		
+{% endblock %}
+
+{% block script %}	
+	{{ parent() }}
+	<script type="text/javascript" src="{{path_public}}js/jquery.scrollTo.js"></script>
+{% endblock %}
+
+{% block title %}
+	{{ parent() }} - {{ page }}
+{% endblock %}
+	
+
+{% block container_header %}
+<!-- *************** ------------------- _____________________ PANNEAU DE LOGIN _____________________ ------------------ ***************-->		
+	{% include "LdcWebsiteBundle::includes/container_header.html.twig" %}
+{% endblock %} 
+
+{% block body %}	
+	
+	<div id="top-section">
+        <!-- *************** ------------------- _____________________ SLIDER IMAGE  _____________________ ------------------ ***************-->		
+		
+		<section id="slider-img"> 
+			<div class="gn-panel-container">
+			
+				 <!-- *************** ------- Boutons ------>
+				{% for slider in sliders %} 	
+					<input id="select-img-{{loop.index}}" name="radio-set-1" type="radio" class="cr-selector-img-{{loop.index}}" 
+					{% if loop.first %} checked {% endif %}/>
+					<label for="select-img-{{loop.index}}" class="cr-label-img-{{loop.index}}"><img src="{{path_slider_img}}{{slider.image}}"></label>
+				{% endfor %}
+	
+				 <!-- *************** ------- Sections d'images (necessaires pour l'effet) ------>
+				<div class="cr-bgimg">		
+				{% for slider in sliders %} 
+					<div>
+						<span>Slice 1 - Image 1</span>
+						<span>Slice 1 - Image 2</span>
+						<span>Slice 1 - Image 3</span>
+						<span>Slice 1 - Image 4</span>
+					</div>	
+				{% endfor %}
+				</div>
+
+				<!-- *************** ------- Titres et descriptions ------>
+				<div class="cr-titles">
+					{% for slider in sliders %} 
+						<h3><span>{{slider.title}}</span><span>{{slider.description}}</span></h3>
+					{% endfor %} 
+				</div>
+
+			</div>  <!-- ========== Fin de .gn-panel-container -->	
+		</section> <!-- ========== Fin de #slider-img -->	
+		
+		  <!-- *************** ------------------- _____________________ CALENDRIER  _____________________ ------------------ ***************-->
+		<section id="calendar">
+			
+			<h2><a href="{{path('ldcwebsitebundle_events') }}">Evenements à venir</a></h2>
+			
+			<div class="gn-panel-wrapper">
+
+				<div class="bdr-top-right"></div>
+				<div class="bdr-bot-right"></div>
+
+				<div class="gn-panel-container">
+					<div id="cl-mask">
+						<div id="cl-panel">
+						
+						{% for events in eventGroups %}
+							{% set month = "month." ~ events[0].dateEvent | date("F") | lower %}
+				
+							<div class="cl-panel cl-{{loop.index}}">
+								<div class="calendar-month">    
+									<div class="title-small">{{ month|trans({}) }}</div>
+									<div><div class="hr-line-right"></div></div>
+								</div>
+							{% for event in events %}
+								<ul>          
+									<li>
+										<div class="calendar-day"><span class="icon-day">{{event.dateEvent | date("d") }}</span></div>
+										<div class="calendar-info">
+											<span >{{event.dateEvent | date("G:i")}} {{event.title}}</span>
+											<span class="txt-legend-i">{{event.description}}</span>
+										</div>
+									</li>
+								</ul> 
+							{% endfor %}
+							</div>  <!-- Fin de .cl-n -->	    
+						{% endfor %}
+						</div>
+					</div>
+					<div class="calendar-bt">
+						<div><div class="hr-line-left"></div></div>
+						<div>
+							<img class="bt-cl-left" src="{{path_img}}bt_triangle_left.png" />
+							<img class="bt-cl-right" src="{{path_img}}bt_triangle_right.png" />
+						</div>
+					</div>
+				</div> <!-- Fin de .gn-panel-container  -->
+
+			</div> <!-- ========== Fin de .gn-panel-wrapper  -->	
+		</section> <!-- ========== Fin de #calendar -->	
+			
+			
+    </div> <!-- ========== Fin de #mid-section -->		
+		
+		
+	<div id="bottom-section">
+		
+	  <!-- *************** ------------------- _____________________ FORUM: LISTE DES TOPICS _____________________ ------------------ ***************-->		
+		<section id="forum-summary">
+			
+			<h2>Forum</h2>
+			<div class="gn-panel-wrapper">
+				<div class="bdr-top-left"></div>
+				<div class="bdr-top-right"></div>
+				
+				<div class="gn-panel-container">
+					<div class="forum-summary-title"><h3>Derniers topics</h3></div>
+					<ul>
+						<li>
+							<span>Louer un bot pour farmer?</span>
+							<span class="txt-legend">par Dyonisos</span>
+							<div class="hr-line-right"></div>
+						</li>
+						<li>
+							<span>Problème de souris</span>
+							<span class="txt-legend">par Hades</span>
+							<div class="hr-line-right"></div>
+						</li>
+						<li>
+							<span>Spell order pour guerrier</span>
+							<span class="txt-legend">par Karthus</span>
+							<div class="hr-line-right"></div>
+						</li>
+						<li>
+							<span>Fetichiste OP?</span>
+							<span class="txt-legend">par Xena</span>
+							<div class="hr-line-right"></div>
+						</li>
+						<li>
+							<span>Blabla encore du blabla?</span>
+							<span class="txt-legend">par Inconnu</span>
+						</li>			
+					</ul>
+				</div><!-- ========== Fin de .panel-container -->	
+				
+			</div><!-- ========== Fin de .panel-wrapper -->	
+		</section> <!-- ========== Fin de #forum-summary-->	
+		
+		
+	  <!-- *************** ------------------- _____________________  NEWS  _____________________ ------------------ ***************-->	
+		<section id="articles-summary">
+		
+			<h2><a href="{{path('ldcwebsitebundle_articles',{'page':1}) }}">Dernières News</a></h2>
+			
+			{% for article in articles %}
+				<div class="article gn-panel-wrapper">
+					<div class="bdr-top-left"></div>
+					<div class="bdr-bot-right"></div>
+					
+					<div class="gn-panel-container">
+						<div class="article-img">
+							<a href="{{path('ldcwebsitebundle_articlesshow',{'id':article.id}) }}" {><img src="{{path_img_articles}}{{article.image | default("default.jpg")}}"/></a>
+						</div>
+						<div class="article-txt">
+							<div class="article-txt-wrapper">
+								<div class="article-title">
+									<h3><a href="{{path('ldcwebsitebundle_articlesshow',{'id':article.id}) }}">{{article.title}}</a></h3>
+									<p><span class="txt-annotation">Le {{article.dateCreated | date("d/m/Y") }}, par</span><a class="txt-legend"> {{article.author}}</a></p>
+								</div>
+								<div class="article-content">
+									<p>{{article.content(150)}}</p>
+								</div>
+							</div>
+						</div><!-- ========== Fin de .article-txt -->	
+					</div><!-- ========== Fin de .panel-container -->	
+				</div><!-- ========== Fin de .panel-wrapper -->	
+			{% endfor %}
+			
+		</section>
+		
+		  <!-- *************** ------------------- _____________________ SONDAGE _____________________ ------------------ ***************-->		
+		<section id="survey">
+			
+			<h2>Sondage</h2>
+			
+			<div class="gn-panel-wrapper">
+				<div class="bdr-top-left"></div>
+				<div class="bdr-top-right"></div>
+				
+				<div class="gn-panel-container">
+					<div class="survey-question">    
+						<h3 class="title-small">Comptez-vous changer de PC avant la sortie de Diablo III (15 mai) ?</h3>
+					</div>
+						<form id="survey-data">
+							<div class="survey-answers">
+								<p>
+									<input id="survey-answer-1" type="radio" name="survey-answer" value="1"/>
+									<label for="survey-answer-1">Oui, ma config a plus de deux ans</label>
+									<div><div class="hr-line-left"></div></div>
+								</p>
+								<p>
+									<input id="survey-answer-2" type="radio" name="survey-answer" value="2"/>
+									<label for="survey-answer-2">Oui, ma config a entre un an et deux ans</label>
+									<div><div class="hr-line-left"></div></div>
+								</p>
+								<p>
+									<input id="survey-answer-3" type="radio" name="survey-answer" value="3"/>
+									<label for="survey-answer-3">Oui, ma config a moins d'un an</label>
+									<div><div class="hr-line-left"></div></div>
+								</p>
+								<p>
+									<input id="survey-answer-4" type="radio" name="survey-answer" value="5"/>
+									<label for="survey-answer-4">Non, ma config est trop récente</label>
+								</p>		
+							</div>
+							<div class="bt-wrapper-survey-validation">
+								<div class="bt-validation">
+									<input type="image" src="{{path_img}}bt_dore_long.png" />
+									<a>Vote</a>
+								</div>
+							</div>
+						</form>
+					
+				</div><!-- ========== Fin de .panel-container -->		
+			</div><!-- ========== Fin de .panel-wrapper -->	
+		</section>
+		
+	</div> <!-- ========== Fin de #bottom-section-->
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "LdcWebsiteBundle::layout.html.twig" %}
+
+{% set path_img =  asset("bundles/ldcwebsite/") %}
+{% set path_img_articles =  asset("bundles/ldcwebsite/images/articles/") %}
+{% set path_slider_img = asset("bundles/ldcwebsite/images/widgets/sliding_image_panel/") %}
+{% set path_includes = "../includes/container_header.html.twig" %}
+
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" href="{{ asset('bundles/ldcwebsite/css/articles.css') }}" type="text/css" />
+{% endblock %}
+
+{% block container_header %}
+<!-- *************** ------------------- _____________________ PANNEAU DE LOGIN _____________________ ------------------ ***************-->		
+	{% include "LdcWebsiteBundle::includes/container_header.html.twig" %}
+{% endblock %} 
+
+{% block body %}	
+<!-- *************** ------------------- _____________________ LISTE DES NEWS _____________________ ------------------ ***************-->		
+	
+	<section id="articles-content">
+			<div class="article gn-panel-wrapper">
+				<div class="bdr-top-left"></div>
+				<div class="bdr-bot-right"></div>
+				<div class="gn-panel-container">
+					
+					<div class="article-title">
+						<h3><a href="">{{article.title}}</a></h3>
+						<p><span class="txt-annotation">Le {{article.dateCreated | date("d/m/Y") }} par </span><span class="txt-legend">{{article.author}}</span></p>
+					</div>
+					<div class="img-article-full"><img src="{{path_img_articles}}{{article.image | default("default.jpg")}}"/></div>
+					<div class="article-content">
+						<p>
+							{{article.content}}
+						</p>
+					</div>
+				</div>
+			</div>
+	</section>
+{% endblock %}

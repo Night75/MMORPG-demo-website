@@ -132,10 +132,10 @@ class Article
     /**
      * Set author
      *
-     * @param string $author
+     * @param Ldc/UserBundle/Entity/User $author
      * @return Article
      */
-    public function setAuthor($author)
+    public function setAuthor( $author)
     {
         $this->author = $author;
         return $this;
@@ -144,7 +144,7 @@ class Article
     /**
      * Get author
      *
-     * @return string 
+     * @return Ldc/UserBundle/Entity/User 
      */
     public function getAuthor()
     {
@@ -168,9 +168,18 @@ class Article
      *
      * @return text 
      */
-    public function getContent()
+    public function getContent($length = null)
     {
-        return $this->content;
+    	if(!empty($length)){
+    		$content = substr($this->content,0,$length);
+    		if(strlen($this->content)>$length){
+    			$content .= " ...";
+    		}
+			return $content;
+    	} else{
+    		return $this->content;
+    	}
+      
     }
 
     /**
@@ -236,16 +245,25 @@ class Article
      * @ORM\PreUpdate()
      */
     public function uploadImage() {
-        // the file property can be empty if the field is not required
+     
+        // -------------- Cas de l'Ajout ou Edition d'article ===> Image chargee
         if ($this->image !== null) {     
 	        if(!$this->id){
 	            $this->image->move($this->getTmpUploadRootDir(), $this->image->getClientOriginalName());
-	        }else{
+	        } 
+			
+	        //------- Cas de l'Edition d'article ===> Image changee	
+	        else{
+				if($this->previous_image !== "default.jpg"){
+					unlink($this->getUploadRootDir() .$this->previous_image);
+				}
 	            $this->image->move($this->getUploadRootDir(), $this->image->getClientOriginalName());
 	        }
 	        $this->setImage($this->image->getClientOriginalName());
         }
-		else if($this->previous_image !== null){
+	
+		// -------------- Cas de l'Edition d'article ===> Image inchangee
+		else if($this->previous_image !== null){	
 			$this->setImage($this->previous_image);
 		}
     }

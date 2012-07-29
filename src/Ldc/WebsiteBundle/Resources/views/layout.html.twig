@@ -35,17 +35,21 @@
 				<ul>
 					<li class="bt-menu">
 						<a href="{{path('ldcwebsitebundle_accueil')}}">Accueil</a>
-					</li>
-					<li class="bt-menu">
-						<a href="">News</a>
-					</li>
-					<li class="bt-menu">
+					</li><!--
+				--><li class="bt-menu">
+						<a href="{{path('ldcwebsitebundle_articles',{'page':1})}}">News</a>
+					</li><!--
+				--><li class="bt-menu">
 						<a href="">Objets</a>
-					</li>
-					<li class="bt-menu">
+						<ul>
+							<li><a href="http://www.ndesign-studio.com/portfolio">Portfolio</a></li>
+							<li><a href="http://www.ndesign-studio.com/wp-themes">WordPress Themes</a></li>
+						</ul>
+					</li><!--
+				--><li class="bt-menu">
 						<a href="">Classes</a>
-					</li>
-					<li class="bt-menu">
+					</li><!--
+				--><li class="bt-menu">
 						<a href="">Forum</a>
 					</li>
 				</ul>

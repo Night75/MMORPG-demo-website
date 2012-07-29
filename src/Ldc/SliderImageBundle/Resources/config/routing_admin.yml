@@ -1,0 +1,15 @@
+ldcsliderimagebundle_new:
+    pattern: /new
+    defaults: { _controller: LdcSliderImageBundle:SliderImageAdmin:new}
+
+ldcsliderimagebundle_edit:
+    pattern: /edit/{id}
+    defaults: { _controller: LdcSliderImageBundle:SliderImageAdmin:edit}
+
+ldcsliderimagebundle_index:
+    pattern: /
+    defaults: { _controller: LdcSliderImageBundle:SliderImageAdmin:index}
+
+ldcsliderimagebundle_confirmed:
+    pattern: /confirmed
+    defaults: { _controller: LdcSliderImageBundle:SliderImageAdmin:confirmed}

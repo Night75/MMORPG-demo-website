@@ -199,6 +199,21 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Ldc\\WebsiteBundle\\Controller\\WebsiteController::indexAction',  '_route' => 'ldcwebsitebundle_accueil',);
             }
 
+            // ldcwebsitebundle_articles
+            if (0 === strpos($pathinfo, '/ldc/articles') && preg_match('#^/ldc/articles/(?<page>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\WebsiteBundle\\Controller\\ArticleController::indexAction',)), array('_route' => 'ldcwebsitebundle_articles'));
+            }
+
+            // ldcwebsitebundle_articlesshow
+            if (0 === strpos($pathinfo, '/ldc/articles/show') && preg_match('#^/ldc/articles/show/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\WebsiteBundle\\Controller\\ArticleController::showAction',)), array('_route' => 'ldcwebsitebundle_articlesshow'));
+            }
+
+            // ldcwebsitebundle_events
+            if ($pathinfo === '/ldc/events') {
+                return array (  '_controller' => 'Ldc\\WebsiteBundle\\Controller\\EventController::indexAction',  '_route' => 'ldcwebsitebundle_events',);
+            }
+
             // LdcWebsiteBundle_test
             if ($pathinfo === '/ldc/test') {
                 return array (  '_controller' => 'Ldc\\WebsiteBundle\\Controller\\WebsiteController::testAction',  '_route' => 'LdcWebsiteBundle_test',);
@@ -268,6 +283,33 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // ldceventbundle_confirmed
             if ($pathinfo === '/ldc/event/confirmed') {
                 return array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::confirmedAction',  '_route' => 'ldceventbundle_confirmed',);
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/ldc/admin/slider')) {
+            // ldcsliderimagebundle_new
+            if ($pathinfo === '/ldc/admin/slider/new') {
+                return array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::newAction',  '_route' => 'ldcsliderimagebundle_new',);
+            }
+
+            // ldcsliderimagebundle_edit
+            if (0 === strpos($pathinfo, '/ldc/admin/slider/edit') && preg_match('#^/ldc/admin/slider/edit/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::editAction',)), array('_route' => 'ldcsliderimagebundle_edit'));
+            }
+
+            // ldcsliderimagebundle_index
+            if (rtrim($pathinfo, '/') === '/ldc/admin/slider') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'ldcsliderimagebundle_index');
+                }
+
+                return array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::indexAction',  '_route' => 'ldcsliderimagebundle_index',);
+            }
+
+            // ldcsliderimagebundle_confirmed
+            if ($pathinfo === '/ldc/admin/slider/confirmed') {
+                return array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::confirmedAction',  '_route' => 'ldcsliderimagebundle_confirmed',);
             }
 
         }

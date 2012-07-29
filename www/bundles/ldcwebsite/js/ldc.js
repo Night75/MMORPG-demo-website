@@ -4,13 +4,46 @@ $(document).ready(function(){
 //										GESTIONNAIRE D'EVENEMENTS GENERAUX
 //================ ================================================== ====================
 
-//__________________ ----------------- ************  BODY
 
-//__________________ ----------------- Bouton de Login
+//__________________ ----------------- ************  LOGIN
 
 	$("input[name=_submit]~a").click(function() {
 		$(this).closest("form").submit();
 	});
+
+//__________________ ----------------- ************ CALENDRIER
+
+	 var heightMask = $('.cl-panel').eq(0).height();
+	$('#cl-mask').scrollTo(".cl-1", 400);  							// Remise a la position initiale du calendrier
+    $('#cl-mask').css({'height':heightMask});   					// Initialisation de la hauteur du masque 
+     panelSelected = 1;													// Initialisation du panel selectionne 
+   	$('#cl-panel').width(parseInt($('#cl-mask').width() *($('#cl-panel').children("div").length+1))); // Initialisation de la largeur de l'espace de panneaux' 
+     
+    //__________________ EVENT HANDLER : EVENEMENT SUIVANT
+    $('.bt-cl-right').click(function () {
+        var $nextPanel = $(".cl-"+ (panelSelected+1));
+        if($nextPanel.length>0){
+        	 var panelheight = $nextPanel.height();
+	        //Resize the height
+	        $('#cl-mask').animate({'height':panelheight},{queue:false, duration:500});   // Redimensionnement vertical
+	        $('#cl-mask').scrollTo($nextPanel, 400);   											 // Defilement de l'evenement
+	       	panelSelected +=1;  
+	        return false;
+        }	       
+    });
+    
+    //__________________ EVENT HANDLER : EVENEMENT PRECEDENT
+     $('.bt-cl-left').click(function () {    
+        var $previousPanel = $(".cl-"+ (panelSelected-1));
+        if($previousPanel.length>0){
+        	 var panelheight = $previousPanel.height();
+	        //Resize the height
+	        $('#cl-mask').animate({'height':panelheight},{queue:false, duration:500});   // Redimensionnement vertical    
+	        $('#cl-mask').scrollTo($previousPanel, 400);     										 // Defilement de l'evenement
+	       	panelSelected -=1;  
+	        return false;
+	    }
+    });
 
 //__________________ ----------------- ************  FOOTER
  

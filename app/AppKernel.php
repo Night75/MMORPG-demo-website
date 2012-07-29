@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Ldc\UserBundle\LdcUserBundle(),
             new Ldc\EventBundle\LdcEventBundle(),
             new Ldc\ArticleBundle\LdcArticleBundle(),
+            new Ldc\SliderImageBundle\LdcSliderImageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

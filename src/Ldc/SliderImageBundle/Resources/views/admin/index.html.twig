@@ -1,0 +1,46 @@
+{% extends "LdcWebsiteBundle::layout_admin.html.twig" %}
+
+{% set path_img = asset("bundles/ldcwebsite/images/") %}
+{% set path_img_slider= asset("bundles/ldcwebsite/images/slider/") %}
+
+{% block body %}
+<div class="list-table">
+	<h2>Liste des sliders</h2>
+	
+	{% if sliders | length < 4 %}
+		<!-- ----------------------------------------- BOUTON D'AJOUT DE SLIDER ---------------------------------->
+		<div class="bk-icon-bt">
+			<a class="title-small" href="{{path('ldcsliderimagebundle_new')}}"><img class="icon-tool" src="{{path_img}}icon_add.png" />  Ajouter un slider</a>
+		</div>
+	{% endif %}
+	
+	<div class="msg-flash">
+		  {% for key, message in app.session.getFlashes() %}
+		        <p class="{{ key }}">
+		            {{ message }}
+		        </p>
+		 {% endfor %}
+	</div>
+	<table>
+		<caption></caption>
+		<tr>
+			<th>Image</th>
+			<th>Titre</th>
+			<th>Auteur</th>
+			<th>Date de creation</th>
+			<th>Url</th>
+			<th>Editer</th>
+		</tr>	
+	{% for slider in sliders %}
+		<tr>
+			<td><img class="list-img" src="{{path_img_slider}}{{slider.image | default('default.jpg')}}" /></td> 
+			<td>{{slider.title}}</td>
+			<td>{{slider.author}}</td>
+			<td>le {{slider.dateCreated |date ("d/m/Y \\à H:i") }}</td>
+			<td>{{slider.url(50)}}</td>
+			<td class="edit"><a href="{{path('ldcsliderimagebundle_edit', { 'id': slider.id })}}"><img class="icon-tool" src="{{path_img}}icon_edit.png"></a></td>
+		</tr>
+	{% endfor%}
+	</table>
+</div>
+{% endblock %}

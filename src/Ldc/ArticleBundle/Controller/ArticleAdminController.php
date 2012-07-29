@@ -59,6 +59,16 @@ class ArticleAdminController extends Controller
 		));
 	}
 	
+	public function listAction()
+	{
+		$em = $this->getDoctrine()->getEntityManager();
+		$entities = $em->getRepository("LdcArticleBundle:Article")->findAll();
+		
+		return $this->render("LdcArticleBundle:admin:list.html.twig",array(
+			"articles" => $entities,
+		));
+	}
+	
 	public function deleteAction($id)
 	{
 		$em = $this->getDoctrine()->getEntityManager();

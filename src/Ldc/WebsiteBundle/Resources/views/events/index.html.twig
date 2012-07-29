@@ -1,0 +1,55 @@
+{% extends "LdcWebsiteBundle::layout.html.twig" %}
+{% set path_img = asset("images/") %}
+
+<!-- *************** ------------------- _____________________ SCRIPTS ET STYLES _____________________ ------------------ ***************-->		
+{% block script %}	
+{% endblock %}
+
+{% block stylesheets %}
+	{{parent()}}
+	<style>
+		#calendar{
+			width:600px;
+		}
+		.calendar-info{
+			width:570px;
+		}
+	</style>
+{% endblock %}
+
+{% block container_header %}
+<!-- *************** ------------------- _____________________ PANNEAU DE LOGIN _____________________ ------------------ ***************-->		
+	{% include "LdcWebsiteBundle::includes/container_header.html.twig" %}
+{% endblock %} 
+
+
+
+{% block body %}	
+<!-- *************** ------------------- _____________________ LISTE DES EVENEMENTS _____________________ ------------------ ***************-->		
+<section id="calendar">	
+	<h2>Evenements</h2>
+	{% for events in eventGroups %}
+		<div class="gn-panel-container">
+			<div class="calendar-month">    
+				<div class="title-small">
+					{% set month = "month." ~ events[0].dateEvent | date("F") | lower %}
+					{{ month|trans({}) }}
+				</div>
+				<div><div class="hr-line-right"></div></div>
+			</div>
+			<ul>  
+			{% for event in events %}     
+				<li>
+					<div class="calendar-day"><span class="icon-day">{{event.dateEvent | date("d")}}</span></div>
+					<div class="calendar-info">
+						<span >{{event.dateEvent | date("G:i")}} : {{event.title}}.</span>
+						<span class="txt-legend-i">{{event.description}} </span>
+					</div>
+				</li>
+			{% endfor %}
+			</ul>
+		</div>
+	{% endfor %}
+</section>
+{% endblock %}
+

@@ -3,7 +3,7 @@
 {% set path_img = asset("images/") %}
 
 {% block body %}
-<div class="users-list">
+<div class="list-table">
 	<h2>Liste des utilisateurs</h2>
 	<div class="msg-flash">
 		  {% for key, message in app.session.getFlashes() %}

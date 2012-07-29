@@ -1,0 +1,15 @@
+#articles-content { width:600px; }
+#articles-content h3 { margin:0; }
+#articles-content h3 a {
+  color:#f3dc78;
+  font-size:20px;
+  margin-bottom:0px;
+}
+#articles-content span { font-size:16px; }
+#articles-content .img-article-full { text-align:center; }
+#articles-content .img-article-full img {
+  margin:10px 0px;
+  width:550px;
+  height:300px;
+  border:4px solid gray;
+}

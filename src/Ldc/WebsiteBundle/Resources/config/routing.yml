@@ -1,6 +1,21 @@
 ldcwebsitebundle_accueil:
     pattern:  /
     defaults: { _controller: LdcWebsiteBundle:Website:index }
+
+# # # # ----------- Articles ----------- # # # # 
+ldcwebsitebundle_articles:
+    pattern: articles/{page}
+    defaults: { _controller: LdcWebsiteBundle:Article:index }
+
+ldcwebsitebundle_articlesshow:
+    pattern: articles/show/{id}
+    defaults: { _controller: LdcWebsiteBundle:Article:show }
+
+# # # # ----------- Articles ----------- # # # # 
+ldcwebsitebundle_events:
+    pattern: events
+    defaults: { _controller: LdcWebsiteBundle:Event:index }
+
 LdcWebsiteBundle_test:
     pattern: /test
     defaults: {_controller: LdcWebsiteBundle:Website:test}

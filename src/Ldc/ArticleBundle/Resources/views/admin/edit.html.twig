@@ -2,20 +2,20 @@
 {% set path_public = asset("bundles/ldcwebsite/") %}
 {% set path_img =  asset("bundles/ldcwebsite/images/") %}
 
-
-
-
 {% block body %}
 <form method="post" {{ form_enctype(form) }} enctype="multipart/form-data" class="form_article">
 	
 	<h2>Modification d'article</h2>
 	
 	{{form_errors(form) }}
-	<img src="{{path_img}}articles/{{ image_name | default("default.jpg") }}" alt="article_image "/>
+	<div class="img-article-full">
+		<label>Image Actuelle</label>
+		<img src="{{path_img}}articles/{{ image_name | default("default.jpg") }}" alt="article_image "/>
+	</div>
 	
 	<!-- ========== Champ image -->	
 	<div>
-		{{ form_label(form.image, "Image") }}<!--
+		{{ form_label(form.image, "Modifier l'image") }}<!--
 	-->{{ form_widget(form.image) }}
 		{% if form_errors(form.image) is not empty  %}
 			<div class="error">{{ form_errors(form.image) }}</div>
