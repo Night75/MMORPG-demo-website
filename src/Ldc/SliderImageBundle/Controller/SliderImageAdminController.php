@@ -10,11 +10,11 @@ use Symfony\Component\Httpfoundation\Response;
 
 class SliderImageAdminController extends Controller
 {
-	public function indexAction()
+	public function listAction()
 	{
 		$em = $this->getDoctrine()->getEntityManager();
 		$entities = $em->getRepository("LdcSliderImageBundle:SliderImage")->findAll();
-		return $this->render("LdcSliderImageBundle:admin:index.html.twig",array(
+		return $this->render("LdcSliderImageBundle:admin:list.html.twig",array(
 			"sliders" => $entities
 		));	
 	}

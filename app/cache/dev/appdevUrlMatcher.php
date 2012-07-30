@@ -221,117 +221,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/ldc/admin/article')) {
-            // ldcarticlebundle_new
-            if ($pathinfo === '/ldc/admin/article/new') {
-                return array (  '_controller' => 'Ldc\\ArticleBundle\\Controller\\ArticleAdminController::newAction',  '_route' => 'ldcarticlebundle_new',);
-            }
-
-            // ldcarticlebundle_edit
-            if (0 === strpos($pathinfo, '/ldc/admin/article/edit') && preg_match('#^/ldc/admin/article/edit/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\ArticleBundle\\Controller\\ArticleAdminController::editAction',)), array('_route' => 'ldcarticlebundle_edit'));
-            }
-
-            // ldcarticlebundle_delete
-            if (0 === strpos($pathinfo, '/ldc/admin/article/delete') && preg_match('#^/ldc/admin/article/delete/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\ArticleBundle\\Controller\\ArticleAdminController::deleteAction',)), array('_route' => 'ldcarticlebundle_delete'));
-            }
-
-            // ldcarticlebundle_list
-            if ($pathinfo === '/ldc/admin/article/list') {
-                return array (  '_controller' => 'Ldc\\ArticleBundle\\Controller\\ArticleAdminController::listAction',  '_route' => 'ldcarticlebundle_list',);
-            }
-
-            // ldcarticlebundle_confirmed
-            if ($pathinfo === '/ldc/admin/article/confirmed') {
-                return array (  '_controller' => 'Ldc\\ArticleBundle\\Controller\\ArticleAdminController::confirmedAction',  '_route' => 'ldcarticlebundle_confirmed',);
-            }
-
-        }
-
-        if (0 === strpos($pathinfo, '/ldc/event')) {
-            // ldceventbundle_new
-            if ($pathinfo === '/ldc/event/new') {
-                return array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::newAction',  '_route' => 'ldceventbundle_new',);
-            }
-
-            // ldceventbundle_create
-            if ($pathinfo === '/ldc/event/create') {
-                return array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::createAction',  '_route' => 'ldceventbundle_create',);
-            }
-
-            // ldceventbundle_edit
-            if (0 === strpos($pathinfo, '/ldc/event/edit') && preg_match('#^/ldc/event/edit/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::editAction',)), array('_route' => 'ldceventbundle_edit'));
-            }
-
-            // ldceventbundle_update
-            if (0 === strpos($pathinfo, '/ldc/event/update') && preg_match('#^/ldc/event/update/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::updateAction',)), array('_route' => 'ldceventbundle_update'));
-            }
-
-            // ldceventbundle_delete
-            if (0 === strpos($pathinfo, '/ldc/event/delete') && preg_match('#^/ldc/event/delete/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::deleteAction',)), array('_route' => 'ldceventbundle_delete'));
-            }
-
-            // ldceventbundle_list
-            if ($pathinfo === '/ldc/event/list') {
-                return array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::listAction',  '_route' => 'ldceventbundle_list',);
-            }
-
-            // ldceventbundle_confirmed
-            if ($pathinfo === '/ldc/event/confirmed') {
-                return array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::confirmedAction',  '_route' => 'ldceventbundle_confirmed',);
-            }
-
-        }
-
-        if (0 === strpos($pathinfo, '/ldc/admin/slider')) {
-            // ldcsliderimagebundle_new
-            if ($pathinfo === '/ldc/admin/slider/new') {
-                return array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::newAction',  '_route' => 'ldcsliderimagebundle_new',);
-            }
-
-            // ldcsliderimagebundle_edit
-            if (0 === strpos($pathinfo, '/ldc/admin/slider/edit') && preg_match('#^/ldc/admin/slider/edit/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::editAction',)), array('_route' => 'ldcsliderimagebundle_edit'));
-            }
-
-            // ldcsliderimagebundle_index
-            if (rtrim($pathinfo, '/') === '/ldc/admin/slider') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'ldcsliderimagebundle_index');
-                }
-
-                return array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::indexAction',  '_route' => 'ldcsliderimagebundle_index',);
-            }
-
-            // ldcsliderimagebundle_confirmed
-            if ($pathinfo === '/ldc/admin/slider/confirmed') {
-                return array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::confirmedAction',  '_route' => 'ldcsliderimagebundle_confirmed',);
-            }
-
-        }
-
-        if (0 === strpos($pathinfo, '/ldc/admin/user')) {
-            // ldc_user_admin_list
-            if ($pathinfo === '/ldc/admin/user/list') {
-                return array (  '_controller' => 'Ldc\\UserBundle\\Controller\\AdminController::listAction',  '_route' => 'ldc_user_admin_list',);
-            }
-
-            // ldc_user_admin_edit
-            if (preg_match('#^/ldc/admin/user/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\UserBundle\\Controller\\AdminController::editAction',)), array('_route' => 'ldc_user_admin_edit'));
-            }
-
-            // ldc_user_admin_delete
-            if (preg_match('#^/ldc/admin/user/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\UserBundle\\Controller\\AdminController::deleteAction',)), array('_route' => 'ldc_user_admin_delete'));
-            }
-
-        }
-
         // fos_user_security_login
         if ($pathinfo === '/login') {
             return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
@@ -472,6 +361,121 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ChangePasswordController::changePasswordAction',  '_route' => 'fos_user_change_password',);
         }
         not_fos_user_change_password:
+
+        if (0 === strpos($pathinfo, '/ldc/admin/article')) {
+            // ldcarticlebundle_new
+            if ($pathinfo === '/ldc/admin/article/new') {
+                return array (  '_controller' => 'Ldc\\ArticleBundle\\Controller\\ArticleAdminController::newAction',  '_route' => 'ldcarticlebundle_new',);
+            }
+
+            // ldcarticlebundle_edit
+            if (0 === strpos($pathinfo, '/ldc/admin/article/edit') && preg_match('#^/ldc/admin/article/edit/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\ArticleBundle\\Controller\\ArticleAdminController::editAction',)), array('_route' => 'ldcarticlebundle_edit'));
+            }
+
+            // ldcarticlebundle_delete
+            if (0 === strpos($pathinfo, '/ldc/admin/article/delete') && preg_match('#^/ldc/admin/article/delete/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\ArticleBundle\\Controller\\ArticleAdminController::deleteAction',)), array('_route' => 'ldcarticlebundle_delete'));
+            }
+
+            // ldcarticlebundle_index
+            if (rtrim($pathinfo, '/') === '/ldc/admin/article') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'ldcarticlebundle_index');
+                }
+
+                return array (  '_controller' => 'Ldc\\ArticleBundle\\Controller\\ArticleAdminController::indexAction',  '_route' => 'ldcarticlebundle_index',);
+            }
+
+            // ldcarticlebundle_confirmed
+            if ($pathinfo === '/ldc/admin/article/confirmed') {
+                return array (  '_controller' => 'Ldc\\ArticleBundle\\Controller\\ArticleAdminController::confirmedAction',  '_route' => 'ldcarticlebundle_confirmed',);
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/ldc/admin/event')) {
+            // ldceventbundle_new
+            if ($pathinfo === '/ldc/admin/event/new') {
+                return array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::newAction',  '_route' => 'ldceventbundle_new',);
+            }
+
+            // ldceventbundle_create
+            if ($pathinfo === '/ldc/admin/event/create') {
+                return array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::createAction',  '_route' => 'ldceventbundle_create',);
+            }
+
+            // ldceventbundle_edit
+            if (0 === strpos($pathinfo, '/ldc/admin/event/edit') && preg_match('#^/ldc/admin/event/edit/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::editAction',)), array('_route' => 'ldceventbundle_edit'));
+            }
+
+            // ldceventbundle_update
+            if (0 === strpos($pathinfo, '/ldc/admin/event/update') && preg_match('#^/ldc/admin/event/update/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::updateAction',)), array('_route' => 'ldceventbundle_update'));
+            }
+
+            // ldceventbundle_delete
+            if (0 === strpos($pathinfo, '/ldc/admin/event/delete') && preg_match('#^/ldc/admin/event/delete/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::deleteAction',)), array('_route' => 'ldceventbundle_delete'));
+            }
+
+            // ldceventbundle_list
+            if ($pathinfo === '/ldc/admin/event/list') {
+                return array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::listAction',  '_route' => 'ldceventbundle_list',);
+            }
+
+            // ldceventbundle_confirmed
+            if ($pathinfo === '/ldc/admin/event/confirmed') {
+                return array (  '_controller' => 'Ldc\\EventBundle\\Controller\\EventAdminController::confirmedAction',  '_route' => 'ldceventbundle_confirmed',);
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/ldc/admin/slider')) {
+            // ldcsliderimagebundle_new
+            if ($pathinfo === '/ldc/admin/slider/new') {
+                return array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::newAction',  '_route' => 'ldcsliderimagebundle_new',);
+            }
+
+            // ldcsliderimagebundle_edit
+            if (0 === strpos($pathinfo, '/ldc/admin/slider/edit') && preg_match('#^/ldc/admin/slider/edit/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::editAction',)), array('_route' => 'ldcsliderimagebundle_edit'));
+            }
+
+            // ldcsliderimagebundle_list
+            if (rtrim($pathinfo, '/') === '/ldc/admin/slider') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'ldcsliderimagebundle_list');
+                }
+
+                return array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::listAction',  '_route' => 'ldcsliderimagebundle_list',);
+            }
+
+            // ldcsliderimagebundle_confirmed
+            if ($pathinfo === '/ldc/admin/slider/confirmed') {
+                return array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::confirmedAction',  '_route' => 'ldcsliderimagebundle_confirmed',);
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/ldc/admin/user')) {
+            // ldc_user_admin_list
+            if ($pathinfo === '/ldc/admin/user/list') {
+                return array (  '_controller' => 'Ldc\\UserBundle\\Controller\\AdminController::listAction',  '_route' => 'ldc_user_admin_list',);
+            }
+
+            // ldc_user_admin_edit
+            if (preg_match('#^/ldc/admin/user/(?<id>[^/]+)/edit$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\UserBundle\\Controller\\AdminController::editAction',)), array('_route' => 'ldc_user_admin_edit'));
+            }
+
+            // ldc_user_admin_delete
+            if (preg_match('#^/ldc/admin/user/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\UserBundle\\Controller\\AdminController::deleteAction',)), array('_route' => 'ldc_user_admin_delete'));
+            }
+
+        }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }

@@ -6,30 +6,16 @@ WmsIntroductionBundle:
     resource: "@WmsIntroductionBundle/Resources/config/routing.yml"
     prefix: /wms
 
+#======== ==================== ====================       
+# ---------------- ROUTES POUR LDC
+#======== ==================== ====================      
+
+#======== SIte web
 LdcWebsiteBundle:
     resource: "@LdcWebsiteBundle/Resources/config/routing.yml"
     prefix: /ldc
 
-LdcArticleBundle_admin:
-    resource: "@LdcArticleBundle/Resources/config/routing.yml"
-    prefix: /ldc/article
-
-LdcArticleBundle_admin:
-    resource: "@LdcArticleBundle/Resources/config/routing_admin.yml"
-    prefix: /ldc/admin/article
-
-LdcEventBundle:
-    resource: "@LdcEventBundle/Resources/config/routing.yml"
-    prefix: /ldc/event
-
-LdcSliderImageBundle_admin:
-    resource: "@LdcSliderImageBundle/Resources/config/routing_admin.yml"
-    prefix: /ldc/admin/slider
-
-LdcUserBundle_admin:
-    resource: "@LdcUserBundle/Resources/config/routing_admin.yml"
-    prefix: /ldc/admin/user
-
+#======== Utilisateurs
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -48,3 +34,20 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+#======== Back office
+LdcArticleBundle_admin:
+    resource: "@LdcArticleBundle/Resources/config/routing_admin.yml"
+    prefix: /ldc/admin/article
+
+LdcEventBundle_admin:
+    resource: "@LdcEventBundle/Resources/config/routing_admin.yml"
+    prefix: /ldc/admin/event
+
+LdcSliderImageBundle_admin:
+    resource: "@LdcSliderImageBundle/Resources/config/routing_admin.yml"
+    prefix: /ldc/admin/slider
+
+LdcUserBundle_admin:
+    resource: "@LdcUserBundle/Resources/config/routing_admin.yml"
+    prefix: /ldc/admin/user

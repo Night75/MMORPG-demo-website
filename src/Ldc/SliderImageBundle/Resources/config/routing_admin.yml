@@ -6,9 +6,9 @@ ldcsliderimagebundle_edit:
     pattern: /edit/{id}
     defaults: { _controller: LdcSliderImageBundle:SliderImageAdmin:edit}
 
-ldcsliderimagebundle_index:
+ldcsliderimagebundle_list:
     pattern: /
-    defaults: { _controller: LdcSliderImageBundle:SliderImageAdmin:index}
+    defaults: { _controller: LdcSliderImageBundle:SliderImageAdmin:list}
 
 ldcsliderimagebundle_confirmed:
     pattern: /confirmed
