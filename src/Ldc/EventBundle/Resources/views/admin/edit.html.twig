@@ -44,20 +44,10 @@
 	
 	<!-- ========== Bouton validation -->
     <div class="bt-container-validation">
-		<div class="bt-wrapper-validation">
-			<div class="bt-validation">
-				<input type="image" src="{{path_img}}bt_dore_long.png" name="_submit">		
-				<a>Valider</a>
-			</div>
-		</div>
-		
-		<div class="bt-wrapper-validation">
-			<div class="bt-validation">
-				<input type="image" src="{{path_img}}bt_dore_long.png">		
-				<a href="{{path('ldceventbundle_delete',{'id':id})}}">Supprimer</a>
-			</div>
-		</div>
+		<input type="submit" class="bt-gold" value="Valider" />
+		<a class="bt-gold bt-sup" href="{{path('ldceventbundle_delete',{'id':id})}}">Supprimer</a>
 	</div>
+		
 	 {{ form_rest(form) }}
 </form>
 

@@ -1,0 +1,29 @@
+{% extends "LdcWebsiteBundle::layout.html.twig" %}
+{% set path_user_img = asset("bundles/ldcwebsite/images/users/") %}
+
+{% block stylesheets %}
+<!-- *************** ------------------- _____________________ SCRIPTS ET STYLES _____________________ ------------------ ***************-->		
+	{{parent()}}
+	<link rel="stylesheet" href="{{ asset('bundles/ldcwebsite/css/user.css') }}" type="text/css" />
+{% endblock %}
+
+{% block container_header %}
+<!-- *************** ------------------- _____________________ PANNEAU DE LOGIN _____________________ ------------------ ***************-->		
+	{% include "LdcWebsiteBundle::includes/container_header.html.twig" %}
+{% endblock %} 
+
+
+{% block body %}	
+<!-- *************** ------------------- _____________________ PROFIL _____________________ ------------------ ***************-->		
+<div class="fos_user_user_show">
+	<h2>Profil</h2>
+	<p><b>Avatar</b><img class="img-avatar" src="{{path_user_img}}{{user.image | default("default.png")}}"/></p>
+    <p><b>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}:</b> {{ user.username }}</p>
+    <p><b>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}:</b> {{ user.email }}</p>
+    <p><b>Civilite:</b> {% if user.gender == "M" %} Homme {% else %} Femme {% endif %}</p>
+    <p><b>Signature:</b> {% if user.signature is null %}Pas de signature {% else %}<i>{{user.signature }}</i>{% endif %}</p>
+    <p><b>Date d'inscription:</b> Le {{user.registerDate | date('d/m/Y')}} </p>
+    <p><b>Derniere connection:</b> Le {{user.lastLogin | date('d/m/Y à G:i')}} </p>
+ <div class="bk-bt-tool">
+{% endblock %}
+

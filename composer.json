@@ -22,7 +22,8 @@
         "sensio/generator-bundle": "dev-master",
         "jms/security-extra-bundle": "1.1.*",
         "jms/di-extra-bundle": "1.0.*",
-        "friendsofsymfony/user-bundle": "*"
+        "friendsofsymfony/user-bundle": "*",
+        "gregwar/captcha-bundle": "1.0.0"
     },
     "scripts": {
         "post-install-cmd": [

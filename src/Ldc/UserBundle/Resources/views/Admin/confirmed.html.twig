@@ -1,0 +1,15 @@
+{% extends "LdcWebsiteBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent()}}
+	<link rel="stylesheet" href="{{ asset('bundles/ldcwebsite/css/user.css') }}" type="text/css" />
+{% endblock %}
+
+{% block body %}
+<div>
+	{% for key, flash in app.session.getFlashes() %}
+	   <p> {{ flash }} </p>
+	{% endfor %}
+    <p><a class="title-small" href="{{path('ldc_user_admin_list')}}">Retour a la liste des utilisateurs</a></p>
+</div>
+{% endblock %}

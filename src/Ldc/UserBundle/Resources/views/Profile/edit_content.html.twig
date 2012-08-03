@@ -1,30 +1,60 @@
+{% set path_img =  asset("bundles/ldcwebsite/images/") %}
+
 <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
-    	
-    	<!-- ========== Erreurs Generales-->	
+  
+		<h2>MODIFICATION DE MON PROFIL</h2>
+		
+		<!-- ========== Erreurs Generales-->	
 		<div class="error">
 			{{ form_errors(form) }}
 		</div>
 		
+		<!-- Champs modifiables -->	
+		<div><span class="title-small-static">Informations a</span></div>
+		
+		<!-- ========== Champ Avatar -->	
+		<div>
+			{{ form_label(form.image, "Avatar") }}<!--
+		-->{{ form_widget(form.image) }}
+			{% if form_errors(form.image) is not empty  %}
+				<div class="error">{{ form_errors(form.image) }}</div>
+			{% endif %}
+		</div>
+			
 		<!-- ========== Champ Email -->	
 		<div>
-			{% if form_errors(form.user.email) is not empty  %}
-				<div class="error">{{ form_errors(form.user.email) }}</div>
+			{{ form_label(form.email, "Email") }}<!--
+		-->{{ form_widget(form.email) }}
+			{% if form_errors(form.email) is not empty  %}
+				<div class="error">{{ form_errors(form.email) }}</div>
 			{% endif %}
-			{{ form_label(form.user.email, "Email") }}<!--
-		-->{{ form_widget(form.user.email) }}
 		</div>
 		
-		
-		<!-- ========== Champ Password -->	
+		<!-- ========== Champ Signature -->	
 		<div>
-			{% if form_errors(form.current) is not empty  %}
-				<div class="error">{{ form_errors(form.current) }}</div>
+			{{ form_label(form.signature, "Signature") }}<!--
+		-->{{ form_widget(form.signature) }}
+			{% if form_errors(form.signature) is not empty  %}
+				<div class="error">{{ form_errors(form.signature) }}</div>
 			{% endif %}
-			{{ form_label(form.current, "Mot de passe") }}<!--
-		-->{{ form_widget(form.current) }}
 		</div>
 		
-    <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
-    </div>
+		<!-- Verification de l'utilisateur -->			
+		<div><span class="title-small-static">Verification de l'utilisateur</span></div>
+		
+		<!-- ========== Verification du mot de passe -->	
+		<div>
+			{{ form_label(form.current_password, "Mot de passe actuel") }}<!--
+		-->{{ form_widget(form.current_password) }}
+			{% if form_errors(form.current_password) is not empty  %}
+				<div class="error">{{ form_errors(form.current_password) }}</div>
+			{% endif %}
+		</div>
+		
+		<!-- ========== Bouton Validation -->	
+		{{ form_rest(form) }}
+		<div class="bt-container-validation">
+			<input type="submit" class="bt-gold" value="Valider" />
+		</div>
+		
 </form>

@@ -15,13 +15,33 @@ class ArticleRepository extends EntityRepository
 	public function getArticlesLimit($offsetPage,$articlesPerPage)
 	{
 		$qb = $this->createQueryBuilder("a");
-		$qb->orderBy("a.date_created","desc")
-			->setFirstResult(2); 
+		$qb->orderBy("a.date_created","desc");
+		
 		$q = $qb->getQuery();
 		
 		$offset = ($offsetPage-1)*$articlesPerPage;
 		$q->setFirstResult($offset);
 		$q->setMaxResults($articlesPerPage);
 		 return $q->getResult();
+	}
+	
+	public function getLastArticle()
+	{
+		$qb = $this->createQueryBuilder("a");
+		$qb->orderBy("a.date_created","desc");
+		$q = $qb->getQuery();
+		
+		$q->setFirstResult(1);
+		$q->setMaxResults(1);
+		
+		return $q->getOneOrNullResult();
+	}
+	
+	public function countAll()
+	{
+		return $this->createQueryBuilder('a')
+		 ->select('COUNT(a)')
+		 ->getQuery()
+		 ->getSingleScalarResult();
 	}
 }

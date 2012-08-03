@@ -7,8 +7,10 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationFailureHandlerI
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
-class AuthenticationHandler implements AuthenticationFailureHandlerInterface, LogoutSuccessHandlerInterface
+class AuthenticationHandler implements AuthenticationFailureHandlerInterface, LogoutSuccessHandlerInterface, AuthenticationSuccessHandlerInterface
 {
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {       
@@ -17,7 +19,13 @@ class AuthenticationHandler implements AuthenticationFailureHandlerInterface, Lo
 
         return new RedirectResponse($referer);
     }
-
+	
+	function onAuthenticationSuccess(Request $request, TokenInterface $token)
+    {
+    	$referer = $request->headers->get('referer');
+        return new RedirectResponse($referer);
+    }
+	
     public function onLogoutSuccess(Request $request) 
     {
         $referer = $request->headers->get('referer');

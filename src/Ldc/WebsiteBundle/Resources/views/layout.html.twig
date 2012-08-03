@@ -33,25 +33,30 @@
 			<!-- __________________ ----------------- ************ MENU ************----------------- __________________ -->
 			<nav>
 				<ul>
-					<li class="bt-menu">
+					<li class="bt-menu-light">
 						<a href="{{path('ldcwebsitebundle_accueil')}}">Accueil</a>
 					</li><!--
-				--><li class="bt-menu">
+				--><li class="bt-menu-light">
 						<a href="{{path('ldcwebsitebundle_articles',{'page':1})}}">News</a>
 					</li><!--
-				--><li class="bt-menu">
+				--><li class="bt-menu-light">
 						<a href="">Objets</a>
 						<ul>
 							<li><a href="http://www.ndesign-studio.com/portfolio">Portfolio</a></li>
 							<li><a href="http://www.ndesign-studio.com/wp-themes">WordPress Themes</a></li>
 						</ul>
 					</li><!--
-				--><li class="bt-menu">
+				--><li class="bt-menu-light">
 						<a href="">Classes</a>
 					</li><!--
-				--><li class="bt-menu">
+				--><li class="bt-menu-light">
 						<a href="">Forum</a>
-					</li>
+					</li><!--
+						{% if is_granted('ROLE_USER') %}
+						--><li class="bt-gold">
+							<a href="{{path('ldcwebsitebundle_admin_index')}}">Espace admin</a>
+						</li>
+					{% endif %}
 				</ul>
 			</nav>
 			

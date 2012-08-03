@@ -7,7 +7,7 @@ ldcsliderimagebundle_edit:
     defaults: { _controller: LdcSliderImageBundle:SliderImageAdmin:edit}
 
 ldcsliderimagebundle_list:
-    pattern: /
+    pattern: /list
     defaults: { _controller: LdcSliderImageBundle:SliderImageAdmin:list}
 
 ldcsliderimagebundle_confirmed:

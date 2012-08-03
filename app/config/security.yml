@@ -29,6 +29,7 @@ security:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
                 remember_me: true            # On active la possibilité du "Se souvenir de moi" (désactivé par défaut)
+                success_handler: authentication_handler
                 failure_handler: authentication_handler
             logout:
                 success_handler: authentication_handler

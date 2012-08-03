@@ -1,34 +1,40 @@
-{% extends "LdcEventBundle::layout.html.twig" %}
-{% set path_img = asset("images/") %}
+{% extends "LdcWebsiteBundle::layout_admin.html.twig" %}
 
-{% block event %}
-	<h2>Evenements</h2>
-	{% for events in eventGroups %}
-		<div class="gn-panel-container">
-			<div class="calendar-month">    
-				<div class="title-small">
-					{% set month = "month." ~ events[0].dateEvent | date("F") | lower %}
-					{{ month|trans({}) }}
-				</div>
-				<div><div class="hr-line-right"></div></div>
-			</div>
-			<ul>  
-			{% for event in events %}     
-				<li>
-					<div class="calendar-day"><span class="icon-day">{{event.dateEvent | date("d")}}</span></div>
-					<div class="calendar-info">
-						<span >{{event.dateEvent | date("G:i")}} : {{event.title}}.</span>
-						<span class="txt-legend-i">{{event.description}} </span>
-					</div>
-					<div class="bk-bt-tool">
-						<a href="{{path('ldceventbundle_edit', { 'id': event.id })}}"><img class="bt-tool" src="{{path_img}}icon_edit.png"></a>
-						<a href="{{path('ldceventbundle_delete', { 'id': event.id })}}"><img class="bt-tool" src="{{path_img}}icon_trash.png"></a>
-					</div>
-				</li>
-			{% endfor %}
-			</ul>
-		</div>
-	{% endfor %}
+{% set path_img = asset("bundles/ldcwebsite/images/") %}
 
+{% block body %}
+<div class="list-table">
+	<h2>Liste des articles</h2>
+	<div class="bk-icon-bt">
+		<a class="title-small" href="{{path('ldceventbundle_new')}}"><img class="icon-tool" src="{{path_img}}icon_add.png" /> Ajouter un evenement</a>
+	</div>
+	<div class="msg-flash">
+		  {% for key, message in app.session.getFlashes() %}
+		        <p class="{{ key }}">
+		            {{ message }}
+		        </p>
+		 {% endfor %}
+	</div>
+	<table>
+		<caption></caption>
+		<tr>
+			<th>Date de l'evenement</th>
+			<th>Titre</th>
+			<th>Auteur</th>
+			<th>Date de creation</th>
+			<th>Editer</th>
+			<th>Supprimer</th>
+		</tr>	
+	{% for event in events %}
+		<tr>
+			<td>{{event.dateEvent  |date ("d/m/Y \\à H:i") }}</td> 
+			<td>{{event.title}}</td>
+			<td>{{event.author}}</td>
+			<td>le {{event.dateCreated |date ("d/m/Y \\à H:i") }}</td>
+			<td class="edit"><a href="{{path('ldceventbundle_edit', { 'id': event.id })}}"><img class="icon-tool" src="{{path_img}}icon_edit.png"></a></td>
+			<td class="delete"><a href="{{path('ldceventbundle_delete', { 'id': event.id })}}"><img class="icon-tool" src="{{path_img}}icon_trash.png"></a></td>
+		</tr>
+	{% endfor%}
+	</table>
+</div>
 {% endblock %}
-

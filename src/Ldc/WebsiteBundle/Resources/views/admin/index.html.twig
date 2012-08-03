@@ -1,0 +1,36 @@
+{% extends "LdcWebsiteBundle::layout_admin.html.twig" %}
+
+{% block body %}
+<section class="panel-dashboard">
+
+	<h2>Sommaire des donnees</h2>
+	
+	<div class="bk-data-info">
+		<h3>{{user.name}}s</h3>
+		<p><b>Nombre total crees:</b> {{user.itemCount}}</p>
+		<p><b>Derniere inscription:</b>
+			{% if user.lastItem is not null %}
+			Le {{user.lastItem.registerDate | date("d/m/Y \\à G:i")}}
+			{% else %}
+				Aucun article ajoute
+			{% endif %}
+		</p>
+	</div>
+		
+	{% for data in dataGroup %}
+		<div class="bk-data-info">
+			<h3>{{data.name}}s</h3>
+			<p><b>Nombre total crees:</b> {{data.itemCount}}</p>
+			<p><b>Derniere modification:</b>
+				{% if data.lastItem is not null %}
+				Le {{data.lastItem.dateCreated | date("d/m/Y \\à G:i")}}
+				{% else %}
+					Aucun article ajoute
+				{% endif %}
+			</p>
+		</div>
+	{% endfor %} 
+	
+</section>
+
+{% endblock %}

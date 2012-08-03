@@ -26,7 +26,10 @@
 					
 					<div class="article-title">
 						<h3><a href="">{{article.title}}</a></h3>
-						<p><span class="txt-annotation">Le {{article.dateCreated | date("d/m/Y") }} par </span><span class="txt-legend">{{article.author}}</span></p>
+						<p>
+							<span class="txt-annotation">Le {{article.dateCreated | date("d/m/Y") }}, par</span>
+							<a href="{{path('ldcwebsitebundle_usersprofile',{'id':article.author.id})}}" class="txt-legend"> {{article.author}}</a>
+						</p>
 					</div>
 					<div class="img-article-full"><img src="{{path_img_articles}}{{article.image | default("default.jpg")}}"/></div>
 					<div class="article-content">

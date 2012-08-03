@@ -205,9 +205,9 @@ class Article
     }
 	
 	  /**
-     * Set image
+     * Set previousImage
      *
-     * @param string $image
+     * @param string $previousImage
      * @return Article
      */
     public function setPreviousImage($image)
@@ -217,7 +217,7 @@ class Article
     }
 
     /**
-     * Get image
+     * Get previousImage
      *
      * @return string 
      */

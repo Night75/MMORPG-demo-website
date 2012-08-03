@@ -38,9 +38,9 @@
 				{{ role }} -
 				{% endfor %}
 			</td>
-			<td class="edit"><a href="{{path('ldceventbundle_edit', { 'id': user.id })}}"><img src="{{path_img}}icon_edit.png"></a></td>
+			<td class="edit"><a href="{{path('ldc_user_admin_edit', { 'id': user.id })}}"><img src="{{path_img}}icon_edit.png"></a></td>
 			<td class="delete">
-				<form method="post" action="{{ path('ldceventbundle_delete', { 'id': user.id} ) }}">
+				<form method="post" action="{{ path('ldc_user_admin_delete', { 'id': user.id} ) }}">
 					<input type="image" src="{{path_img}}icon_trash.png" alt="Connexion" name="delete_user" value="{{user.username}}"/>
 				</form>
 			</td>

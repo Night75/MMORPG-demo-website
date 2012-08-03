@@ -199,6 +199,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Ldc\\WebsiteBundle\\Controller\\WebsiteController::indexAction',  '_route' => 'ldcwebsitebundle_accueil',);
             }
 
+            // ldcwebsitebundle_usersprofile
+            if (0 === strpos($pathinfo, '/ldc/users/profile') && preg_match('#^/ldc/users/profile/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'LdcWebsiteBundle:User:profile',)), array('_route' => 'ldcwebsitebundle_usersprofile'));
+            }
+
             // ldcwebsitebundle_articles
             if (0 === strpos($pathinfo, '/ldc/articles') && preg_match('#^/ldc/articles/(?<page>[^/]+)$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\WebsiteBundle\\Controller\\ArticleController::indexAction',)), array('_route' => 'ldcwebsitebundle_articles'));
@@ -248,13 +253,13 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return $this->redirect($pathinfo.'/', 'fos_user_profile_show');
                 }
 
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ProfileController::showAction',  '_route' => 'fos_user_profile_show',);
+                return array (  '_controller' => 'Ldc\\UserBundle\\Controller\\ProfileController::showAction',  '_route' => 'fos_user_profile_show',);
             }
             not_fos_user_profile_show:
 
             // fos_user_profile_edit
             if ($pathinfo === '/profile/edit') {
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ProfileController::editAction',  '_route' => 'fos_user_profile_edit',);
+                return array (  '_controller' => 'Ldc\\UserBundle\\Controller\\ProfileController::editAction',  '_route' => 'fos_user_profile_edit',);
             }
 
         }
@@ -362,6 +367,15 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
         not_fos_user_change_password:
 
+        // ldcwebsitebundle_admin_index
+        if (rtrim($pathinfo, '/') === '/ldc/admin') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'ldcwebsitebundle_admin_index');
+            }
+
+            return array (  '_controller' => 'Ldc\\WebsiteBundle\\Controller\\AdminController::indexAction',  '_route' => 'ldcwebsitebundle_admin_index',);
+        }
+
         if (0 === strpos($pathinfo, '/ldc/admin/article')) {
             // ldcarticlebundle_new
             if ($pathinfo === '/ldc/admin/article/new') {
@@ -378,13 +392,9 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\ArticleBundle\\Controller\\ArticleAdminController::deleteAction',)), array('_route' => 'ldcarticlebundle_delete'));
             }
 
-            // ldcarticlebundle_index
-            if (rtrim($pathinfo, '/') === '/ldc/admin/article') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'ldcarticlebundle_index');
-                }
-
-                return array (  '_controller' => 'Ldc\\ArticleBundle\\Controller\\ArticleAdminController::indexAction',  '_route' => 'ldcarticlebundle_index',);
+            // ldcarticlebundle_list
+            if ($pathinfo === '/ldc/admin/article/list') {
+                return array (  '_controller' => 'Ldc\\ArticleBundle\\Controller\\ArticleAdminController::listAction',  '_route' => 'ldcarticlebundle_list',);
             }
 
             // ldcarticlebundle_confirmed
@@ -444,11 +454,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // ldcsliderimagebundle_list
-            if (rtrim($pathinfo, '/') === '/ldc/admin/slider') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'ldcsliderimagebundle_list');
-                }
-
+            if ($pathinfo === '/ldc/admin/slider/list') {
                 return array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::listAction',  '_route' => 'ldcsliderimagebundle_list',);
             }
 
@@ -473,6 +479,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // ldc_user_admin_delete
             if (preg_match('#^/ldc/admin/user/(?<id>[^/]+)/delete$#s', $pathinfo, $matches)) {
                 return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\UserBundle\\Controller\\AdminController::deleteAction',)), array('_route' => 'ldc_user_admin_delete'));
+            }
+
+            // ldc_user_admin_confirmed
+            if ($pathinfo === '/ldc/admin/user/confirmed') {
+                return array (  '_controller' => 'Ldc\\UserBundle\\Controller\\AdminController::confirmedAction',  '_route' => 'ldc_user_admin_confirmed',);
             }
 
         }

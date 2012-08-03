@@ -10,6 +10,6 @@
 	{% for key, flash in app.session.getFlashes() %}
 	   <p> {{ flash }} </p>
 	{% endfor %}
-    <p><a class="title-small" href="{{path('ldcarticlebundle_index')}}">Retour a la liste des articles</a></p>
+    <p><a class="title-small" href="{{path('ldcarticlebundle_list')}}">Retour a la liste des articles</a></p>
 </div>
 {% endblock %}

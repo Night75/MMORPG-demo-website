@@ -66,6 +66,11 @@ fos_user:
     registration:
         form:
             type: ldc_user_registration
+    profile:
+        form:
+            type: ldc_user_profile
+
+gregwar_captcha: ~
 
 services:
     authentication_handler:

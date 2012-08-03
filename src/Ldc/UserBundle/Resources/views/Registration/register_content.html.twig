@@ -11,7 +11,7 @@
 		
 		<!-- ========== Champ Username -->	
 		<div>
-			{{ form_label(form.username, "Nom d'utilisateur") }}<!--
+			{{ form_label(form.username, "Nom d'utilisateur *") }}<!--
 		-->{{ form_widget(form.username) }}
 			{% if form_errors(form.username) is not empty  %}
 				<div class="error">{{ form_errors(form.username) }}</div>
@@ -20,7 +20,7 @@
 		
 		<!-- ========== Champ Email -->	
 		<div>
-			{{ form_label(form.email, "Email") }}<!--
+			{{ form_label(form.email, "Email *") }}<!--
 		-->{{ form_widget(form.email) }}
 			{% if form_errors(form.email) is not empty  %}
 				<div class="error">{{ form_errors(form.email) }}</div>
@@ -29,7 +29,7 @@
 		
 		<!-- ========== Champ Civilite -->	
 		<div>
-			{{ form_label(form.gender, "Civilité") }}<!--
+			{{ form_label(form.gender, "Civilité *") }}<!--
 		-->{{ form_widget(form.gender) }}
 			{% if form_errors(form.gender) is not empty  %}
 				<div class="error">{{ form_errors(form.gender) }}</div>
@@ -38,7 +38,7 @@
 		
 		<!-- ========== Champ Date de naissance -->		
 		<div>
-			{{ form_label(form.birthday, "Date de naissance") }}<!--
+			{{ form_label(form.birthday, "Date de naissance *") }}<!--
 		-->{{ form_widget(form.birthday) }}
 			{% if form_errors(form.birthday) is not empty  %}
 				<div class="error">{{ form_errors(form.birthday) }}</div>
@@ -47,27 +47,50 @@
 		
 		<!-- ========== Champ Mot de passe -->	
 		<div class="bk-password">
-			{{ form_label(form.plainPassword.first, "Mot de passe") }}<!--
+			{{ form_label(form.plainPassword.first, "Mot de passe *") }}<!--
 		-->{{ form_widget(form.plainPassword.first) }}
-			{% if form_errors(form.plainPassword) is not empty  %}
-				<div class="error">{{ form_errors(form.plainPassword) }}</div>
+			{% if form_errors(form.plainPassword.first) is not empty  %}
+				<div class="error">{{ form_errors(form.plainPassword.first) }}</div>
 			{% endif %}
 		</div>
 		
 		<div>
-			{{ form_label(form.plainPassword.second, "Confirmation du mot de passe") }}<!--
+			{{ form_label(form.plainPassword.second, "Confirmation du mot de passe *") }}<!--
 		-->{{ form_widget(form.plainPassword.second) }}
 		</div>
 		
+		<!-- ========== Champ Signature -->	
+		<div>
+			{{ form_label(form.signature, "Signature") }}<!--
+		-->{{ form_widget(form.signature) }}
+			{% if form_errors(form.signature) is not empty  %}
+				<div class="error">{{ form_errors(form.signature) }}</div>
+			{% endif %}
+		</div>
+		
+		<!-- ========== Champ Civilite -->	
+		<div>
+			{{ form_label(form.image, "Avatar (seules les images de moins de 1Mo sont autorisees)") }}<!--
+		-->{{ form_widget(form.image) }}
+			{% if form_errors(form.image) is not empty  %}
+				<div class="error">{{ form_errors(form.image) }}</div>
+			{% endif %}
+		</div>
+		
+		<!-- ========== Champ Captcha -->	
+		<div class="captcha">
+			{{ form_label(form.captcha, "Captcha") }}<!--
+		-->{{ form_widget(form.captcha) }}
+			{% if form_errors(form.captcha) is not empty  %}
+				<div class="error">{{ form_errors(form.captcha)}}</div>
+			{% endif %}
+		</div>
+		
+		<p> * Champs obligatoires</p>
 		<!-- ========== Bouton Validation -->	
 		{{ form_rest(form) }}
-		<div class="bt-container-validation">
-			<div class="bt-wrapper-validation">
-				<div class="bt-validation">
-					<input type="image" name="_submit" src="{{path_img}}bt_dore_long.png">
-					<a>Valider</a>
-				</div>
-			</div>
+		<div>
+			<input type="submit" class="bt-gold" />
 		</div>
 		
 </form>

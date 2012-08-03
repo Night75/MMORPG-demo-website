@@ -1,6 +1,12 @@
+# # # # ----------- Website ----------- # # # # 
 ldcwebsitebundle_accueil:
     pattern:  /
     defaults: { _controller: LdcWebsiteBundle:Website:index }
+
+# # # # ----------- Website ----------- # # # # 
+ldcwebsitebundle_usersprofile:
+    pattern:  users/profile/{id}
+    defaults: { _controller: LdcWebsiteBundle:User:profile}
 
 # # # # ----------- Articles ----------- # # # # 
 ldcwebsitebundle_articles:
@@ -11,7 +17,7 @@ ldcwebsitebundle_articlesshow:
     pattern: articles/show/{id}
     defaults: { _controller: LdcWebsiteBundle:Article:show }
 
-# # # # ----------- Articles ----------- # # # # 
+# # # # ----------- Evenements ----------- # # # # 
 ldcwebsitebundle_events:
     pattern: events
     defaults: { _controller: LdcWebsiteBundle:Event:index }

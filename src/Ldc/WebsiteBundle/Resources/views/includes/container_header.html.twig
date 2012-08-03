@@ -1,14 +1,20 @@
+{% set path_img_user = asset('bundles/ldcwebsite/images/users/') %}
 <div class="gn-panel-container">
 					 
-	<div class="txt-path-nav"><a href="">Accueil</a></div>
-	<div class="login">
+	<div class="bk-login-info">
+	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+		<a href="{{path('fos_user_profile_show')}}"><img src="{{path_img_user}}{{app.user.image | default('default.png')}}" class="img-avatar-small"/></a>
+		<span>Connecté en tant que <a href="{{path('fos_user_profile_show')}}" class="title-small">{{ app.user.username }}</a> </span>
+	{% endif %}
+	</div>
 	
+	<div class="login">
 		{% if error %}
 			<div>{{ error|trans({}, 'FOSUserBundle') }}</div>
 		{% endif %}
 		
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-				<span>Connecté en tant que {{ app.user.username }} - </span><a class="bt-logout bt-upcase" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+				<a class="bt-logout bt-upcase" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
 		{% else %}
 		<form id="form-login" action="{{ path("fos_user_security_check") }}" method="post">
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -30,10 +36,7 @@
 			</div>
 			<div class="bk-bt-login">
 				<div class="bt-wrapper-login-validation">
-					<div class="bt-validation">
-						<input type="image" name="_submit" src="{{path_img}}bt_dore_long.png"/>
-						<a>Connexion</a>
-					</div>
+					<input type="submit" class="bt-gold" value="Connexion" />
 				</div>
 				<a class="bt-upcase" href="{{path('fos_user_registration_register')}}">s'inscrire</a>
 			</div>

@@ -1,5 +1,6 @@
 # Security
 "Bad credentials": "Pseudo ou mot de passe incorrect"
+"Bad code value": "Erreur de saisie dans le captcha"
 
 # Group
 group:

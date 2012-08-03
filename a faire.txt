@@ -2,3 +2,4 @@
 -Inscription: Checkbox pour valider l'acceptation de la chartre
 -Upload: Creer une classe qui contiendra les methodes d'upload(au lieu de les creer directement dans les classes) 
 -Upload image: Renommer les image pour rendre les noms uniques?
+-Historique: Creer une table historique ou plusieurs notifiant les actions des admins.

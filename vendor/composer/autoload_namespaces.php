@@ -23,6 +23,7 @@ return array(
     'JMS\\SecurityExtraBundle' => $vendorDir . '/jms/security-extra-bundle/',
     'JMS\\DiExtraBundle' => $vendorDir . '/jms/di-extra-bundle/',
     'JMS\\AopBundle' => $vendorDir . '/jms/aop-bundle/',
+    'Gregwar\\CaptchaBundle' => $vendorDir . '/gregwar/captcha-bundle/',
     'FOS\\UserBundle' => $vendorDir . '/friendsofsymfony/user-bundle/',
     'Doctrine\\ORM' => $vendorDir . '/doctrine/orm/lib/',
     'Doctrine\\DBAL' => $vendorDir . '/doctrine/dbal/lib/',

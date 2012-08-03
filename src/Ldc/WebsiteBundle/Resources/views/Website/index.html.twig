@@ -195,7 +195,10 @@
 							<div class="article-txt-wrapper">
 								<div class="article-title">
 									<h3><a href="{{path('ldcwebsitebundle_articlesshow',{'id':article.id}) }}">{{article.title}}</a></h3>
-									<p><span class="txt-annotation">Le {{article.dateCreated | date("d/m/Y") }}, par</span><a class="txt-legend"> {{article.author}}</a></p>
+									<p>
+										<span class="txt-annotation">Le {{article.dateCreated | date("d/m/Y") }}, par</span>
+										<a href="{{path('ldcwebsitebundle_usersprofile',{'id':article.author.id})}}" class="txt-legend"> {{article.author}}</a>
+									</p>
 								</div>
 								<div class="article-content">
 									<p>{{article.content(150)}}</p>
@@ -244,10 +247,7 @@
 								</p>		
 							</div>
 							<div class="bt-wrapper-survey-validation">
-								<div class="bt-validation">
-									<input type="image" src="{{path_img}}bt_dore_long.png" />
-									<a>Vote</a>
-								</div>
+								<input type="submit" class="bt-gold" value="Vote" />
 							</div>
 						</form>
 					

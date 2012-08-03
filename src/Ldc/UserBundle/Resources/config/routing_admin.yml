@@ -9,3 +9,7 @@ ldc_user_admin_edit:
 ldc_user_admin_delete:
     pattern:  /{id}/delete
     defaults: { _controller: LdcUserBundle:Admin:delete }
+
+ldc_user_admin_confirmed:
+    pattern: /confirmed
+    defaults: { _controller:LdcUserBundle:Admin:confirmed }

@@ -10,9 +10,9 @@ ldcarticlebundle_delete:
     pattern: /delete/{id}
     defaults: { _controller: LdcArticleBundle:ArticleAdmin:delete}
 
-ldcarticlebundle_index:
-    pattern: /
-    defaults: { _controller: LdcArticleBundle:ArticleAdmin:index}
+ldcarticlebundle_list:
+    pattern: /list
+    defaults: { _controller: LdcArticleBundle:ArticleAdmin:list}
     
 ldcarticlebundle_confirmed:
     pattern: /confirmed

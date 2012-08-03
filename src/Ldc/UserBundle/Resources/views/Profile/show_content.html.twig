@@ -1,20 +1,17 @@
-<div id="user-profile-show">
-	<ul>
-	    <li>
-	    	<span>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}</span>
-	    	<span>{{ user.username }}</span>
-	    </li>
-	     <li>
-	    	<span>Civilité</span>
-	    	<span>{{ user.gender }}</span>
-	    </li>
-	    <li>
-	    	<span>Derniere connection</span>
-	    	<span>Le {{ user.lastLogin|date("d/m/Y \\a H\\hi") }}</span>
-	    </li>
-	     <li>
-	    	<span>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}</span>
-	    	<span>{{ user.email }}</span>
-	    </li>
-	</ul>
+{% set path_user_img =  asset("bundles/ldcwebsite/images/users/") %}
+
+<div class="fos_user_user_show">
+	<h2>Mon profil</h2>
+	<p><b>Avatar</b><img class="img-avatar" src="{{path_user_img}}{{user.image | default("default.png")}}"/></p>
+    <p><b>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}:</b> {{ user.username }}</p>
+    <p><b>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}:</b> {{ user.email }}</p>
+    <p><b>Civilite:</b> {% if user.gender == "M" %} Homme {% else %} Femme {% endif %}</p>
+    <p><b>Signature:</b> {% if user.signature is null %}Pas de signature {% else %}<i>{{user.signature }}</i>{% endif %}</p>
+    <p><b>Date d'inscription:</b> Le {{user.registerDate | date('d/m/Y')}} </p>
+    <p><b>Derniere connection:</b> Le {{user.lastLogin | date('d/m/Y à G:i')}} </p>
+ <div class="bk-bt-tool">
+
+<div class="bk-tools">
+    <a href="{{path('fos_user_change_password')}}" class="title-small">Changer mon mot de passe</a><br><br>
+    <a href="{{path('fos_user_profile_edit')}}" class="bt-upcase">Editer mon profil</a>
 </div>

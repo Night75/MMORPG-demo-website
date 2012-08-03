@@ -13,6 +13,7 @@ class EventAdminController extends Controller
     public function newAction()
     {
     	$entity = new Event();
+		$entity->setAuthor($this->getUser());
 		$form = $this->createForm(new EventType,$entity);
 		
         return $this->render('LdcEventBundle:admin:new.html.twig', array('form' => $form->createView()));
@@ -90,11 +91,10 @@ class EventAdminController extends Controller
 	{
 		$em = $this->getDoctrine()->getEntityManager();
 		$events = $em->getRepository("LdcEventBundle:Event")->findLatestEvents(new \Datetime("now"));
-		$eventGroups = $em->getRepository("LdcEventBundle:Event")->groupByMonth($events);
 		//return new Response(var_dump($eventGroups));	
 		
 		return $this->render("LdcEventBundle:admin:list.html.twig", array(
-			"eventGroups" => $eventGroups
+			"events" => $events
 		));
 	}
 	
@@ -102,31 +102,4 @@ class EventAdminController extends Controller
 	{
 		return $this->render("LdcEventBundle:admin:confirmed.html.twig");
 	}
-	
-	
-	/*
-	public function createAction()
-    {
-        $entity  = new Article();
-        $request = $this->getRequest();
-        $form    = $this->createForm(new ArticleType(), $entity);
-        $form->bindRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('article_show', array('id' => $entity->getId())));
-        }
-
-        return $this->render('SdzBlogBundle:Article:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView()
-        ));
-    }
-	
-	*/
-	
-	
 }

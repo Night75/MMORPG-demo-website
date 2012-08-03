@@ -36,6 +36,10 @@ fos_user_change_password:
     prefix: /profile
 
 #======== Back office
+LdcWebsiteBundle_admin:
+    resource: "@LdcWebsiteBundle/Resources/config/routing_admin.yml"
+    prefix: /ldc/admin/
+
 LdcArticleBundle_admin:
     resource: "@LdcArticleBundle/Resources/config/routing_admin.yml"
     prefix: /ldc/admin/article

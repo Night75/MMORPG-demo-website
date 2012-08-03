@@ -6,9 +6,9 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 //use Ldc\WebsiteBundle\Handler\DataLoginHandler;
 use Symfony\Component\HttpFoundation\Response;
 use Ldc\UserBundle\Entity\User;
-use Ldc\UserBundle\Form\Handler\ProfileFormHandler;
+use Ldc\UserBundle\Form\Handler\AdminProfileFormHandler;
 use Ldc\UserBundle\Form\Type\EditFormType;
-use Ldc\UserBundle\Form\Type\ProfileFormType;
+use Ldc\UserBundle\Form\Type\AdminProfileFormType;
 use FOS\UserBundle\Document\UserManager;
 
 class AdminController extends Controller
@@ -39,24 +39,31 @@ class AdminController extends Controller
 	 	 if (!$user) {
             throw $this->createNotFoundException('Unable to find User entity.');
 		}
-		$form = $this->createForm(new ProfileFormType, $user);
-		$form->bindRequest($request);
-
+		$form = $this->createForm(new AdminProfileFormType, $user);
 		//$form =  $this->container->get('fos_user.profile.form');
      	 // On crée le gestionnaire pour ce formulaire, avec les outils dont il a besoin
-		$formHandler = new ProfileFormHandler($form, $this->get('request'), new UserManager);
+		$formHandler = new AdminProfileFormHandler($form, $this->get('request'), $this->container->get('fos_user.user_manager'));
+		//$formHandler = new AdminProfileFormHandler($form, $this->get('request'), $em);
 		
-		return new Response(var_dump($formHandler));	
 		// On exécute le traitement du formulaire. S'il retourne true, alors le formulaire a bien été traité
-		if( $formHandler->process() )
+		if($formHandler->process($user))
 		{
-		    return $this->redirect( $this->generateUrl('sdzblog_voir', array('id' => $article->getId())) );
+			$this->get("session")->setFlash("user","Les informations de l'utilisateur " .$user->getUsername() ." ont bien ete modifiees.");
+			return $this->redirect($this->generateUrl('ldc_user_admin_confirmed'));
 		}
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
-         array('form' => $form->createView()));
+		return $this->render("LdcUserBundle:Admin:edit.html.twig",array(
+			"form" => $form->createView(),
+			"user" => $user,
+		));
+	
 		 
     }
+	
+	public function confirmedAction()
+	{
+		return $this->render("LdcUserBundle:Admin:confirmed.html.twig");	
+	}
 	
 	public function deleteAction($id)
 	{

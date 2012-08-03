@@ -1,0 +1,29 @@
+{% extends "LdcWebsiteBundle::layout_admin.html.twig" %}
+
+{% set path_img =  asset("bundles/ldcwebsite/images/") %}
+
+{% block body %}
+<div class="panel-centered">
+	<form {{form_enctype(form) }} method="POST" >
+	  
+			<h2>MODIFICATION DES DROITS</h2>
+			
+			<div>
+				<label>Nom de l'utilisateur</label>
+				<a class="title-small-static">{{user.username}}</a>
+			</div>
+			
+			<!-- ========== Erreurs Generales-->	
+			<div class="error">
+				{{ form_errors(form) }}
+			</div>
+				
+			<!-- ========== Bouton Validation -->	
+			{{ form_rest(form) }}
+			
+			<div class="bt-container-validation">
+				<input type="submit" class="bt-gold" value="Valider" />
+			</div>
+	</form>
+</div>
+{% endblock %}	

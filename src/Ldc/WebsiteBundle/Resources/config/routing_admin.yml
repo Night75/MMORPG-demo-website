@@ -1,0 +1,3 @@
+ldcwebsitebundle_admin_index:
+    pattern:  /
+    defaults: { _controller: LdcWebsiteBundle:Admin:index }

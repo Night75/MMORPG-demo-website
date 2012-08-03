@@ -20,6 +20,7 @@
       <parameter key="JMSDiExtraBundle">JMS\DiExtraBundle\JMSDiExtraBundle</parameter>
       <parameter key="JMSSecurityExtraBundle">JMS\SecurityExtraBundle\JMSSecurityExtraBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
+      <parameter key="GregwarCaptchaBundle">Gregwar\CaptchaBundle\GregwarCaptchaBundle</parameter>
       <parameter key="WmsIntroductionBundle">Wms\IntroductionBundle\WmsIntroductionBundle</parameter>
       <parameter key="LdcWebsiteBundle">Ldc\WebsiteBundle\LdcWebsiteBundle</parameter>
       <parameter key="LdcUserBundle">Ldc\UserBundle\LdcUserBundle</parameter>
@@ -286,6 +287,7 @@
     <parameter key="twig.exception_listener.class">Symfony\Component\HttpKernel\EventListener\ExceptionListener</parameter>
     <parameter key="twig.exception_listener.controller">Symfony\Bundle\TwigBundle\Controller\ExceptionController::showAction</parameter>
     <parameter key="twig.form.resources" type="collection">
+      <parameter>GregwarCaptchaBundle::captcha.html.twig</parameter>
       <parameter>form_div_layout.html.twig</parameter>
     </parameter>
     <parameter key="twig.options" type="collection">
@@ -494,7 +496,7 @@
     <parameter key="fos_user.model_manager_name">null</parameter>
     <parameter key="fos_user.model.user.class">Ldc\UserBundle\Entity\User</parameter>
     <parameter key="fos_user.template.engine">twig</parameter>
-    <parameter key="fos_user.profile.form.type">fos_user_profile</parameter>
+    <parameter key="fos_user.profile.form.type">ldc_user_profile</parameter>
     <parameter key="fos_user.profile.form.name">fos_user_profile_form</parameter>
     <parameter key="fos_user.profile.form.validation_groups" type="collection">
       <parameter>Profile</parameter>
@@ -525,6 +527,20 @@
     <parameter key="fos_user.resetting.form.validation_groups" type="collection">
       <parameter>ResetPassword</parameter>
       <parameter>Default</parameter>
+    </parameter>
+    <parameter key="gregwar_captcha.config" type="collection">
+      <parameter key="length">5</parameter>
+      <parameter key="width">120</parameter>
+      <parameter key="height">40</parameter>
+      <parameter key="font">C:\wamp\www\Symfony_\vendor\gregwar\captcha-bundle\Gregwar\CaptchaBundle\DependencyInjection/../Generator/Font/captcha.ttf</parameter>
+      <parameter key="keep_value">true</parameter>
+      <parameter key="charset">abcdefhjkmnprstuvwxyz23456789</parameter>
+      <parameter key="as_file">false</parameter>
+      <parameter key="image_folder">captcha</parameter>
+      <parameter key="web_path">C:/wamp/www/Symfony_/app/../web</parameter>
+      <parameter key="gc_freq">100</parameter>
+      <parameter key="expiration">60</parameter>
+      <parameter key="quality">15</parameter>
     </parameter>
     <parameter key="web_profiler.debug_toolbar.class">Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
@@ -581,6 +597,10 @@
   <services>
     <service id="ldc_user.registration.form.type" class="Ldc\UserBundle\Form\Type\RegistrationFormType">
       <tag name="form.type" alias="ldc_user_registration"/>
+      <argument>Ldc\UserBundle\Entity\User</argument>
+    </service>
+    <service id="ldc_user.profile.form.type" class="Ldc\UserBundle\Form\Type\ProfileFormType">
+      <tag name="form.type" alias="ldc_user_profile"/>
       <argument>Ldc\UserBundle\Entity\User</argument>
     </service>
     <service id="authentication_handler" class="Ldc\UserBundle\Handler\AuthenticationHandler"/>
@@ -1796,6 +1816,7 @@
             <argument type="service" id="service_container"/>
             <argument type="collection">
               <argument key="ldc_user_registration">ldc_user.registration.form.type</argument>
+              <argument key="ldc_user_profile">ldc_user.profile.form.type</argument>
               <argument key="field">form.type.field</argument>
               <argument key="form">form.type.form</argument>
               <argument key="birthday">form.type.birthday</argument>
@@ -1829,6 +1850,7 @@
               <argument key="fos_user_registration">fos_user.registration.form.type</argument>
               <argument key="fos_user_change_password">fos_user.change_password.form.type</argument>
               <argument key="fos_user_resetting">fos_user.resetting.form.type</argument>
+              <argument key="captcha">captcha.type</argument>
             </argument>
             <argument type="collection">
               <argument key="form" type="collection">
@@ -2323,7 +2345,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>50165bc3ba4d2</argument>
+            <argument>501bd9293f573</argument>
           </service>
         </argument>
       </argument>
@@ -2509,26 +2531,7 @@
               </service>
             </argument>
             <argument>main</argument>
-            <argument type="service">
-              <service class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler" public="false">
-                <argument type="service">
-                  <service class="Symfony\Component\Security\Http\HttpUtils" public="false">
-                    <argument type="service" id="router"/>
-                    <argument type="service" id="router"/>
-                  </service>
-                </argument>
-                <argument type="collection">
-                  <argument key="always_use_default_target_path">false</argument>
-                  <argument key="default_target_path">/</argument>
-                  <argument key="login_path">/login</argument>
-                  <argument key="target_path_parameter">_target_path</argument>
-                  <argument key="use_referer">false</argument>
-                </argument>
-                <call method="setProviderKey">
-                  <argument>main</argument>
-                </call>
-              </service>
-            </argument>
+            <argument type="service" id="authentication_handler"/>
             <argument type="service" id="authentication_handler"/>
             <argument type="collection">
               <argument key="check_path">/login_check</argument>
@@ -2547,7 +2550,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>50165bc3ba4d2</argument>
+            <argument>501bd9293f573</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2679,6 +2682,7 @@
                 <argument type="service">
                   <service class="Symfony\Bridge\Twig\Form\TwigRendererEngine" public="false">
                     <argument type="collection">
+                      <argument>GregwarCaptchaBundle::captcha.html.twig</argument>
                       <argument>form_div_layout.html.twig</argument>
                     </argument>
                   </service>
@@ -3214,7 +3218,7 @@
     </service>
     <service id="fos_user.profile.form" class="Symfony\Component\Form\Form" factory-method="createNamed" factory-service="form.factory">
       <argument>fos_user_profile_form</argument>
-      <argument>fos_user_profile</argument>
+      <argument>ldc_user_profile</argument>
       <argument>null</argument>
       <argument type="collection">
         <argument key="validation_groups" type="collection">
@@ -3274,6 +3278,24 @@
     </service>
     <service id="fos_user.resetting.form.type" class="FOS\UserBundle\Form\Type\ResettingFormType">
       <tag name="form.type" alias="fos_user_resetting"/>
+    </service>
+    <service id="captcha.type" class="Gregwar\CaptchaBundle\Type\CaptchaType">
+      <tag name="form.type" alias="captcha"/>
+      <argument type="service" id="session"/>
+      <argument type="collection">
+        <argument key="length">5</argument>
+        <argument key="width">120</argument>
+        <argument key="height">40</argument>
+        <argument key="font">C:\wamp\www\Symfony_\vendor\gregwar\captcha-bundle\Gregwar\CaptchaBundle\DependencyInjection/../Generator/Font/captcha.ttf</argument>
+        <argument key="keep_value">true</argument>
+        <argument key="charset">abcdefhjkmnprstuvwxyz23456789</argument>
+        <argument key="as_file">false</argument>
+        <argument key="image_folder">captcha</argument>
+        <argument key="web_path">C:/wamp/www/Symfony_/app/../web</argument>
+        <argument key="gc_freq">100</argument>
+        <argument key="expiration">60</argument>
+        <argument key="quality">15</argument>
+      </argument>
     </service>
     <service id="twig.extension.acme.demo" class="Acme\DemoBundle\Twig\Extension\DemoExtension" public="false">
       <tag name="twig.extension"/>

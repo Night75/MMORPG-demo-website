@@ -29,6 +29,10 @@ class RegistrationFormType extends BaseType
 			))
 			->add( 'plainPassword', 'repeated', array( 'type' => 'password',
 			 'invalid_message' => 'Les deux champs de mot de passe doivent correspondre' ))
+			 ->add("signature","textarea",array("required" => false))
+		 	->add("image","file",array("required" => false))
+			->add('captcha', 'captcha', array("invalid_message" => "Erreur dans le captcha"));
+			
            /* ->add('plainPassword', 'repeated', 
 											            array('type' => 'password',
 											            "first_name" => "Mot de passe", 

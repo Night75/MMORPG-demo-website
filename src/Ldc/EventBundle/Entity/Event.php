@@ -32,6 +32,8 @@ class Event
      */
     private $date_event;
 
+    
+	
     /**
      * @var string $title
      *
@@ -48,7 +50,23 @@ class Event
      */
     private $description;
 
-
+	/**
+     * @var datetime $date_created
+     *
+     * @ORM\Column(name="date_created", type="datetime")
+     */
+    private $date_created;
+    
+	/**
+     *
+     * @ORM\ManyToOne(targetEntity="Ldc\UserBundle\Entity\User")
+     */
+    private $author;
+	
+	public function __construct()
+	{
+		$this->setDateCreated(new \Datetime);
+	}
     /**
      * Get id
      *
@@ -117,6 +135,50 @@ class Event
     public function getDescription()
     {
         return $this->description;
+    }
+	
+	/**
+     * Set date_created
+     *
+     * @param datetime $dateCreated
+     * @return Article
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->date_created = $dateCreated;
+        return $this;
+    }
+
+    /**
+     * Get date_created
+     *
+     * @return datetime 
+     */
+    public function getDateCreated()
+    {
+        return $this->date_created;
+    }
+	
+	 /**
+     * Set author
+     *
+     * @param Ldc/UserBundle/Entity/User $author
+     * @return Article
+     */
+    public function setAuthor( $author)
+    {
+        $this->author = $author;
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return Ldc/UserBundle/Entity/User 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 	
 	public function dateValide(ExecutionContext $context)

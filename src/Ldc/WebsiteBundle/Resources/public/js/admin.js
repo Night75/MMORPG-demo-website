@@ -1,9 +1,15 @@
 $(document).ready(function(){
 	
 //================ ================================================== ====================
-//										GESTIONNAIRE D'EVENEMENTS DE LA PAGE USER
+//										GESTIONNAIRE D'EVENEMENTS 
 //================ ================================================== ====================
 
+	//__________________ ----------------- Bouton de Submit
+
+	$("input[name=_submit]~a").click(function() {
+		$(this).closest("form").submit();
+	});
+	
 //__________________ ----------------- ************  LISTE
 
 	//__________________ ----------------- Bouton de Suppression

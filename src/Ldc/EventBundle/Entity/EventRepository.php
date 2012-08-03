@@ -22,6 +22,26 @@ class EventRepository extends EntityRepository
 		return $qb->getQuery()->getResult();
 	}
 	
+	public function getLastEvent()
+	{
+		$qb = $this->createQueryBuilder("e");
+		$qb->orderBy("e.date_created","desc");
+		$q = $qb->getQuery();
+		
+		$q->setFirstResult(1);
+		$q->setMaxResults(1);
+		
+		return $q->getOneOrNullResult();
+	}
+	
+	public function countAll()
+	{
+		return $this->createQueryBuilder('e')
+		 ->select('COUNT(e)')
+		 ->getQuery()
+		 ->getSingleScalarResult();
+	}
+	
 	public function groupByMonth(array $events) //Tableau d'objets de Event
 	{
 		$sortedEvents = array();
