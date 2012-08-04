@@ -27,6 +27,7 @@
       <parameter key="LdcEventBundle">Ldc\EventBundle\LdcEventBundle</parameter>
       <parameter key="LdcArticleBundle">Ldc\ArticleBundle\LdcArticleBundle</parameter>
       <parameter key="LdcSliderImageBundle">Ldc\SliderImageBundle\LdcSliderImageBundle</parameter>
+      <parameter key="LdcSurveyBundle">Ldc\SurveyBundle\LdcSurveyBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -1636,6 +1637,12 @@
         <argument>fr</argument>
         <argument>messages</argument>
       </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\wamp\www\Symfony_\src\Ldc\SurveyBundle/Resources/translations\messages.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>messages</argument>
+      </call>
     </service>
     <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
       <tag name="translation.loader" alias="php"/>
@@ -2345,7 +2352,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>501bd9293f573</argument>
+            <argument>501c5ea32e2de</argument>
           </service>
         </argument>
       </argument>
@@ -2550,7 +2557,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>501bd9293f573</argument>
+            <argument>501c5ea32e2de</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2934,6 +2941,7 @@
               <argument key="LdcEventBundle">Ldc\EventBundle\Entity</argument>
               <argument key="LdcArticleBundle">Ldc\ArticleBundle\Entity</argument>
               <argument key="LdcSliderImageBundle">Ldc\SliderImageBundle\Entity</argument>
+              <argument key="LdcSurveyBundle">Ldc\SurveyBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2988,6 +2996,7 @@
                         <argument>C:\wamp\www\Symfony_\src\Ldc\EventBundle\Entity</argument>
                         <argument>C:\wamp\www\Symfony_\src\Ldc\ArticleBundle\Entity</argument>
                         <argument>C:\wamp\www\Symfony_\src\Ldc\SliderImageBundle\Entity</argument>
+                        <argument>C:\wamp\www\Symfony_\src\Ldc\SurveyBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -3002,6 +3011,7 @@
                         <argument>C:\wamp\www\Symfony_\src\Ldc\EventBundle\Entity</argument>
                         <argument>C:\wamp\www\Symfony_\src\Ldc\ArticleBundle\Entity</argument>
                         <argument>C:\wamp\www\Symfony_\src\Ldc\SliderImageBundle\Entity</argument>
+                        <argument>C:\wamp\www\Symfony_\src\Ldc\SurveyBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -3016,6 +3026,7 @@
                         <argument>C:\wamp\www\Symfony_\src\Ldc\EventBundle\Entity</argument>
                         <argument>C:\wamp\www\Symfony_\src\Ldc\ArticleBundle\Entity</argument>
                         <argument>C:\wamp\www\Symfony_\src\Ldc\SliderImageBundle\Entity</argument>
+                        <argument>C:\wamp\www\Symfony_\src\Ldc\SurveyBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -3030,10 +3041,26 @@
                         <argument>C:\wamp\www\Symfony_\src\Ldc\EventBundle\Entity</argument>
                         <argument>C:\wamp\www\Symfony_\src\Ldc\ArticleBundle\Entity</argument>
                         <argument>C:\wamp\www\Symfony_\src\Ldc\SliderImageBundle\Entity</argument>
+                        <argument>C:\wamp\www\Symfony_\src\Ldc\SurveyBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
                   <argument>Ldc\SliderImageBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\wamp\www\Symfony_\src\Ldc\UserBundle\Entity</argument>
+                        <argument>C:\wamp\www\Symfony_\src\Ldc\EventBundle\Entity</argument>
+                        <argument>C:\wamp\www\Symfony_\src\Ldc\ArticleBundle\Entity</argument>
+                        <argument>C:\wamp\www\Symfony_\src\Ldc\SliderImageBundle\Entity</argument>
+                        <argument>C:\wamp\www\Symfony_\src\Ldc\SurveyBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>Ldc\SurveyBundle\Entity</argument>
                 </call>
               </service>
             </argument>

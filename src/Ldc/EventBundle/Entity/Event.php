@@ -163,7 +163,7 @@ class Event
      * Set author
      *
      * @param Ldc/UserBundle/Entity/User $author
-     * @return Article
+     * @return Event
      */
     public function setAuthor( $author)
     {

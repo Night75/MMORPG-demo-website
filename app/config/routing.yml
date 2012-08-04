@@ -52,6 +52,10 @@ LdcSliderImageBundle_admin:
     resource: "@LdcSliderImageBundle/Resources/config/routing_admin.yml"
     prefix: /ldc/admin/slider
 
+LdcSurveyBundle_admin:
+    resource: "@LdcSurveyBundle/Resources/config/routing_admin.yml"
+    prefix: /ldc/admin/survey
+    
 LdcUserBundle_admin:
     resource: "@LdcUserBundle/Resources/config/routing_admin.yml"
     prefix: /ldc/admin/user

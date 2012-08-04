@@ -1,0 +1,7 @@
+ldcsurveybundle_list:
+    pattern: /list
+    defaults: { _controller: LdcSurveyBundle:Admin:list}
+
+ldcsurveybundle_new:
+    pattern: /new
+    defaults: { _controller: LdcSurveyBundle:Admin:new}

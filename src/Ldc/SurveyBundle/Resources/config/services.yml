@@ -1,0 +1,7 @@
+parameters:
+#    ldc_survey.example.class: Ldc\SurveyBundle\Example
+
+services:
+#    ldc_survey.example:
+#        class: %ldc_survey.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

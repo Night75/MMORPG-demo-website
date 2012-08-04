@@ -314,7 +314,7 @@ class appDevDebugProjectContainer extends Container
         $e = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array('C:\\wamp\\www\\Symfony_\\vendor\\friendsofsymfony\\user-bundle\\FOS\\UserBundle\\Resources\\config\\doctrine' => 'FOS\\UserBundle\\Entity'));
         $e->setGlobalBasename('mapping');
 
-        $f = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => 'C:\\wamp\\www\\Symfony_\\src\\Ldc\\UserBundle\\Entity', 1 => 'C:\\wamp\\www\\Symfony_\\src\\Ldc\\EventBundle\\Entity', 2 => 'C:\\wamp\\www\\Symfony_\\src\\Ldc\\ArticleBundle\\Entity', 3 => 'C:\\wamp\\www\\Symfony_\\src\\Ldc\\SliderImageBundle\\Entity'));
+        $f = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => 'C:\\wamp\\www\\Symfony_\\src\\Ldc\\UserBundle\\Entity', 1 => 'C:\\wamp\\www\\Symfony_\\src\\Ldc\\EventBundle\\Entity', 2 => 'C:\\wamp\\www\\Symfony_\\src\\Ldc\\ArticleBundle\\Entity', 3 => 'C:\\wamp\\www\\Symfony_\\src\\Ldc\\SliderImageBundle\\Entity', 4 => 'C:\\wamp\\www\\Symfony_\\src\\Ldc\\SurveyBundle\\Entity'));
 
         $g = new \Doctrine\ORM\Mapping\Driver\DriverChain();
         $g->addDriver($e, 'FOS\\UserBundle\\Entity');
@@ -322,9 +322,10 @@ class appDevDebugProjectContainer extends Container
         $g->addDriver($f, 'Ldc\\EventBundle\\Entity');
         $g->addDriver($f, 'Ldc\\ArticleBundle\\Entity');
         $g->addDriver($f, 'Ldc\\SliderImageBundle\\Entity');
+        $g->addDriver($f, 'Ldc\\SurveyBundle\\Entity');
 
         $h = new \Doctrine\ORM\Configuration();
-        $h->setEntityNamespaces(array('FOSUserBundle' => 'FOS\\UserBundle\\Entity', 'LdcUserBundle' => 'Ldc\\UserBundle\\Entity', 'LdcEventBundle' => 'Ldc\\EventBundle\\Entity', 'LdcArticleBundle' => 'Ldc\\ArticleBundle\\Entity', 'LdcSliderImageBundle' => 'Ldc\\SliderImageBundle\\Entity'));
+        $h->setEntityNamespaces(array('FOSUserBundle' => 'FOS\\UserBundle\\Entity', 'LdcUserBundle' => 'Ldc\\UserBundle\\Entity', 'LdcEventBundle' => 'Ldc\\EventBundle\\Entity', 'LdcArticleBundle' => 'Ldc\\ArticleBundle\\Entity', 'LdcSliderImageBundle' => 'Ldc\\SliderImageBundle\\Entity', 'LdcSurveyBundle' => 'Ldc\\SurveyBundle\\Entity'));
         $h->setMetadataCacheImpl($b);
         $h->setQueryCacheImpl($c);
         $h->setResultCacheImpl($d);
@@ -1818,7 +1819,7 @@ class appDevDebugProjectContainer extends Container
         $i = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $h, $e, array('csrf_parameter' => '_csrf_token', 'intention' => 'logout', 'logout_path' => '/logout'));
         $i->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($g, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $i, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $h, 'main', $e, $e, array('check_path' => '/login_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c, $this->get('form.csrf_provider')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '501bd9293f573', $a), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $g, $f, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $h, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($this->get('http_kernel'), $h, '/login', false), NULL, NULL, $a));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($g, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $i, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $h, 'main', $e, $e, array('check_path' => '/login_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c, $this->get('form.csrf_provider')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '501c5ea32e2de', $a), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $g, $f, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $h, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($this->get('http_kernel'), $h, '/login', false), NULL, NULL, $a));
     }
 
     /**
@@ -2862,6 +2863,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource('yml', 'C:\\wamp\\www\\Symfony_\\src\\Ldc\\UserBundle/Resources/translations\\validators.fr.yml', 'fr', 'validators');
         $instance->addResource('yml', 'C:\\wamp\\www\\Symfony_\\src\\Ldc\\EventBundle/Resources/translations\\messages.fr.yml', 'fr', 'messages');
         $instance->addResource('xlf', 'C:\\wamp\\www\\Symfony_\\src\\Ldc\\ArticleBundle/Resources/translations\\messages.fr.xlf', 'fr', 'messages');
+        $instance->addResource('xlf', 'C:\\wamp\\www\\Symfony_\\src\\Ldc\\SurveyBundle/Resources/translations\\messages.fr.xlf', 'fr', 'messages');
 
         return $instance;
     }
@@ -3217,7 +3219,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('501bd9293f573')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('501c5ea32e2de')), true);
 
         $instance->setEventDispatcher($this->get('event_dispatcher'));
 
@@ -3422,6 +3424,7 @@ class appDevDebugProjectContainer extends Container
                 'LdcEventBundle' => 'Ldc\\EventBundle\\LdcEventBundle',
                 'LdcArticleBundle' => 'Ldc\\ArticleBundle\\LdcArticleBundle',
                 'LdcSliderImageBundle' => 'Ldc\\SliderImageBundle\\LdcSliderImageBundle',
+                'LdcSurveyBundle' => 'Ldc\\SurveyBundle\\LdcSurveyBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',

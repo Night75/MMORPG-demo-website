@@ -2,6 +2,10 @@
 {% set path_public = asset("bundles/ldcwebsite/") %}
 {% set path_img =  asset("bundles/ldcwebsite/images/") %}
 
+{% block script %}
+	{{parent()}}
+
+{% endblock %}
 {% block body %}
 
 <form action="{{ path('ldceventbundle_create') }}" method="post" class="form_event">

@@ -201,7 +201,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             // ldcwebsitebundle_usersprofile
             if (0 === strpos($pathinfo, '/ldc/users/profile') && preg_match('#^/ldc/users/profile/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
-                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'LdcWebsiteBundle:User:profile',)), array('_route' => 'ldcwebsitebundle_usersprofile'));
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\WebsiteBundle\\Controller\\UserController::profileAction',)), array('_route' => 'ldcwebsitebundle_usersprofile'));
             }
 
             // ldcwebsitebundle_articles
@@ -461,6 +461,19 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // ldcsliderimagebundle_confirmed
             if ($pathinfo === '/ldc/admin/slider/confirmed') {
                 return array (  '_controller' => 'Ldc\\SliderImageBundle\\Controller\\SliderImageAdminController::confirmedAction',  '_route' => 'ldcsliderimagebundle_confirmed',);
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/ldc/admin/survey')) {
+            // ldcsurveybundle_list
+            if ($pathinfo === '/ldc/admin/survey/list') {
+                return array (  '_controller' => 'Ldc\\SurveyBundle\\Controller\\AdminController::listAction',  '_route' => 'ldcsurveybundle_list',);
+            }
+
+            // ldcsurveybundle_new
+            if ($pathinfo === '/ldc/admin/survey/new') {
+                return array (  '_controller' => 'Ldc\\SurveyBundle\\Controller\\AdminController::newAction',  '_route' => 'ldcsurveybundle_new',);
             }
 
         }

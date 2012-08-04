@@ -1,0 +1,48 @@
+{% extends "LdcSurveyBundle::layout.html.twig" %}
+{% set path_public = asset("bundles/ldcwebsite/") %}
+{% set path_img =  asset("bundles/ldcwebsite/images/") %}
+
+{% block stylesheets %}
+	{{parent()}}
+	<style>
+		.form_survey input[type="text"]{
+			width:600px;
+		}
+	</style>
+{% endblock %}
+
+{% block body %}
+<form method="post" {{ form_enctype(form) }} class="form_survey">
+	
+	<h2>Ajout d'un sondage</h2>
+	
+	{{form_errors(form) }}
+
+	<!-- ========== Champ Question -->	
+	<div>
+		{{ form_label(form.question, "Question") }}<!--
+	-->{{ form_widget(form.question) }}
+		{% if form_errors(form.question) is not empty  %}
+			<div class="error">{{ form_errors(form.question) }}</div>
+		{% endif %}
+	</div>
+		
+	<!-- ========== Champ Reponses -->	
+	<div>
+		{{ form_widget(form.answers) }}
+		{% if form_errors(form.answers) is not empty  %}
+			<div class="error">{{ form_errors(form.answers) }}</div>
+		{% endif %}
+	</div>
+	
+	{{form_rest(form)}}
+	<div>
+		<a id="add_answer" class="bt-upcase">Ajouter une reponse</a>
+	</div>
+	
+	<div>
+		<input type="submit" class="bt-gold" value="Envoyer" /> 
+	</div>
+	
+</form>
+{% endblock %}
