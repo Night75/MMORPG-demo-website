@@ -1,0 +1,43 @@
+.box-display(@orientation)
+{
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  -moz-box-orient: @orientation;
+  -webkit-box-orient: @orientation;
+  box-orient: @orientation;
+}
+
+.box-flex(@indice)
+{
+  -moz-box-flex: @indice;
+    -webkit-box-flex: @indice;
+    box-flex: @indice;
+}
+
+.transform(@type)
+{ 
+  -webkit-transform: @type;
+  -moz-transform: @type;
+  -o-transform: @type;
+  -ms-transform: @type;
+  transform: @type;
+}
+
+.animation(@type)
+{
+  -webkit-animation: @type;
+  -moz-animation: @type;
+  -o-animation: @type;
+  -ms-animation: @type;
+  animation: @type;
+}
+
+.transition(@type)
+{
+  -webkit-transition: @type;
+  -moz-transition: @type;
+  -o-transition: @type;
+  -ms-transition: @type;
+  transition: @type;
+}

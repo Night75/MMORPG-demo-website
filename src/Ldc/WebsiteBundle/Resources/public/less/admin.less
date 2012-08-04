@@ -1,0 +1,375 @@
+//================ ================================================== ====================
+//                    IMPORTS 
+//================ ================================================== ====================
+@import "includes/variables.less";
+@import "formulaire.less";
+
+//================ ================================================== ====================
+//                    STYLES GENERAUX
+//================ ================================================== ====================
+#panel-head{
+  margin:0px;
+}
+
+img.icon-tool{
+  height:35px;
+  width:35px;
+  
+  &:hover{
+     background-color: rgba(250,250,250,0.6);
+     box-shadow: 0px 0px 8px @color-border-panel;
+  }
+  
+}
+
+.bt-validation{
+  margin:10px 40px 0px 0px;
+}
+
+.panel-centered{
+  margin:0 auto; 
+  width: 1000px;
+}
+
+h3{
+  &:first-letter{
+    text-transform:uppercase;  
+  }
+  
+}
+//__________________ ----------------- ************  ICONES 
+@height-bk-icon-bt:30px;
+div.bk-icon-bt
+{
+  margin:0 0 10px 0;
+  img{
+    vertical-align:middle;
+  }
+  
+  a{
+    line-height:@height-bk-icon-bt;
+    height:@height-bk-icon-bt;
+    display:inline-block;
+    margin:0;
+  }
+}
+
+//__________________ -----------------   MENU
+@height-bt-menu:48px;
+@width-bt-menu:140px;
+nav{
+    
+ .bt-menu-light{
+    background-image: url('@{path-img}bt_light.png'); 
+    }
+
+  .bt-gold{
+    height:@height-bt-menu;
+    width:@width-bt-menu;
+    padding:0;
+    float:right;
+  }
+
+   &>ul > li{
+    display: inline-block;
+    position:relative;
+   
+    a{
+      .txt-nav;
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      width: @width-bt-menu;
+      height: @height-bt-menu;
+      .transition-classic;
+      
+      &:hover{
+        background-color: rgba(250,250,250,0.6);
+        box-shadow: 0px 0px 8px @color-border-panel;
+        color: @color-background-ext-light; 
+      }
+      
+      &:active{
+        background-color: rgba(22,48,41,0.3);
+        box-shadow: 0px 0px 8px @color-background-ext;
+        color: @color-background-ext;
+      }
+    }
+    
+    &:hover > ul {
+      display: block;
+    }
+      
+    //--------- Sous menu de navigation
+    ul{
+        z-index:5;
+        display:none;
+        border: 1px solid #B4B4B4;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        border-radius: 0px 0px 10px 10px;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top:@height-bt-menu;
+        width:@width-bt-menu;
+     
+      li{
+           background: rgb(225,225,225); /* Old browsers */
+          background: -moz-linear-gradient(top,  rgba(225,225,225,1) 2%, rgba(241,241,241,1) 50%, rgba(246,246,246,1) 100%); /* FF3.6+ */
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgba(225,225,225,1)), color-stop(50%,rgba(241,241,241,1)), color-stop(100%,rgba(246,246,246,1))); /* Chrome,Safari4+ */
+          background: -webkit-linear-gradient(top,  rgba(225,225,225,1) 2%,rgba(241,241,241,1) 50%,rgba(246,246,246,1) 100%); /* Chrome10+,Safari5.1+ */
+          background: -o-linear-gradient(top,  rgba(225,225,225,1) 2%,rgba(241,241,241,1) 50%,rgba(246,246,246,1) 100%); /* Opera 11.10+ */
+          background: -ms-linear-gradient(top,  rgba(225,225,225,1) 2%,rgba(241,241,241,1) 50%,rgba(246,246,246,1) 100%); /* IE10+ */
+          background: linear-gradient(to bottom,  rgba(225,225,225,1) 2%,rgba(241,241,241,1) 50%,rgba(246,246,246,1) 100%); /* W3C */
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1e1e1', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
+         
+      }
+    }
+    
+  }
+} //Fin de nav
+
+//================ ================================================== ====================
+//                    STYLES POUR LE DASHBOARD
+//================ ================================================== ====================
+.panel-dashboard{
+  width:1000px;
+  margin:0 auto;
+  
+  h3{
+    display:inline-bloc;
+  }
+  
+  .bk-data-info{
+    margin-bottom: 20px;  
+  }
+  
+  b{
+    width:200px;
+    margin:0px;
+    display:inline-block;
+  }
+  
+  
+}
+
+//================ ================================================== ====================
+//                    STYLES POUR LES TABLEAUX
+//================ ================================================== ====================
+
+
+body, #container-full, footer{
+  width: 100%;
+}
+
+header, nav,#panel-head,{
+  width: @width-window;
+  margin: 0 auto;
+}
+
+#container-content{
+  padding: 20px;
+  width: 100%;
+  background-color: @color-background-int;
+  
+  .list-table{
+    display: table;
+    margin: 0 auto;
+    
+    h2{
+      width: 300px;
+      margin: 0 auto;
+    }
+    
+    div.msg-flash{
+      text-align: center;
+      
+      p{
+        color:@color-border-panel;
+      } 
+    }
+    
+      table{
+        border:1px solid @color-border-panel;
+        padding:10px;
+        background:@color-background-ext;
+        margin: 0 auto;
+      
+        caption{
+          color:@color-border-panel;
+          font-size: 20px;
+          text-decoration: underline;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom:10px;
+        }
+        
+        
+        tr{
+          border:1px inset white;
+  
+          &:nth-child(2n+1){
+              background-color: rgb(182,105,108,0.2);
+          }
+          
+          &:first-child{
+             background-color: rgba(243,220,120,0.2);
+          }
+          
+          &:hover{
+            background-color: rgba(230, 230, 230,0.5);;
+          }
+                      
+          th{
+          color: @color-border-panel;
+          padding:1px 2px;
+        }
+        
+        td{
+          color: @color-txt-standard;
+          padding:1px 2px;
+          
+           img.list-img{
+              height: 55px;
+              width: 70px;  
+            }
+           
+          img{
+             height:@height-bk-icon-bt;
+             width:@height-bk-icon-bt;
+          }
+          
+          &.edit{
+            text-align: center;
+          }
+          
+          &.delete{
+            text-align: center;
+              
+            input[type=image]{
+                height:@height-bk-icon-bt;
+                width:@height-bk-icon-bt;
+            }
+          }       
+         
+        }
+      
+      }
+    
+    } //Fin de table
+    
+  } //Fin de .users-list
+
+} //Fin de #container-content
+
+
+//================ ================================================== ====================
+//                    STYLES POUR LA PAGE CALENDRIER
+//================ ================================================== ====================
+#calendar{
+    padding:0px 0px 0px @padding-container-horizontal; 
+  
+  .calendar-month{
+    .box-display(horizontal);
+    width: 100%;
+
+    .title-small{
+      padding-right: 15px;
+      
+         &:first-letter{
+        text-transform:uppercase;
+      }
+    }
+
+    div:nth-child(2){
+      .box-flex(1);
+    }
+  }
+    
+    ul li{
+
+    div{
+      display: table-cell;
+      vertical-align: middle;
+    }
+    
+     div:nth-child(2){
+      width:500px;
+    }
+    
+    .calendar-day{
+      width: 30px;
+      vertical-align:top;
+      
+      .icon-day{
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        background-image: url('@{path-img}bt_dore_carre.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: center;
+        color: @color-background-ext;
+        font-weight: bold;
+        line-height: 30px;
+        box-shadow: 0px 0px 4px gray;
+      }
+    }
+
+    .calendar-info{
+      padding-left: 20px;
+
+        span{
+        display: block;
+      }
+
+    }
+    
+  }
+      
+  .calendar-bt{
+    margin-top: 10px;
+    .box-display(horizontal);
+    width: 100%;
+
+    div:nth-child(1){
+      .box-flex(1);
+    }
+
+    .bt-arrow-up{
+      width: 54px;
+      height: 30px;
+      background-image: url('@{path-img}bt_triangle.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: center;
+    }
+
+    .bt-arrow-down{
+      width: 54px;
+      height: 30px;
+      background-image: url('@{path-img}bt_triangle.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: center;
+      .transform(scale(-1));
+    }
+
+  }
+
+} //Fin de #calendar
+
+
+//================ ================================================== ====================
+//                    STYLES POUR LA PAGE ARTICLES
+//================ ================================================== ====================
+.img-article-full{
+  
+  img{
+    margin:10px 0px;
+    width:550px;
+    height:300px;
+    border:4px solid gray;
+  }
+}

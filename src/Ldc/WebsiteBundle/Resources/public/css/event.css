@@ -1,0 +1,61 @@
+#calendar {
+  padding:0px 0px 0px 20px;
+  width:400px;
+}
+#calendar #cl-mask {
+  width:400px;
+  overflow:hidden;
+  margin:0 auto;
+}
+#calendar #cl-panel > div.cl-panel { float:left; }
+#calendar .cl-panel { width:400px; }
+#calendar .calendar-month { width:100%; }
+#calendar .calendar-month .title-small { padding-right:15px; }
+#calendar .calendar-month .title-small:first-letter { text-transform:uppercase; }
+#calendar #cl-panel > div.cl-panel { float:left; }
+#calendar ul li div {
+  display:table-cell;
+  vertical-align:middle;
+}
+#calendar ul li div:nth-child(2) { width:500px; }
+#calendar ul li .calendar-day {
+  width:30px;
+  vertical-align:top;
+}
+#calendar ul li .calendar-day .icon-day {
+  height:30px;
+  width:30px;
+  display:inline-block;
+  background-image:url('../images/bt_dore_carre.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  text-align:center;
+  color:#0e081b;
+  font-weight:bold;
+  line-height:30px;
+  box-shadow:0px 0px 4px gray;
+}
+#calendar ul li .calendar-info { padding-left:20px; }
+#calendar ul li .calendar-info span { display:block; }
+#calendar .calendar-bt {
+  margin-top:10px;
+  width:100%;
+}
+#calendar .calendar-bt .bt-arrow-up {
+  width:54px;
+  height:30px;
+  background-image:url('../images/bt_triangle.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  text-align:center;
+  cursor:pointer;
+}
+#calendar .calendar-bt .bt-arrow-down {
+  width:54px;
+  height:30px;
+  background-image:url('../images/bt_triangle.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  text-align:center;
+  cursor:pointer;
+}

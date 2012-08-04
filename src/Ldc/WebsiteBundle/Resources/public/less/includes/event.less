@@ -1,0 +1,111 @@
+//================ ================================================== ====================
+//                    VARIABLES  GENERALES
+//================ ================================================== ====================
+@import "includes/variables.less";
+
+//================ ================================================== ====================
+//                    MXINS/FONCTIONS SPECIALES LDC
+//================ ================================================== ====================
+@import "includes/mixins_ldc.less";
+
+//================ ================================================== ====================
+//                  MXINS/FONCTIONS GENERALES 
+//================ ================================================== ====================
+@import "includes/mixins_general.less";
+
+//================ ================================================== ====================
+//                    STYLES DU LAYOUT GENERAL
+//================ ================================================== ====================
+@import "includes/styles_mainLayout.less";
+
+
+//================ ================================================== ====================
+//                    STYLES DES PAGES USERS
+//================ ================================================== ====================
+
+@margin-vertical-field: 5px;
+@margin-register-input: @margin-vertical-field;
+@width-label-user: 220px;
+@width-input-user:220px;
+
+//__________________ ----------------- ************  FORMULAIRE D'INSCRIPTION (register_content)
+
+section.fos-user-content{
+   width: 600px;
+   margin:40px;
+   
+    //__________________ ---------------- Styles standard pour un champ
+    div{
+      margin: @margin-register-input 0px;
+      
+      label{
+        width: @width-label-user;
+        display: inline-block;
+      }
+      
+      input{
+        &[type="text"],&[type="email"],&[type="password"]{
+            color: black;
+            width: @width-input-user;
+        }   
+        &[type="button"]{
+          
+        }
+      }
+      
+      //__________________ Concerne les widget contenant un groupe de sous-formes(groupe de selectbox)
+      div{
+        display: inline-block;
+        margin: 0px;
+      }
+      
+      div.error{
+        display: block;
+        margin: 0px;
+        padding: 0px;
+      }
+    }
+    
+   //__________________ ---------------- Styles pour le block de champs plainPassword
+   div.bk-password{
+      
+      div{
+          margin: 0px 0px @margin-register-input 0px;
+      }   
+    }
+    
+    .bt-register-validation{
+       .bt-wrapper-validation(100px, 33px);
+    }
+   
+}
+
+
+//__________________ ----------------- ************  CONFIRMATION DE L'INSCRIPTION (confirmed)
+
+div#user-register-confirmed{
+  
+}
+
+
+//__________________ ----------------- ************  PROFIL (profile)
+div#user-profile-show{
+    
+    ul{
+      li{
+        
+        span{
+          display: inline-block;
+          
+          &:first-child{
+            width: @width-label-user;
+          }
+          
+        }
+        
+      }
+    }
+  
+}
+
+

@@ -1,0 +1,485 @@
+//================ ================================================== ====================
+//                    VARIABLES  GENERALES
+//================ ================================================== ====================
+@import "includes/variables.less";
+
+//================ ================================================== ====================
+//                    MXINS/FONCTIONS SPECIALES LDC
+//================ ================================================== ====================
+@import "includes/mixins_ldc.less";
+
+//================ ================================================== ====================
+//                  MXINS/FONCTIONS GENERALES 
+//================ ================================================== ====================
+@import "includes/mixins_general.less";
+
+//================ ================================================== ====================
+//                    STYLES DU LAYOUT GENERAL
+//================ ================================================== ====================
+@import "includes/styles_mainLayout.less";
+
+
+//================ ================================================== ====================
+//                    STYLES DES PAGES POUR WEBSITE
+//================ ================================================== ====================
+
+//__________________ ----------------- ************  CONTENU ( Tout en dehors de header et footer )
+#container-main{
+
+  background-color:@color-background-int;
+  padding: @padding-container-top @padding-container-horizontal @padding-container-bottom @padding-container-horizontal;
+
+//__________________ -----------------   *** CONTENU ACCUEIL (propre a ka page d'accueil)
+  #container-content{
+    margin-top: @margin-inter-panel;
+
+//__________________ ----------------- SECTION HAUTE    
+    #top-section{
+      display: table;
+      width: (@width-window  - 2*@padding-container-horizontal);
+
+      //__________________  SLIDER IMAGES
+  
+      @width-slider-img = 610px;
+      @padding-slider-img = 10px;
+      @heigth-main-img = 330px;
+      @width-main-img = 460px;
+      @border-label-img = 3px;
+      @color-background-title =  rgba(23,28,41,0.5);
+      @color-label-border-hover = @color-txt-title-s;
+
+      #slider-img, #calendar{
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      #slider-img{  
+          border: @width-bdr solid @color-border-panel;
+          box-shadow: 0px 0px 15px @color-border-panel;
+          width: @width-slider-img;
+
+          .gn-panel-container{
+            width: (@width-slider-img - @padding-slider-img);
+            height: @heigth-main-img ;
+            padding: @padding-slider-img;
+            
+            input{
+              display: none;
+            }
+
+            label{
+              font-style: italic;
+              display: block;
+              position: relative;
+              height: (@heigth-main-img/4 - 2*@border-label-img) ;
+              width: (@width-slider-img - @width-main-img - 3*@padding-slider-img) ;
+              border: @border-label-img  solid gray;
+              left:(@width-main-img  + @padding-slider-img) ;
+              cursor: pointer ;
+              line-height: 32px;
+              font-size: 24px;
+              z-index: 1000;
+              .transition(all 0.2s linear);
+              
+              &:hover{
+                border: @border-label-img solid @color-label-border-hover;
+              }
+
+              img{      
+                height: (@heigth-main-img/4 - 2*@border-label-img) ;
+                width: (@width-slider-img - @width-main-img - 3*@padding-slider-img) ;
+              }
+
+            }
+            
+            input.cr-selector-img-1:checked ~ label.cr-label-img-1,
+            input.cr-selector-img-2:checked ~ label.cr-label-img-2,
+            input.cr-selector-img-3:checked ~ label.cr-label-img-3,
+            input.cr-selector-img-4:checked ~ label.cr-label-img-4{
+              border: @border-label-img solid @color-label-border-hover;
+            }
+            
+            
+            .cr-bgimg{
+              width: @width-main-img;
+              height: @heigth-main-img;
+              position: absolute;
+              left: @padding-slider-img;
+              top: @padding-slider-img;
+              z-index: 1;
+            
+              div{
+                width: @width-main-img/4;
+                height: 100%;
+                position: relative;
+                float: left;
+                overflow: hidden;
+                background-repeat: no-repeat;
+                
+                span{
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  top: 0px;
+                  left: 0px;
+                  .transform(scale(1.5));
+                  opacity: 0;
+                  z-index: 2;
+                  text-indent: -9000px;
+                }   
+              } 
+              
+              div:nth-child(1) span{
+                background-position: 0px 0px;
+              }
+              div:nth-child(2) span{
+                background-position: -(@width-main-img/4) 0px;
+              }
+              div:nth-child(3) span{
+                background-position: -(2*@width-main-img/4)  0px;
+              }
+              div:nth-child(4) span{
+                background-position: -(3*@width-main-img/4)  0px;
+              }
+
+            } //fin de .cr-bgimg
+            
+            input:checked ~ .cr-bgimg div span{
+              .animation(scaleOut 0.6s ease-in-out);
+            }
+
+            input.cr-selector-img-1:checked ~ .cr-bgimg div span:nth-child(1),
+            input.cr-selector-img-2:checked ~ .cr-bgimg div span:nth-child(2),
+            input.cr-selector-img-3:checked ~ .cr-bgimg div span:nth-child(3),
+            input.cr-selector-img-4:checked ~ .cr-bgimg div span:nth-child(4)
+            {
+              -webkit-transition: -webkit-transform 0.5s ease-in-out, opacity 0.5s ease-in-out, z-index 0s linear 0.6s;
+              -moz-transition: -moz-transform 0.5s ease-in-out, opacity 0.5s ease-in-out, z-index 0s linear 0.6s;
+              -o-transition: -o-transform 0.5s ease-in-out, opacity 0.5s ease-in-out, z-index 0s linear 0.6s;
+              -ms-transition: -ms-transform 0.5s ease-in-out, opacity 0.5s ease-in-out, z-index 0s linear 0.6s;
+              transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, z-index 0s linear 0.6s;
+              .animation(none);
+              opacity: 1;
+              .transform(scale(1));
+              z-index:10000;
+            }
+
+            .cr-titles{
+              overflow: hidden;
+              
+              h3{
+                color: #fff;
+                text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+                
+                span{
+                  z-index: 10000;
+                  position: absolute;
+                  width: (@width-main-img - 30px - @padding-slider-img);
+                  left: 0px;
+                  text-align: left;
+                  opacity: 0;
+                  top: 60%;
+                  background: @color-background-title;
+                }
+
+                span:nth-child(1){
+                  padding:5px 30px 5px 30px;
+                  font-family: @font-title-small;
+                  /*font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+                  letter-spacing: 7px;*/
+                  font-weight: bold;
+                  font-size: 20px;
+                  color: @color-txt-title;
+                  text-shadow: 0px 0px 10px @color-border-panel;
+                  .transition( text-shadow 0.8s ease-in-out, opacity 0.8s ease-in-out);
+                }
+
+                span:nth-child(2){
+                  margin-top: 32px;
+                  padding: 10px 30px 10px 30px;
+                  font-family: @font-txt-standard;
+                  letter-spacing: 0px;
+                  font-size: 14px;
+                  font-weight: bold;
+                  color: @color-border-panel;
+                  background: @color-background-title;
+                  .transition(opacity 0.8s ease-in-out);
+
+                }
+              }
+
+            } //Fin de .cr-titles
+            
+            
+            input:checked ~ .cr-titles h3 span{
+              opacity: 0;
+              text-shadow: 0px 0px 30px @color-border-panel;
+            }
+            
+            input.cr-selector-img-1:checked ~ .cr-titles h3:nth-child(1) span:nth-child(1),
+            input.cr-selector-img-2:checked ~ .cr-titles h3:nth-child(2) span:nth-child(1),
+            input.cr-selector-img-3:checked ~ .cr-titles h3:nth-child(3) span:nth-child(1),
+            input.cr-selector-img-4:checked ~ .cr-titles h3:nth-child(4) span:nth-child(1){
+              opacity: 1;
+              text-shadow: 0px 0px 1px @color-border-panel;
+            }
+            
+            input.cr-selector-img-1:checked ~ .cr-titles h3:nth-child(1) span:nth-child(2),
+            input.cr-selector-img-2:checked ~ .cr-titles h3:nth-child(2) span:nth-child(2),
+            input.cr-selector-img-3:checked ~ .cr-titles h3:nth-child(3) span:nth-child(2),
+            input.cr-selector-img-4:checked ~ .cr-titles h3:nth-child(4) span:nth-child(2){
+              opacity: 1;
+            }
+          } //Fin de .gn-panel-container    
+
+      } // Fin de #slider-img
+          
+    } //Fin de #mid-section
+
+    //__________________ ----------------- SECTION DU BAS       
+    #bottom-section{
+      margin-top: 30px; 
+      display: table;
+      width: 100%;
+    } // FIn de #bottom-section
+
+  } //Fin de #container-content
+
+} //Fin de #container-main
+
+
+//__________________ ----------------- ************  CALENDRIER
+@width-calendar:380px;
+@width-mask-calendar:@width-calendar - 2*@padding-panel-int;
+@width-panel-calendar:@width-mask-calendar + 10px;
+@widht-text-calendar: @widht-panel-calendar - 30px;
+
+#calendar{
+    padding:0px 0px 0px @padding-container-horizontal; 
+    width:@width-calendar;
+    
+  // ============ Style specifiques au slider
+    #cl-mask {
+        width:@width-mask-calendar;
+        overflow:hidden;
+        margin:0 auto;
+    }
+    
+    #cl-panel > div.cl-panel {
+      float:left;
+    }
+    
+    .cl-panel{
+      width:@width-panel-calendar;
+    }  
+    
+  // ============   Styles specifiques au calendrier
+  .calendar-month{
+    .box-display(horizontal);
+    width: 100%;
+
+    .title-small{
+      padding-right: 15px;
+      
+         &:first-letter{
+        text-transform:uppercase;
+      }
+    }
+
+    div:nth-child(2){
+      .box-flex(1);
+    }
+  }
+
+       
+      #cl-panel > div.cl-panel {
+        float:left;
+      } 
+    ul li{
+
+    div{
+      display: table-cell;
+      vertical-align: middle;
+    }
+    
+     div:nth-child(2){ //Champs titre et description
+      width:@width-text-calendar;
+    }
+    
+    .calendar-day{
+      width: 30px;
+      vertical-align:top;
+      
+      .icon-day{
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        background-image: url('@{path-img}bt_dore_carre.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: center;
+        color: @color-background-ext;
+        font-weight: bold;
+        line-height: 30px;
+        box-shadow: 0px 0px 4px gray;
+      }
+    }
+
+    .calendar-info{
+      padding-left: 20px;
+    
+        span{
+        display: block;
+      }
+
+    }
+    
+  }
+      
+  .calendar-bt{
+      margin-top: 10px;
+      .box-display(horizontal);
+      width: 100%;
+  
+      div:nth-child(1){
+        .box-flex(1);
+      }
+      
+      img{
+        height:34px;
+        width:34px;
+        cursor:pointer;
+        
+         &:nth-child(1){
+          margin-right:10px
+        }
+      }
+  }
+
+} //Fin de #calendar
+
+//__________________ ----------------- ************ SECTION DU BAS
+@margin-inter-panel-bot = 40px;
+@width-forum-summary = 220px;
+@width-droite = 220px;
+
+//@width-articles = @width-window - (2*@padding-container) - @width-forum-summary - @width-droite - (5*@width-bdr) - (2*@margin-inter-panel-bot)
+#forum-summary, #articles-summary, #survey{
+  display: table-cell;
+}
+
+//__________________ ----------------- FORUM: LISTE DES TOPICS
+#forum-summary{
+  width: @width-forum-summary;
+  padding-right: @margin-inter-panel-bot;
+
+  .title-small{
+    margin-bottom: 10px;
+  }
+
+  ul li{
+  
+    span{
+      display: block;
+      
+      &:first-child{
+        .transition-classic;
+
+        &:hover{
+          .hover-txt
+        }
+      }
+    }
+  
+    .hr-line-right{
+      margin: 5px 0px;
+    }
+
+  }
+} 
+      
+
+//__________________ ----------------- ARTICLES
+
+@height-content-article = 124px;
+@margin-bot-inter-article = (10px + 2*@width-bdr);
+@border-img-article = 4px;
+
+#articles-summary{
+  padding-right: @margin-inter-panel-bot;
+
+  .article:last-child{
+    margin-bottom : 0px;
+  }
+
+  .article{
+    margin-bottom : @margin-bot-inter-article;
+    
+    .article-img, .article-txt{
+      display: table-cell;
+      vertical-align: top;
+    }
+
+    .article-img{
+      width: @height-content-article;
+      
+      img{
+        height: (@height-content-article - 8px);
+        width: (@height-content-article - 8px);
+        border: @border-img-article solid gray;
+        cursor: pointer;
+        .transition(all 0.2s linear);
+        &:hover{  border: @border-img-article solid @color-txt-title; }
+      }
+
+    }
+
+    .article-txt{
+      padding-left: 10px;
+
+      .article-title{
+          margin-bottom: 5px;
+
+        h3{
+          margin: 0px;
+          
+          a{
+            .title-small;
+            margin-bottom: 0px;
+          }
+        }
+      }
+      
+      .article-content{
+      
+        p{
+          height: (@height-content-article - 35px);
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        
+      }
+
+    } // Fin de .article-txt
+
+  } // Fin de .article
+
+} // FIn de #articles-summary
+
+
+//__________________ ----------------- SONDAGES
+#survey{
+  width: @width-droite;
+  
+  
+  form{
+    display: block;
+  }
+  
+  .bt-wrapper-survey-validation{
+    margin-top: 10px;
+    .bt-wrapper-validation(100px, 33px);
+      
+  }
+
+} 

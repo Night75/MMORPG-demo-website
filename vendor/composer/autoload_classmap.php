@@ -6,4 +6,9 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'lessc' => $baseDir . '/vendor/leafo/lessphp/lessc.inc.php',
+    'lessc_parser' => $baseDir . '/vendor/leafo/lessphp/lessc.inc.php',
+    'lessc_formatter' => $baseDir . '/vendor/leafo/lessphp/lessc.inc.php',
+    'lessc_formatter_compressed' => $baseDir . '/vendor/leafo/lessphp/lessc.inc.php',
+    'lessc_formatter_indent' => $baseDir . '/vendor/leafo/lessphp/lessc.inc.php',
 );

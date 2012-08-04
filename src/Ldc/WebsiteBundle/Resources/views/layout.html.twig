@@ -51,12 +51,12 @@
 					</li><!--
 				--><li class="bt-menu-light">
 						<a href="">Forum</a>
-					</li><!--
+					</li>
 						{% if is_granted('ROLE_USER') %}
-						--><li class="bt-gold">
+						<li class="bt-gold">
 							<a href="{{path('ldcwebsitebundle_admin_index')}}">Espace admin</a>
 						</li>
-					{% endif %}
+						{% endif %}
 				</ul>
 			</nav>
 			

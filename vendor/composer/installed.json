@@ -1305,5 +1305,43 @@
                 "Gregwar\\CaptchaBundle": ""
             }
         }
+    },
+    {
+        "name": "leafo/lessphp",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "time": "2012-07-31 15:05:56",
+        "source": {
+            "type": "git",
+            "url": "http://github.com/leafo/lessphp",
+            "reference": "390db2a3c9ee652a241fd5ac1ce78d7078d2761e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/leafo/lessphp/zipball/390db2a3c9ee652a241fd5ac1ce78d7078d2761e",
+            "reference": "390db2a3c9ee652a241fd5ac1ce78d7078d2761e",
+            "shasum": ""
+        },
+        "type": "library",
+        "installation-source": "source",
+        "license": [
+            "MIT",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Leaf Corcoran",
+                "email": "leafot@gmail.com",
+                "homepage": "http://leafo.net",
+                "role": null
+            }
+        ],
+        "description": "lessphp is a compiler for LESS written in PHP.",
+        "homepage": "http://leafo.net/lessphp/",
+        "autoload": {
+            "classmap": [
+                "lessc.inc.php"
+            ]
+        }
     }
 ]

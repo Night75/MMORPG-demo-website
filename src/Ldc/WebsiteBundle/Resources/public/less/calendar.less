@@ -1,0 +1,90 @@
+
+
+//__________________ ----------------- ************  CALENDRIER
+#calendar{
+    padding:0px 0px 0px 5px; 
+    width: 400px;
+   
+  .calendar-month{
+    .box-display(horizontal);
+    width: 100%;
+
+    .title-small{
+      padding-right: 15px;
+      
+         &:first-letter{
+        text-transform:uppercase;
+      }
+    }
+
+    div:nth-child(2){
+      .box-flex(1);
+    }
+  }
+    
+    ul li{
+
+    div{
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .calendar-day{
+      width: 30px;
+      vertical-align:top;
+      
+      .icon-day{
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        background-image: url('@{path-img}bt_dore_carre.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: center;
+        color: @color-background-ext;
+        font-weight: bold;
+        line-height: 30px;
+        box-shadow: 0px 0px 4px gray;
+      }
+    }
+
+    .calendar-info{
+      padding-left: 20px;
+
+        span{
+        display: block;
+      }
+    }
+  }
+      
+  .calendar-bt{
+    margin-top: 10px;
+    .box-display(horizontal);
+    width: 100%;
+
+    div:nth-child(1){
+      .box-flex(1);
+    }
+
+    .bt-arrow-up{
+      width: 54px;
+      height: 30px;
+      background-image: url('bt_triangle.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: center;
+    }
+
+    .bt-arrow-down{
+      width: 54px;
+      height: 30px;
+      background-image: url('bt_triangle.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: center;
+      .transform(scale(-1));
+    }
+
+  }
+
+} //Fin de #calendar

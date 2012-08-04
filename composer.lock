@@ -1,5 +1,5 @@
 {
-    "hash": "fc105c0e53a27ada804550171e812ae4",
+    "hash": "51b8ee627f4c31385a06334eb49c9dd8",
     "packages": [
         {
             "package": "doctrine/common",
@@ -70,6 +70,12 @@
             "version": "dev-master",
             "source-reference": "c518a48ddc26af898191410cc35f7f30aaed448e",
             "commit-date": "1343084248"
+        },
+        {
+            "package": "leafo/lessphp",
+            "version": "dev-master",
+            "source-reference": "390db2a3c9ee652a241fd5ac1ce78d7078d2761e",
+            "commit-date": "1343747156"
         },
         {
             "package": "monolog/monolog",
@@ -179,6 +185,7 @@
         "symfony/monolog-bundle": 20,
         "sensio/distribution-bundle": 20,
         "sensio/framework-extra-bundle": 20,
-        "sensio/generator-bundle": 20
+        "sensio/generator-bundle": 20,
+        "leafo/lessphp": 20
     }
 }

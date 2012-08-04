@@ -241,9 +241,9 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
         }
 
-        if (0 === strpos($pathinfo, '/profile')) {
+        if (0 === strpos($pathinfo, '/ldc/profile')) {
             // fos_user_profile_show
-            if (rtrim($pathinfo, '/') === '/profile') {
+            if (rtrim($pathinfo, '/') === '/ldc/profile') {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_fos_user_profile_show;
@@ -258,15 +258,15 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_fos_user_profile_show:
 
             // fos_user_profile_edit
-            if ($pathinfo === '/profile/edit') {
+            if ($pathinfo === '/ldc/profile/edit') {
                 return array (  '_controller' => 'Ldc\\UserBundle\\Controller\\ProfileController::editAction',  '_route' => 'fos_user_profile_edit',);
             }
 
         }
 
-        if (0 === strpos($pathinfo, '/register')) {
+        if (0 === strpos($pathinfo, '/ldc/register')) {
             // fos_user_registration_register
-            if (rtrim($pathinfo, '/') === '/register') {
+            if (rtrim($pathinfo, '/') === '/ldc/register') {
                 if (substr($pathinfo, -1) !== '/') {
                     return $this->redirect($pathinfo.'/', 'fos_user_registration_register');
                 }
@@ -275,7 +275,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // fos_user_registration_check_email
-            if ($pathinfo === '/register/check-email') {
+            if ($pathinfo === '/ldc/register/check-email') {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_fos_user_registration_check_email;
@@ -286,7 +286,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_fos_user_registration_check_email:
 
             // fos_user_registration_confirm
-            if (0 === strpos($pathinfo, '/register/confirm') && preg_match('#^/register/confirm/(?<token>[^/]+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/ldc/register/confirm') && preg_match('#^/ldc/register/confirm/(?<token>[^/]+)$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_fos_user_registration_confirm;
@@ -297,7 +297,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_fos_user_registration_confirm:
 
             // fos_user_registration_confirmed
-            if ($pathinfo === '/register/confirmed') {
+            if ($pathinfo === '/ldc/register/confirmed') {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_fos_user_registration_confirmed;
@@ -309,9 +309,9 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/resetting')) {
+        if (0 === strpos($pathinfo, '/ldc/resetting')) {
             // fos_user_resetting_request
-            if ($pathinfo === '/resetting/request') {
+            if ($pathinfo === '/ldc/resetting/request') {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_fos_user_resetting_request;
@@ -322,7 +322,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_fos_user_resetting_request:
 
             // fos_user_resetting_send_email
-            if ($pathinfo === '/resetting/send-email') {
+            if ($pathinfo === '/ldc/resetting/send-email') {
                 if ($this->context->getMethod() != 'POST') {
                     $allow[] = 'POST';
                     goto not_fos_user_resetting_send_email;
@@ -333,7 +333,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_fos_user_resetting_send_email:
 
             // fos_user_resetting_check_email
-            if ($pathinfo === '/resetting/check-email') {
+            if ($pathinfo === '/ldc/resetting/check-email') {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_fos_user_resetting_check_email;
@@ -344,7 +344,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_fos_user_resetting_check_email:
 
             // fos_user_resetting_reset
-            if (0 === strpos($pathinfo, '/resetting/reset') && preg_match('#^/resetting/reset/(?<token>[^/]+)$#s', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/ldc/resetting/reset') && preg_match('#^/ldc/resetting/reset/(?<token>[^/]+)$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                     goto not_fos_user_resetting_reset;
@@ -357,7 +357,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // fos_user_change_password
-        if ($pathinfo === '/profile/change-password') {
+        if ($pathinfo === '/ldc/profile/change-password') {
             if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                 $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                 goto not_fos_user_change_password;

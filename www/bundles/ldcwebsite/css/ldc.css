@@ -1001,7 +1001,10 @@ footer #copyright p {
 }
 #survey { width:220px; }
 #survey form { display:block; }
-#survey .bt-wrapper-survey-validation { margin-top:10px; }
+#survey .bt-wrapper-survey-validation {
+  margin-top:10px;
+  text-align:center;
+}
 #survey .bt-wrapper-survey-validation .bt-validation {
   display:inline-block;
   position:relative;

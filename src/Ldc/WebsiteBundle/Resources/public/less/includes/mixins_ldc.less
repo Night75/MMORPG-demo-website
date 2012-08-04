@@ -1,0 +1,400 @@
+//__________________ ----------------- ************ KEYFRAMES
+
+//__________________ ----------------- scaleOut()
+@-webkit-keyframes scaleOut{
+  0%{ -webkit-transform: scale(1); opacity: 1; }
+  100%{ -webkit-transform: scale(1.5); opacity: 0; }
+}
+@-moz-keyframes scaleOut{
+  0%{ -moz-transform: scale(1); opacity: 1; }
+  100%{ -moz-transform: scale(1.5); opacity: 0; }
+}
+@-o-keyframes scaleOut{
+  0%{ -o-transform: scale(1); opacity: 1; }
+  100%{ -o-transform: scale(1.5); opacity: 0; }
+}
+@-ms-keyframes scaleOut{
+  0%{ -ms-transform: scale(1); opacity: 1; }
+  100%{ -ms-transform: scale(1.5); opacity: 0; }
+}
+@keyframes scaleOut{
+  0%{ transform: scale(1); opacity: 1; }
+  100%{ transform: scale(1.5); opacity: 0; }
+}
+
+
+//__________________ ----------------- ************ TEXTES
+
+.txt-standard{
+  margin :0px;
+  padding: 0px;
+  font-size: 14px;
+  color: @color-txt-standard;
+  font-family: @font-txt-standard;
+  text-decoration: none;
+}
+
+.txt-annotation
+{
+  margin :0px;
+  padding: 0px;
+  font-size: 14px;
+  color: @color-txt-annotation;
+  font-family: palatino;
+  text-decoration: none;
+}
+
+.txt-legend-i{
+  color: @color-txt-legend;
+  font-size: 14px;
+}
+
+.txt-legend{
+  color: @color-txt-legend;
+  font-size: 14px;
+  .transition-main;
+  cursor: pointer;
+
+  &:hover{
+    color: rgb(216, 128, 138);
+    .txt-shadow-classic;
+  }
+}
+
+.title-small{
+  color: @color-txt-title;
+  font-weight: bold;
+  font-size: 17px;
+  margin-bottom: 10px;
+  cursor: pointer;
+
+  .transition(all 0.2s linear);
+  &:hover{
+    .hover-txt;
+  }
+}
+
+.title-small-static{
+  color: @color-txt-title;
+  font-weight: bold;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.title-underline-white{
+  text-transform: uppercase;
+  color: @color-txt-title;
+  font-weight: bold;
+  font-family: @font-title-main;  
+  font-size: 22px;
+  height: 60px;
+  background-image: url('@{path-img}underline_light.png');
+  background-repeat: no-repeat;
+  padding-left: 15px;
+  margin-left: -10px;
+  margin-bottom: 10px;
+}
+
+.title-white{
+  color: @color-txt-standard;
+  font-weight: bold;
+  font-size: 22px;
+  text-transform: uppercase;
+  margin: 0px 0px 20px 0px;
+}
+
+.txt-nav{
+  font-weight: bold;
+  font-size:20px;
+  color: @color-background-ext;
+}
+
+//__________________ ----------------- ************ EFFETS
+.shadow-classic{box-shadow: 0px 0px 5px @color-border-panel; } 
+.txt-shadow-classic{text-shadow : 0px 0px 7px @color-border-panel; }
+.blur{ opacity: 0.5; }
+.active{opacity: 1; }
+.hover-txt{
+  text-decoration: underline; 
+  .txt-shadow-classic;
+  cursor: pointer;
+}
+.transition-classic{
+  .transition(all 0.2s linear)
+}
+
+//__________________ ----------------- ************ IMAGES 
+
+//__________________ AVATAR
+@border-img-avatar:4px;
+
+//Taille moyenne
+img.img-avatar{
+  border:@border-img-avatar solid gray;
+  width:115px;
+  height:115px;
+}
+
+//Taille petite
+img.img-avatar-small{
+  border:@border-img-avatar solid gray;
+  width:35px;
+  height:35px;
+}
+
+//__________________ ----------------- ************ OBJETS ( Formes, Boutons, trucs ...)
+
+//__________________ -----------------  PANELS (Blocs de contenus independant)
+
+.gn-panel-wrapper{
+  position: relative;
+}
+
+.gn-panel-container{
+  background-color: @color-background-ext;
+  position: relative;
+  padding: @padding-panel-int;
+  height: 100%;
+  border: 2px groove gray;
+  z-index: 3;
+}
+
+//__________________ -----------------  BOUTONS
+
+//__________________ BOUTON DORE
+@height-bt-gold:35px;
+@width-bt-gold:110px;
+.bt-gold
+{
+  background: rgb(247,222,123); /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  rgba(247,222,123,1) 0%, rgba(150,135,75,1) 46%, rgba(168,151,84,1) 50%, rgba(198,177,99,1) 53%, rgba(243,220,120,1) 76%, rgba(175,158,87,1) 87%, rgba(209,188,104,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(247,222,123,1)), color-stop(46%,rgba(150,135,75,1)), color-stop(50%,rgba(168,151,84,1)), color-stop(53%,rgba(198,177,99,1)), color-stop(76%,rgba(243,220,120,1)), color-stop(87%,rgba(175,158,87,1)), color-stop(100%,rgba(209,188,104,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-45deg,  rgba(247,222,123,1) 0%,rgba(150,135,75,1) 46%,rgba(168,151,84,1) 50%,rgba(198,177,99,1) 53%,rgba(243,220,120,1) 76%,rgba(175,158,87,1) 87%,rgba(209,188,104,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg,  rgba(247,222,123,1) 0%,rgba(150,135,75,1) 46%,rgba(168,151,84,1) 50%,rgba(198,177,99,1) 53%,rgba(243,220,120,1) 76%,rgba(175,158,87,1) 87%,rgba(209,188,104,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg,  rgba(247,222,123,1) 0%,rgba(150,135,75,1) 46%,rgba(168,151,84,1) 50%,rgba(198,177,99,1) 53%,rgba(243,220,120,1) 76%,rgba(175,158,87,1) 87%,rgba(209,188,104,1) 100%); /* IE10+ */
+  background: linear-gradient(135deg,  rgba(247,222,123,1) 0%,rgba(150,135,75,1) 46%,rgba(168,151,84,1) 50%,rgba(198,177,99,1) 53%,rgba(243,220,120,1) 76%,rgba(175,158,87,1) 87%,rgba(209,188,104,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7de7b', endColorstr='#d1bc68',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  
+   .transition-classic; 
+  display:inline-block;
+  height:@height-bt-gold;
+  line-height:@height-bt-gold;
+  padding:0 10px;
+  border:0px;
+  font-weight:bold;
+  color: @color-background-ext;
+  cursor:pointer;
+  min-width:@width-bt-gold;
+  
+  &:hover{
+      background: rgb(249,231,157); /* Old browsers */
+      background: -moz-linear-gradient(-45deg, rgba(249,231,157,1) 0%, rgba(184,170,114,1) 46%, rgba(190,177,126,1) 50%, rgba(213,197,139,1) 53%, rgba(246,229,154,1) 76%, rgba(195,182,129,1) 87%, rgba(221,205,143,1) 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(249,231,157,1)), color-stop(46%,rgba(184,170,114,1)), color-stop(50%,rgba(190,177,126,1)), color-stop(53%,rgba(213,197,139,1)), color-stop(76%,rgba(246,229,154,1)), color-stop(87%,rgba(195,182,129,1)), color-stop(100%,rgba(221,205,143,1))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(-45deg, rgba(249,231,157,1) 0%,rgba(184,170,114,1) 46%,rgba(190,177,126,1) 50%,rgba(213,197,139,1) 53%,rgba(246,229,154,1) 76%,rgba(195,182,129,1) 87%,rgba(221,205,143,1) 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(-45deg, rgba(249,231,157,1) 0%,rgba(184,170,114,1) 46%,rgba(190,177,126,1) 50%,rgba(213,197,139,1) 53%,rgba(246,229,154,1) 76%,rgba(195,182,129,1) 87%,rgba(221,205,143,1) 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(-45deg, rgba(249,231,157,1) 0%,rgba(184,170,114,1) 46%,rgba(190,177,126,1) 50%,rgba(213,197,139,1) 53%,rgba(246,229,154,1) 76%,rgba(195,182,129,1) 87%,rgba(221,205,143,1) 100%); /* IE10+ */
+      background: linear-gradient(135deg, rgba(249,231,157,1) 0%,rgba(184,170,114,1) 46%,rgba(190,177,126,1) 50%,rgba(213,197,139,1) 53%,rgba(246,229,154,1) 76%,rgba(195,182,129,1) 87%,rgba(221,205,143,1) 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9e79d', endColorstr='#ddcd8f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+      
+      .shadow-classic;
+      color: @color-background-ext-light;
+    }
+       
+    &:active{
+      background: rgb(209,188,105); /* Old browsers */
+      background: -moz-linear-gradient(-45deg, rgba(209,188,105,1) 0%, rgba(175,157,87,1) 13%, rgba(243,220,119,1) 24%, rgba(198,177,100,1) 47%, rgba(168,151,84,1) 50%, rgba(151,136,75,1) 54%, rgba(247,222,123,1) 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(209,188,105,1)), color-stop(13%,rgba(175,157,87,1)), color-stop(24%,rgba(243,220,119,1)), color-stop(47%,rgba(198,177,100,1)), color-stop(50%,rgba(168,151,84,1)), color-stop(54%,rgba(151,136,75,1)), color-stop(100%,rgba(247,222,123,1))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(-45deg, rgba(209,188,105,1) 0%,rgba(175,157,87,1) 13%,rgba(243,220,119,1) 24%,rgba(198,177,100,1) 47%,rgba(168,151,84,1) 50%,rgba(151,136,75,1) 54%,rgba(247,222,123,1) 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(-45deg, rgba(209,188,105,1) 0%,rgba(175,157,87,1) 13%,rgba(243,220,119,1) 24%,rgba(198,177,100,1) 47%,rgba(168,151,84,1) 50%,rgba(151,136,75,1) 54%,rgba(247,222,123,1) 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(-45deg, rgba(209,188,105,1) 0%,rgba(175,157,87,1) 13%,rgba(243,220,119,1) 24%,rgba(198,177,100,1) 47%,rgba(168,151,84,1) 50%,rgba(151,136,75,1) 54%,rgba(247,222,123,1) 100%); /* IE10+ */
+      background: linear-gradient(135deg, rgba(209,188,105,1) 0%,rgba(175,157,87,1) 13%,rgba(243,220,119,1) 24%,rgba(198,177,100,1) 47%,rgba(168,151,84,1) 50%,rgba(151,136,75,1) 54%,rgba(247,222,123,1) 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1bc69', endColorstr='#f7de7b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+      color: @color-background-ext;
+    }
+      
+}
+
+
+//__________________ BOUTON DORE(version old)
+.bt-wrapper-validation(@width, @height){
+ 
+  .bt-validation{
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    
+    input[type=image]{
+      width: @width;
+      height: @height;
+    } 
+
+    a{
+      position: absolute;
+      top: 0px;
+      width: @width;
+      height: @height;
+      display: block;
+      font-size: 16px;
+      color: @color-background-ext;
+      font-weight: bold;
+      line-height: @height;
+      cursor: pointer;
+      .transition-classic;
+
+      &:hover{
+        background-color:  rgba(243,220,80,0.3);
+        .shadow-classic;
+        color: @color-background-ext-light;
+      }
+      
+      &:active{
+        background-color: rgba(50,50,50,0.3);
+        color: @color-background-ext;
+      }
+    }
+    
+  } 
+}
+//__________________ ----------------- BLOCS "EFFET BORDURE EN POINTE"
+
+//Exemple d'utilisation: Pour inclure une bordure en pointe dans le coin haut-gauche, On devra creer une div de la
+//classe gn-panel-wrapper, puis y inclure une div de la classe bdr-top-left.Enfin il faudra ajouter notre contenu desire 
+//dans une div de la classe gn-panel-container(qui est inclus dans gn-panel-wrapper)
+
+@width-bdr = 5px;
+@width-extention = 60%;
+
+.bdr-top-right
+{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin: -@width-bdr -@width-bdr  0px 0px;
+    z-index :2;
+    border-width: @width-bdr;
+    border-style: solid;
+    border-color: @color-border-panel;
+  background-color: @color-border-panel;
+    width: @width-extention;
+    height: @width-extention;
+    border-top-left-radius: 100% (2*@width-bdr) ;
+    border-bottom-right-radius: (2*@width-bdr) 100%;
+    border-left: 0px;
+    border-bottom: 0px;
+    box-shadow: 0px 0px @width-bdr @color-border-panel;
+}
+
+.bdr-bot-right
+{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    margin: 0px -@width-bdr -@width-bdr 0px;
+    z-index: 2;
+    border-width: @width-bdr;
+    border-style: solid;
+    border-color: @color-border-panel;
+  background-color: @color-border-panel;
+    width: @width-extention;
+    height: @width-extention;
+    border-top-right-radius: (2*@width-bdr) 100%;
+    border-bottom-left-radius: 100% (2*@width-bdr);
+    border-left: 0px;
+    border-top: 0px;
+    box-shadow: 0px 0px @width-bdr @color-border-panel;
+}
+
+.bdr-top-left
+{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: -@width-bdr 0px 0px -@width-bdr;
+  z-index: 2;
+    border-width: @width-bdr;
+  border-style: solid;
+  border-color: @color-border-panel;
+  background-color: @color-border-panel;
+  width: @width-extention;
+  height: @width-extention;
+    border-top-right-radius: 100% (2*@width-bdr);
+    border-bottom-left-radius: (2*@width-bdr) 100%;
+    border-right: 0px;
+    border-bottom: 0px;
+  box-shadow: 0px 0px @width-bdr @color-border-panel;
+}
+
+.bdr-bot-left
+{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin-bottom: -@width-bdr;
+  margin-left: -@width-bdr;
+  z-index: 2;
+  border-width: @width-bdr;
+  border-style: solid;
+  border-color: @color-border-panel;
+  background-color: @color-border-panel;
+  width: @width-extention;
+  height: @width-extention;
+  border-top-left-radius: (2*@width-bdr) 100%;
+    border-bottom-right-radius: 100% (2*@width-bdr);
+    border-right: 0px;
+    border-top: 0px;
+  box-shadow: 0px 0px @width-bdr @color-border-panel;
+}
+
+
+//__________________ -----------------  LIGNES DE SEPARATION ORIENTEES
+
+@width-hr-line = 4px;
+@color-rgba-hr-line = rgba(100,100,100,0.3);
+@color-hr-line = rgb(100,100,100);
+
+.hr-line-right{
+  height: 1px;
+  background-color: @color-rgba-hr-line;
+  border-width: @width-hr-line;
+  border-style: solid;
+  border-color: @color-rgba-hr-line ;
+  border-top: 0px;
+  border-left: 0px;
+  border-bottom-right-radius: 100% @width-hr-line;
+  box-shadow: 0px 0px 6px @color-hr-line;
+  width: (100% - @width-hr-line);
+  vertical-align: baseline;
+  display: inline-block;
+}
+
+
+.hr-line-left{
+  height: 1px;
+  background-color:  @color-rgba-hr-line;
+  border-width: @width-hr-line;
+  border-style: solid;
+  border-color: @color-rgba-hr-line;
+  border-top-left-radius: 100% @width-hr-line ; 
+  box-shadow: 0px 0px 6px @color-hr-line;
+  border-bottom: 0px;
+  border-right: 0px;
+  display: inline-block;
+  width: (100% - @width-hr-line);
+  vertical-align: baseline;
+}
+
+.hr-line-top{
+  height: (100% - @width-hr-line);
+  width: 1px;
+  background-color:  @color-rgba-hr-line;
+  border-width: @width-hr-line/2;
+  border-style: solid;
+  border-color: @color-rgba-hr-line;
+  border-top-left-radius: @width-hr-line/2 100% ;
+  border-top-right-radius: @width-hr-line/2 100%;
+  box-shadow: 0px 0px 6px @color-hr-line;
+  border-bottom: 0px;
+  border-right: 0px;
+  display: inline-block;
+  vertical-align: baseline;
+}

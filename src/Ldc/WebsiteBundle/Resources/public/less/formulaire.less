@@ -1,0 +1,172 @@
+//================ ================================================== ====================
+//                    VARIABLES  GENERALES
+//================ ================================================== ====================
+@import "includes/variables.less";
+
+//================ ================================================== ====================
+//                    MXINS/FONCTIONS SPECIALES LDC
+//================ ================================================== ====================
+@import "includes/mixins_ldc.less";
+
+//================ ================================================== ====================
+//                  MXINS/FONCTIONS GENERALES 
+//================ ================================================== ====================
+@import "includes/mixins_general.less";
+
+//================ ================================================== ====================
+//                    STYLES DU LAYOUT GENERAL
+//================ ================================================== ====================
+@import "includes/styles_mainLayout.less";
+
+#container-main #panel-head{
+  margin:0px;
+}
+//================ ================================================== ====================
+//                    STYLES POUR LES FORMULAIRES
+//================ ================================================== ====================
+
+@margin-vertical-field: 5px;
+@margin-register-input: @margin-vertical-field;
+@width-label-user: 220px;
+@width-input-user:220px;
+
+//__________________ ----------------- ************  FORMULAIRE STANDARD (Base sur le formulaire de creation d'user')
+form{
+   
+    //__________________ ---------------- Styles standard pour un champ
+    div{
+      margin: @margin-register-input 0px;
+      display:table;
+      
+      label,input,div{
+        display:table-cell;
+        vertical-align:top;
+      }
+      
+      label{
+        width: @width-label-user;
+      }
+      
+      input{
+        &[type="text"],&[type="email"],&[type="password"]{
+            color: black;
+            width: @width-input-user;
+        }   
+        &[type="button"]{
+          
+        }
+      }
+      
+      textarea{
+         color: black;
+         width: @width-input-user;
+      }
+      
+      //__________________ Concerne les widget contenant un groupe de sous-formes(groupe de selectbox)
+      div{
+        margin: 0px;
+      }
+ 
+      div.error{
+        margin: 0px;
+        padding: 0px 0px 0px 10px; 
+      }
+    }
+    
+   //__________________ ---------------- Styles pour le captcha
+   div.captcha{
+     margin-top: 10px;
+     input[type="text"]{
+       height:35px;
+       margin-left:10px;
+       width:90px;
+     }
+   }
+  
+  .bt-gold{
+    width:110px;  
+  }
+  
+  input[type="submit"]{
+    margin:10px 0px 0px @width-label-user;
+  }
+  
+  .bt-sup{
+    margin:10px 0px 0px 10px;
+  }
+}
+
+.bt-container-validation{
+   .bt-wrapper-validation(100px, 33px);
+}
+//__________________ ----------------- ************  FORMULAIRE EVENT
+
+@width-input-event:350px;
+form.form_event{
+   width: 900px;
+   margin:40px;
+   
+   input{
+        &[type="text"],&[type="email"],&[type="password"]{
+            color: black;
+            width: @width-input-event;
+        }   
+    }
+      textarea{
+         color: black;
+         width: @width-input-event;
+         padding:0px;
+      }
+}
+
+
+//__________________ ----------------- ************  FORMULAIRE ARTICLE
+@width-input-article:650px;
+
+form.form_article{
+   width: 1000px;
+   margin:40px;
+   
+   input{
+        &[type="text"],&[type="file"]{
+            color: black;
+            width: @width-input-article;
+        }   
+      }
+      
+      textarea{
+         color: black;
+         width: @width-input-article;
+         height:250px;
+         padding:0px;
+      }
+}
+
+//__________________ ----------------- ************  CONFIRMATION DE L'INSCRIPTION (confirmed)
+
+div#user-register-confirmed{
+  
+}
+
+
+//__________________ ----------------- ************  PROFIL (profile)
+div#user-profile-show{
+    
+    ul{
+      li{
+        
+        span{
+          display: inline-block;
+          
+          &:first-child{
+            width: @width-label-user;
+          }
+          
+        }
+        
+      }
+    }
+  
+}
+
+
