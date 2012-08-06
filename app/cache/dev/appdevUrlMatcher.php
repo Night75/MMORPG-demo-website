@@ -219,9 +219,27 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Ldc\\WebsiteBundle\\Controller\\EventController::indexAction',  '_route' => 'ldcwebsitebundle_events',);
             }
 
-            // LdcWebsiteBundle_test
-            if ($pathinfo === '/ldc/test') {
-                return array (  '_controller' => 'Ldc\\WebsiteBundle\\Controller\\WebsiteController::testAction',  '_route' => 'LdcWebsiteBundle_test',);
+            // ldcwebsitebundle_surveys
+            if ($pathinfo === '/ldc/surveys') {
+                return array (  '_controller' => 'Ldc\\WebsiteBundle\\Controller\\SurveyController::indexAction',  '_route' => 'ldcwebsitebundle_surveys',);
+            }
+
+            // ldcwebsitebundle_unhautorized
+            if ($pathinfo === '/ldc/unauthorized') {
+                return array (  '_controller' => 'Ldc\\WebsiteBundle\\Controller\\WebsiteController::unauthorizedAction',  '_route' => 'ldcwebsitebundle_unhautorized',);
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/ldc/survey')) {
+            // ldcsurveybundle_newform
+            if (0 === strpos($pathinfo, '/ldc/survey/vote') && preg_match('#^/ldc/survey/vote/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\SurveyBundle\\Controller\\SurveyController::voteAction',)), array('_route' => 'ldcsurveybundle_newform'));
+            }
+
+            // ldcsurveybundle_result
+            if (0 === strpos($pathinfo, '/ldc/survey/result') && preg_match('#^/ldc/survey/result/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\SurveyBundle\\Controller\\SurveyController::resultAction',)), array('_route' => 'ldcsurveybundle_result'));
             }
 
         }
@@ -474,6 +492,21 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // ldcsurveybundle_new
             if ($pathinfo === '/ldc/admin/survey/new') {
                 return array (  '_controller' => 'Ldc\\SurveyBundle\\Controller\\AdminController::newAction',  '_route' => 'ldcsurveybundle_new',);
+            }
+
+            // ldcsurveybundle_edit
+            if (0 === strpos($pathinfo, '/ldc/admin/survey/edit') && preg_match('#^/ldc/admin/survey/edit/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\SurveyBundle\\Controller\\AdminController::editAction',)), array('_route' => 'ldcsurveybundle_edit'));
+            }
+
+            // ldcsurveybundle_delete
+            if (0 === strpos($pathinfo, '/ldc/admin/survey/delete') && preg_match('#^/ldc/admin/survey/delete/(?<id>[^/]+)$#s', $pathinfo, $matches)) {
+                return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Ldc\\SurveyBundle\\Controller\\AdminController::deleteAction',)), array('_route' => 'ldcsurveybundle_delete'));
+            }
+
+            // ldcsurveybundle_confirmed
+            if ($pathinfo === '/ldc/admin/survey/confirmed') {
+                return array (  '_controller' => 'Ldc\\SurveyBundle\\Controller\\AdminController::confirmedAction',  '_route' => 'ldcsurveybundle_confirmed',);
             }
 
         }

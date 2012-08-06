@@ -1,0 +1,54 @@
+{% extends "LdcWebsiteBundle::layout.html.twig" %}
+{% set path_img = asset("images/") %}
+{% set path_public = asset("bundles/ldcwebsite/") %}
+
+{# *************** ------------------- _____________________ SCRIPTS ET STYLES _____________________ ------------------ *************** #}		
+{% block script %}	
+	<script type="text/javascript" src="{{path_public}}js/jquery.js"></script>
+	<script type="text/javascript" src="{{path_public}}js/survey.js"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	{{parent()}}
+	<style>
+		#survey #survey-result{
+			width:300px;
+		}
+	</style>
+{% endblock %}
+
+
+{% block container_header %}
+<!-- *************** ------------------- _____________________ PANNEAU DE LOGIN _____________________ ------------------ ***************-->		
+	{% include "LdcWebsiteBundle::includes/container_header.html.twig" %}
+{% endblock %} 
+
+
+
+{% block body %}	
+<!-- *************** ------------------- _____________________ LISTE DES SONDAGES _____________________ ------------------ ***************-->		
+<section id="survey">	
+	<h2>Sondages</h2>
+	
+	{% for survey in surveys %}
+	
+		<div id="survey-result">
+			<div class="survey-question">
+				<p class="title-small-static">Sondage cree le {{survey.dateCreated | date("d/m/Y")}}: <br>
+					{{survey.question}}
+				</p>    
+			</div>
+			<ul>
+				{% for answer in survey.answers %}
+					<li>
+						{{answer}} <br>
+						<span class="img-answer"></span>
+						<span class="num-votes">{{answer.total}}</span>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endfor %}
+</section>
+{% endblock %}
+

@@ -237,11 +237,18 @@ class User extends BaseUser
      * @ORM\PreUpdate()
      */
     public function uploadImage() {
-     
+  		
+		if((!empty($this->id)) && empty($this->previous_image)){
+			return; //L'utilisateur vient de se connecter, l'update n'a lieu que pour mettre a jour la date de connection
+		}	
+		
         // -------------- Cas de l'Ajout ou Edition d'article ===> Image chargee
-        if (!empty($this->image)) {     
+        if (!empty($this->image)) {
+			$imageExtension = pathinfo($this->image->getClientOriginalName() , PATHINFO_EXTENSION);
+			$imageName = uniqid() ."." .$imageExtension;   
+			
 	        if(!$this->id){
-	            $this->image->move($this->getTmpUploadRootDir(), $this->image->getClientOriginalName());
+	            $this->image->move($this->getTmpUploadRootDir(),$imageName);	
 	        } 
 			
 	        //------- Cas de l'Edition d'article ===> Image changee	
@@ -249,9 +256,9 @@ class User extends BaseUser
 				if($this->previous_image !== "default.jpg"){
 					@unlink($this->getUploadRootDir() .$this->previous_image);
 				}
-	            $this->image->move($this->getUploadRootDir(),$this->id. "_u" .$this->image->getClientOriginalName());
+	            $this->image->move($this->getUploadRootDir(),$imageName);
 	        }
-	        $this->setImage($this->id. "_u" .$this->image->getClientOriginalName()); //Nom de l'image precede d'un prefixe
+	        $this->setImage($imageName); //Nom de l'image precede d'un prefixe
         }
 	
 		// -------------- Cas de l'Edition d'article ===> Image inchangee

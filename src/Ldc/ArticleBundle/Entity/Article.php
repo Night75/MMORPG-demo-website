@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\File;
  * Ldc\ArticleBundle\Entity\Article
  *
  * @ORM\Table()
+ * @ORM\Table(name="article")
  * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="Ldc\ArticleBundle\Entity\ArticleRepository")
  */

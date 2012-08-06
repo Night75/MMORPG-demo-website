@@ -18,7 +18,7 @@ class UserRepository extends EntityRepository
 		$qb->orderBy("u.register_date","desc");
 		$q = $qb->getQuery();
 		
-		$q->setFirstResult(1);
+		//$q->setFirstResult(1);
 		$q->setMaxResults(1);
 		
 		return $q->getOneOrNullResult();

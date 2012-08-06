@@ -20,10 +20,36 @@ class AdminController extends Controller
         $formHandler = new SurveyHandler($form, $this->get('request'), $this->getDoctrine()->getEntityManager());
 		
         if($formHandler->process()){
-        	
-            return new Response("OK FOOO");
+           	$this->get("session")->setFlash("survey","Le sondage a bien ete cree");
+			return $this->redirect($this->generateUrl('ldcsurveybundle_confirmed'));
         }
-		
         return $this->render('LdcSurveyBundle:admin:new.html.twig', array('form' => $form->createView()));
     }
+	
+	public function listAction()
+	{
+		$em = $this->getDoctrine()->getEntityManager();
+		$entities = $em->getRepository("LdcSurveyBundle:Survey")->findAll();
+		return $this->render("LdcSurveyBundle:admin:list.html.twig",array(
+			"surveys" => $entities
+		));	
+	}
+	
+	public function deleteAction($id)
+	{
+		$em = $this->getDoctrine()->getEntityManager();
+		$entity = $em->getRepository("LdcSurveyBundle:Survey")->find($id);
+		if (!$entity) {
+            throw $this->createNotFoundException("Impossible de trouver l'evenement recherche");
+		}
+        $em->remove($entity);
+        $em->flush();
+		$this->get("session")->setFlash("survey","Le sondage a bien ete supprime");
+		return $this->redirect($this->generateUrl('ldcsurveybundle_confirmed'));
+	}
+	
+	public function confirmedAction()
+	{
+		return $this->render("LdcSurveyBundle:admin:confirmed.html.twig");
+	}
 }

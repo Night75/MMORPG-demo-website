@@ -22,8 +22,8 @@
 		<header>
 			<div id="ldc-logo"><img src="{{path_img}}logo.png" alt=""/></div>
 			<div id="ldc-title">
-				<h1 title="Lightning Demons Chronicles">
-					<img src="{{path_img}}Lightning_demons_chronicles.png" alt="Lightning_demons_chronicles"/>
+				<h1 title="Vengeful Spirits evanescence">
+					<img src="{{path_img}}vengeful_spirits_evanescence.png" alt="Vengeful Spirits evanescence"/>
 				</h1>  
 			</div>	
 			<div class="border_header"></div>
@@ -40,14 +40,14 @@
 						<a href="{{path('ldcwebsitebundle_articles',{'page':1})}}">News</a>
 					</li><!--
 				--><li class="bt-menu-light">
-						<a href="">Objets</a>
+						<a href="">Communaute</a>
 						<ul>
-							<li><a href="http://www.ndesign-studio.com/portfolio">Portfolio</a></li>
-							<li><a href="http://www.ndesign-studio.com/wp-themes">WordPress Themes</a></li>
+							<li><a href="{{path('ldcwebsitebundle_events')}}">Evenements</a></li>
+							<li><a href="{{path('ldcwebsitebundle_surveys')}}">Sondages</a></li>
 						</ul>
 					</li><!--
 				--><li class="bt-menu-light">
-						<a href="">Classes</a>
+						<a href="">Guides</a>
 					</li><!--
 				--><li class="bt-menu-light">
 						<a href="">Forum</a>
@@ -82,9 +82,9 @@
 				<div id="footer-left-part">
 					<h4>Navigation</h4>
 					<ul>
-						<li><a>Accueil</a></li><!--
-					 --><li><a>News</a></li><!--
-					 --><li><a>Objets</a></li><!--
+						<li><a href="{{path('ldcwebsitebundle_accueil')}}">Accueil</a></li><!--
+					 --><li><a href="{{path('ldcwebsitebundle_articles',{'page':1})}}">News</a></li><!--
+					 --><li><a>Communaute</a></li><!--
 					 --><li><a>Classes</a></li>
 						<li><a>Forum</a></li>
 					</ul>

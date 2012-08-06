@@ -5,3 +5,15 @@ ldcsurveybundle_list:
 ldcsurveybundle_new:
     pattern: /new
     defaults: { _controller: LdcSurveyBundle:Admin:new}
+
+ldcsurveybundle_edit:
+    pattern: /edit/{id}
+    defaults: { _controller: LdcSurveyBundle:Admin:edit}
+
+ldcsurveybundle_delete:
+    pattern: /delete/{id}
+    defaults: { _controller: LdcSurveyBundle:Admin:delete}
+
+ldcsurveybundle_confirmed:
+    pattern: /confirmed
+    defaults: { _controller: LdcSurveyBundle:Admin:confirmed}

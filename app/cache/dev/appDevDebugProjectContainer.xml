@@ -256,7 +256,7 @@
     <parameter key="twig.extension.logout_url.class">Symfony\Bundle\SecurityBundle\Twig\Extension\LogoutUrlExtension</parameter>
     <parameter key="twig.extension.security.class">Symfony\Bridge\Twig\Extension\SecurityExtension</parameter>
     <parameter key="data_collector.security.class">Symfony\Bundle\SecurityBundle\DataCollector\SecurityDataCollector</parameter>
-    <parameter key="security.access.denied_url">/unauthorized</parameter>
+    <parameter key="security.access.denied_url">ldc/unauthorized</parameter>
     <parameter key="security.authentication.manager.erase_credentials">true</parameter>
     <parameter key="security.authentication.session_strategy.strategy">migrate</parameter>
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
@@ -2379,7 +2379,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>501d8bd22f255</argument>
+            <argument>501fd16c3dd21</argument>
           </service>
         </argument>
       </argument>
@@ -2520,6 +2520,17 @@
                   </argument>
                   <argument>null</argument>
                 </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>/admin/user</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_SUPER_ADMIN</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
               </service>
             </argument>
             <argument type="service">
@@ -2596,7 +2607,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>501d8bd22f255</argument>
+            <argument>501fd16c3dd21</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2615,6 +2626,17 @@
                   </argument>
                   <argument type="collection">
                     <argument>ROLE_ADMIN</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>/admin/user</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_SUPER_ADMIN</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -2649,7 +2671,7 @@
               <argument>false</argument>
             </service>
           </argument>
-          <argument>/unauthorized</argument>
+          <argument>ldc/unauthorized</argument>
           <argument>null</argument>
           <argument type="service" id="monolog.logger.security"/>
         </service>

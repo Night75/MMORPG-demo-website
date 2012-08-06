@@ -27,11 +27,18 @@ class AdminController extends Controller
 		$article = $em->getRepository("LdcArticleBundle:Article")->getLastArticle();
 		$numArticles = $em->getRepository("LdcArticleBundle:Article")->countAll();
 		
+		//======== Chargement des Sondages
+		$survey = $em->getRepository("LdcSurveyBundle:Survey")->getLastSurvey();
+		$numSurveys = $em->getRepository("LdcSurveyBundle:Survey")->countAll();
+		
+		//return new Response(var_dump($survey));
+		
 		$data = array(
 		"dataGroup" => array(
 			array("name" => "slider", "lastItem" =>$sliderImage , "itemCount" => $numSliderImage),
 			array("name" => "evenement", "lastItem" =>$event , "itemCount" => $numEvents),
 			array("name" => "article", "lastItem" =>$article , "itemCount" => $numArticles),
+			array("name" => "sondage", "lastItem" =>$survey , "itemCount" => $numSurveys),
 			),
 		"user" => array("name" => "utilisateur", "lastItem" =>$user , "itemCount" => $numUser,)
 		);

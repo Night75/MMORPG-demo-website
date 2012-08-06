@@ -15,6 +15,9 @@ class WebsiteController extends Controller
     	//$this->container->get('session')->setLocale('fr');
     	$data = array("page" => "accueil");
 		
+		$session = $this->getRequest()->getSession();
+		$session->set('foo', 'asd');
+			
 		//======== Chargement des infos User
 		$loginData = new DataLoginHandler($this->container);		
 		
@@ -28,30 +31,24 @@ class WebsiteController extends Controller
 		$events = $em->getRepository("LdcEventBundle:Event")->findLatestEvents(new \Datetime("now"));
 		$eventGroups = $em->getRepository("LdcEventBundle:Event")->groupByMonth($events);
 		
+		//======== Chargement des Evenements
+		$survey = $em->getRepository("LdcSurveyBundle:Survey")->getLastSurvey();
+		
 		//======== Hydratation du tableau de donnees
 		$data = array_merge($data, $loginData->getData()); 
 		$data["articles"] = $articles;
 		$data["eventGroups"] = $eventGroups;
      	$data["sliders"] = $sliders;
+		$data["survey"] = $survey;
 		
 		return $this->render('LdcWebsiteBundle:website:index.html.twig', $data );
         return $this->container->get('templating')->renderResponse('designJFLdcBundle:Ldc:accueil.html.'.$this->container->getParameter('fos_user.template.engine'),
         		$data );
     }
 	
-	public function testAction()
+	public function unauthorizedAction()
 	{
-		 $message = \Swift_Message::newInstance()
-        ->setSubject('Hello Email')
-        ->setFrom('jfrancois.lai@gmail.com')
-        ->setTo('jfrancois.lai@gmail.com')
-  		->setBody('Here is the message itself')
- 		->addPart('<q>Here is the message itself</q>', 'text/html')
-  		//->attach(Swift_Attachment::fromPath('my-document.pdf'))
-        //->setBody($this->renderView('LdcWebsiteBundle:test:email.txt.twig', array('name' => $name)))
-    ;
-    $this->get('mailer')->send($message);
-		return new Response("OK FOOO");
+		return $this->render("LdcWebsiteBundle:errors:index.html.twig",array("message	","Unauthorized access"));
 	}
 	
 }

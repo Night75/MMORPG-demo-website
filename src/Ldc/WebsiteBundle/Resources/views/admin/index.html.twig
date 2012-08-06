@@ -7,12 +7,12 @@
 	
 	<div class="bk-data-info">
 		<h3>{{user.name}}s</h3>
-		<p><b>Nombre total crees:</b> {{user.itemCount}}</p>
+		<p><b>Nombre total inscrits:</b> {{user.itemCount}}</p>
 		<p><b>Derniere inscription:</b>
 			{% if user.lastItem is not null %}
 			Le {{user.lastItem.registerDate | date("d/m/Y \\à G:i")}}
 			{% else %}
-				Aucun article ajoute
+				Aucun utilisateur cree
 			{% endif %}
 		</p>
 	</div>
@@ -25,7 +25,7 @@
 				{% if data.lastItem is not null %}
 				Le {{data.lastItem.dateCreated | date("d/m/Y \\à G:i")}}
 				{% else %}
-					Aucun article ajoute
+					Aucun {{data.name}} ajoute
 				{% endif %}
 			</p>
 		</div>

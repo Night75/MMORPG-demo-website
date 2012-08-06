@@ -1,0 +1,57 @@
+{% extends "LdcSurveyBundle::layout.html.twig" %}
+
+{% set path_public = asset("bundles/ldcwebsite/") %}
+{% set path_img =  asset("bundles/ldcwebsite/images/") %}
+
+{% block stylesheets %}
+	{{parent()}}
+	<style>
+		#survey-result{
+			width:250px;
+			padding:20px;
+		}
+		.img-answer{
+			display:inline-block;
+			width:150px;
+			height:20px;
+		}
+		
+		#survey-result li:nth-child(1) .img-answer{
+			background: #66CDAA;
+		}
+		#survey-result li:nth-child(2) .img-answer{
+			background: #F0E68C;
+		}
+		#survey-result li:nth-child(3) .img-answer{
+			background: #FA8072;
+		}
+		#survey-result li:nth-child(4) .img-answer{
+			background: #98FB98;
+		}
+	</style>
+{% endblock %}
+
+{% block script %}
+	<script type="text/javascript" src="{{path_public}}js/jquery.js"></script>
+	<script type="text/javascript" src="{{path_public}}js/survey.js"></script>
+{% endblock %}
+
+{% block body %}
+
+<section id="survey">
+
+		<h2>Sondages</h2>
+		<div id="survey-result">
+			<ul>
+				{% for answer in survey.answers %}
+					<li>
+						{{answer}} <br>
+						<span class="img-answer"></span>
+						<span class="num-votes">{{answer.total}}</span>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+</section>
+
+{% endblock %}

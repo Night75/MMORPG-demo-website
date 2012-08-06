@@ -3,7 +3,7 @@ ldcwebsitebundle_accueil:
     pattern:  /
     defaults: { _controller: LdcWebsiteBundle:Website:index }
 
-# # # # ----------- Website ----------- # # # # 
+# # # # ----------- Users ----------- # # # # 
 ldcwebsitebundle_usersprofile:
     pattern:  users/profile/{id}
     defaults: { _controller: LdcWebsiteBundle:User:profile}
@@ -22,6 +22,14 @@ ldcwebsitebundle_events:
     pattern: events
     defaults: { _controller: LdcWebsiteBundle:Event:index }
 
-LdcWebsiteBundle_test:
-    pattern: /test
-    defaults: {_controller: LdcWebsiteBundle:Website:test}
+# # # # ----------- Sondages ----------- # # # # 
+ldcwebsitebundle_surveys:
+    pattern: surveys
+    defaults: { _controller: LdcWebsiteBundle:Survey:index }
+
+
+
+# # # # ----------- Erreurs ----------- # # # # 
+ldcwebsitebundle_unhautorized:
+    pattern:  /unauthorized
+    defaults: { _controller: LdcWebsiteBundle:Website:unauthorized }

@@ -3,8 +3,8 @@ jms_security_extra:
     expressions: true
 
 security:
-    access_denied_url: /unauthorized
-    
+    access_denied_url: ldc/unauthorized
+
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username
@@ -26,7 +26,7 @@ security:
             security: false
 
         main:
-            access_denied_url: /unauthorized
+            access_denied_url: ldc/unauthorized
             pattern: ^/
             form_login:
                 provider: fos_userbundle
@@ -42,5 +42,6 @@ security:
             #    realm: "Secured Demo Area"
     access_control:
         - { path: /admin, roles: ROLE_ADMIN }
+        - { path: /admin/user, roles: ROLE_SUPER_ADMIN }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         #- { path: ^/_internal/secure, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }

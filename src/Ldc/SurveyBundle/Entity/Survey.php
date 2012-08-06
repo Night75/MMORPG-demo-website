@@ -9,10 +9,15 @@ use Ldc\SurveyBundle\Entity\Answer;
  * Ldc\SurveyBundle\Entity\Survey
  *
  * @ORM\Table()
+ * @ORM\Table(name="survey")
  * @ORM\Entity(repositoryClass="Ldc\SurveyBundle\Entity\SurveyRepository")
  */
 class Survey
 {
+  	//	 Constantes 
+  	const EDIT = 1;
+	const VOTE = 2;
+	
     /**
      * @var integer $id
      *
@@ -47,6 +52,15 @@ class Survey
      */
     private $answers;
 	
+	/**
+     * @var Ldc\SurveyBundle\Entity\Answer
+     */
+    private $answer_selected;
+	
+	 /**
+	 * @var integer $mode
+	 */
+	private $mode;
 	
     public function __construct()
     {
@@ -55,6 +69,11 @@ class Survey
         $this->answers = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
+	public function __toString()
+	{
+		return $this->question;	
+	}
+	
     /**
      * Get id
      *
@@ -131,6 +150,45 @@ class Survey
         return $this->author;
     }
 	
+    /**
+     * Get mode
+     *
+     * @return integer 
+     */
+	public function getMode()
+	{
+		return $this->mode;
+	}
+	
+	  /**
+     * Set mode
+     *
+     */
+	public function setMode($mode)
+	{
+		$this->mode = $mode;
+	}
+	
+	
+    /**
+     * Get mode
+     *
+     * @return integer 
+     */
+	public function getAnswerSelected()
+	{
+		return $this->answer_selected;
+	}
+	
+	  /**
+     * Set mode
+     *
+     */
+	public function setAnswerSelected(Answer $answer_selected)
+	{
+		$this->answer_selected = $answer_selected;
+	}
+	
 	public function addAnswer(Answer $answer)
     {
         $this->answer[] = $answer;
@@ -148,4 +206,32 @@ class Survey
     {
         return $this->answers;
     }
+	
+	public function setAnswers(Answer $answer)
+	{
+		if($this->mode == self::VOTE){
+			$this->answer_selected = $answer;
+		}
+	}
+	
+	public function getTotalAnswers()
+	{
+		$total = 0;
+		foreach($this->answers as $answer){
+			$total += $answer->getTotal();
+		}
+		return $total;
+	}
+	
+	public function checkVote($selected_answer)
+	{
+		foreach($this->answers as $answer){
+			if($answer->getId() == $selected_answer->getId()){
+				$answer->incrementTotal();
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }

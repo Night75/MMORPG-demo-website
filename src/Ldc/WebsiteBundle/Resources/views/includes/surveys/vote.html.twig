@@ -1,0 +1,20 @@
+<div id="survey-vote">
+	<div class="survey-question">    
+		<h3 class="title-small">{{survey.question}}</h3>
+	</div>
+	
+	<form action="{{ path('ldcsurveybundle_newform' ,{'id': survey.id} )}}" method="post" class="form_event">
+		<div class="survey-answers">
+				{% for answer in survey.answers %}
+					<div class="row">
+						<div><div class="hr-line-left"></div></div>
+						<input type="radio" value="{{answer.id}}" required="required" name="survey_form_type[answers]" id="survey_form_type_answers_{{answer.id}}">
+						<label class="required" for="survey_form_type_answers_{{answer.id}}">{{answer.answer}}</label>
+					</div>
+				{% endfor %}
+			<div class="bt-wrapper-survey-validation">
+				<input type="submit" class="bt-gold" value="Vote" />
+			</div>
+		</div>
+	</form>	
+</div>

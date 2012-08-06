@@ -1,0 +1,10 @@
+{% extends "LdcSurveyBundle::layout.html.twig" %}
+
+{% block body %}
+<div>
+	{% for key, flash in app.session.getFlashes() %}
+	   <p> {{ flash }} </p>
+	{% endfor %}
+    <p><a class="title-small" href="{{path('ldcsurveybundle_list')}}">Retour a la liste des sondages</a></p>
+</div>
+{% endblock %}

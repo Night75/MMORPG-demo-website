@@ -487,7 +487,6 @@ nav>ul > li ul {
   display:none;
   border:1px solid #b4b4b4;
   box-shadow:0 1px 3px rgba(0,0,0,0.3);
-  border-radius:0px 0px 10px 10px;
   left:0;
   margin:0;
   padding:0;
@@ -999,7 +998,7 @@ footer #copyright p {
   overflow:hidden;
   text-overflow:ellipsis;
 }
-#survey { width:220px; }
+#survey { width:250px; }
 #survey form { display:block; }
 #survey .bt-wrapper-survey-validation {
   margin-top:10px;
@@ -1040,3 +1039,13 @@ footer #copyright p {
   background-color:rgba(50,50,50,0.3);
   color:#0e081b;
 }
+#survey #survey-result { width:210px; }
+#survey #survey-result .img-answer {
+  display:inline-block;
+  width:150px;
+  height:20px;
+}
+#survey #survey-result li:nth-child(1) .img-answer { background:#66cdaa; }
+#survey #survey-result li:nth-child(2) .img-answer { background:#f0e68c; }
+#survey #survey-result li:nth-child(3) .img-answer { background:#fa8072; }
+#survey #survey-result li:nth-child(4) .img-answer { background:#98fb98; }

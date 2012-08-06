@@ -28,7 +28,7 @@ class EventRepository extends EntityRepository
 		$qb->orderBy("e.date_created","desc");
 		$q = $qb->getQuery();
 		
-		$q->setFirstResult(1);
+		//$q->setFirstResult(1);
 		$q->setMaxResults(1);
 		
 		return $q->getOneOrNullResult();

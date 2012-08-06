@@ -1,0 +1,45 @@
+{% extends "LdcSurveyBundle::layout.html.twig" %}
+
+{% set path_img = asset("bundles/ldcwebsite/images/") %}
+
+{% block body %}
+<div class="list-table">
+	<h2>Liste des sondages</h2>
+
+	<!-- ----------------------------------------- BOUTON D'AJOUT DE SONDAGE ---------------------------------->
+	<div class="bk-icon-bt">
+		<a class="title-small" href="{{path('ldcsurveybundle_new')}}"><img class="icon-tool" src="{{path_img}}icon_add.png" /> Ajouter un sondage</a>
+	</div>
+
+	<div class="msg-flash">
+		  {% for key, message in app.session.getFlashes() %}
+		        <p class="{{ key }}">
+		            {{ message }}
+		        </p>
+		 {% endfor %}
+	</div>
+	<table>
+		<caption></caption>
+		<tr>
+			<th>Question</th>
+			<th>Auteur</th>
+			<th>Date de creation</th>
+			<th>Reponses</th>
+			<th>Nombre de votes</th>
+			<th>Editer</th>
+			<th>Supprimer</th>
+		</tr>	
+	{% for survey in surveys %}
+		<tr>
+			<td>{{survey.question}}</td>
+			<td>{{survey.author}}</td>
+			<td>le {{survey.dateCreated |date ("d/m/Y \\à H:i") }}</td>
+			<td>{{survey.answers | length}}</td>
+			<td>{{survey.totalAnswers}}</td>
+			<td class="edit"><a href="{{path('ldcsurveybundle_edit', { 'id': survey.id })}}"><img class="icon-tool" src="{{path_img}}icon_edit.png"></a></td>
+			<td class="delete"><a href="{{path('ldcsurveybundle_delete', { 'id': survey.id })}}"><img class="icon-tool" src="{{path_img}}icon_trash.png"></a></td>
+		</tr>
+	{% endfor%}
+	</table>
+</div>
+{% endblock %}

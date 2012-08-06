@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Ldc\SurveyBundle\Entity\Answer
  *
  * @ORM\Table()
+ * @ORM\Table(name="answer")
  * @ORM\Entity(repositoryClass="Ldc\SurveyBundle\Entity\AnswerRepository")
  * @ORM\HasLifecycleCallbacks
  */
@@ -41,6 +42,17 @@ class Answer
      * @ORM\JoinColumn(name="survey_id", referencedColumnName="id")
      */
     private $survey;
+	
+	public function __construct()
+	{
+		$this->total = 0;
+	}
+	
+	public function __toString()
+	{
+		return $this->answer;	
+	}
+	
 	
     /**
      * Get id
@@ -97,7 +109,6 @@ class Answer
     }
 	
 	/**
-     * @ORM\PrePersist()
 	 */
 	 public function incrementTotal(){
 	 	if(!$this->total){

@@ -31,7 +31,7 @@ class ArticleRepository extends EntityRepository
 		$qb->orderBy("a.date_created","desc");
 		$q = $qb->getQuery();
 		
-		$q->setFirstResult(1);
+		//$q->setFirstResult(1);
 		$q->setMaxResults(1);
 		
 		return $q->getOneOrNullResult();

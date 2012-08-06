@@ -1,0 +1,15 @@
+<div id="survey-result">
+	<div class="survey-question">    
+		<h3 class="title-small">{{survey.question}}</h3>
+	</div>
+	
+	<ul>
+		{% for answer in survey.answers %}
+			<li>
+				{{answer}} <br>
+				<span class="img-answer"></span>
+				<span class="num-votes">{{answer.total}}</span>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\File;
  * Ldc\SliderImageBundle\Entity\SliderImage
  *
  * @ORM\Table()
+ * @ORM\Table(name="sliderimage")
  * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="Ldc\SliderImageBundle\Entity\SliderImageRepository")
  */

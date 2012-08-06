@@ -3,3 +3,7 @@
 -Upload: Creer une classe qui contiendra les methodes d'upload(au lieu de les creer directement dans les classes) 
 -Upload image: Renommer les image pour rendre les noms uniques?
 -Historique: Creer une table historique ou plusieurs notifiant les actions des admins.
+-Sondages: Nombreuses corrections:
+	 	_ Creation: Etablir la jointure entre les 2 tables
+		_ Edition: A faire
+		_ Liste des sondages: Adapter le script

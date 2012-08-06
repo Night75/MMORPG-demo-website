@@ -15,6 +15,11 @@ LdcWebsiteBundle:
     resource: "@LdcWebsiteBundle/Resources/config/routing.yml"
     prefix: /ldc
 
+#======== Sondages
+LdcSurveyBundle:
+    resource: "@LdcSurveyBundle/Resources/config/routing.yml"
+    prefix: /ldc/survey
+
 #======== Utilisateurs
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

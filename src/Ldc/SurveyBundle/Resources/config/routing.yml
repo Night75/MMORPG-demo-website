@@ -1,0 +1,7 @@
+ldcsurveybundle_newform:
+    pattern: /vote/{id}
+    defaults: { _controller: LdcSurveyBundle:Survey:vote}
+
+ldcsurveybundle_result:
+    pattern: /result/{id}
+    defaults: { _controller: LdcSurveyBundle:Survey:result}

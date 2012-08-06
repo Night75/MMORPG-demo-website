@@ -1,0 +1,57 @@
+{% extends "LdcArticleBundle::layout.html.twig" %}
+{% set path_public = asset("bundles/ldcwebsite/") %}
+{% set path_img =  asset("bundles/ldcwebsite/images/") %}
+
+{% block body %}
+<form method="post" {{ form_enctype(form) }} enctype="multipart/form-data" class="form_article">
+	
+	<h2>Modification d'un slider</h2>
+		
+	<div class="img-article-full">
+		<label>Image Actuelle</label>
+		<img src="{{path_img}}slider/{{ image_name | default("default.jpg") }}" alt="article_image "/>
+	</div>
+	
+	<!-- ========== Champ image -->	
+	<div>
+		{{ form_label(form.image, "Modifier l'image") }}<!--
+	-->{{ form_widget(form.image) }}
+		{% if form_errors(form.image) is not empty  %}
+			<div class="error">{{ form_errors(form.image) }}</div>
+		{% endif %}
+	</div>
+	
+	<!-- ========== Champ titre -->	
+	<div>
+		{{ form_label(form.title, "Titre") }}<!--
+	-->{{ form_widget(form.title) }}
+		{% if form_errors(form.title) is not empty  %}
+			<div class="error">{{ form_errors(form.title) }}</div>
+		{% endif %}
+	</div>
+	
+	<!-- ========== Champ Description -->	
+	<div class="article-content">
+		{{ form_label(form.description, "Description de l'article") }}<!--
+	-->{{ form_widget(form.description) }}
+		{% if form_errors(form.description) is not empty  %}
+			<div class="error">{{ form_errors(form.description) }}</div>
+		{% endif %}
+	</div>
+	
+	<!-- ========== Champ Url -->	
+	<div class="article-content">
+		{{ form_label(form.url, "Lien") }}<!--
+	-->{{ form_widget(form.url) }}
+		{% if form_errors(form.url) is not empty  %}
+			<div class="error">{{ form_errors(form.url) }}</div>
+		{% endif %}
+	</div>
+	
+	<!-- ========== Bouton validation -->
+    <div class="bt-container-validation">
+		<input type="submit" class="bt-gold" value="Valider" />
+	</div>
+	 {{ form_rest(form) }}
+</form>
+{% endblock %}

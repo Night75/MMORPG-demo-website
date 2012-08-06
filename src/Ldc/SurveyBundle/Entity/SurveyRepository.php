@@ -12,4 +12,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class SurveyRepository extends EntityRepository
 {
+	public function getLastSurvey()
+	{
+		$qb = $this->createQueryBuilder("s");
+		$qb->orderBy("s.date_created","desc");
+		$q = $qb->getQuery();
+
+		$q->setMaxResults(1);
+		
+		return $q->getOneOrNullResult();
+	}
+	
+	public function countAll()
+	{
+		return $this->createQueryBuilder("s")
+			->select('COUNT(s)')
+			->getQuery()
+			->getSingleScalarResult();
+	}
 }

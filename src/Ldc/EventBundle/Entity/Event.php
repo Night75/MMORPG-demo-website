@@ -11,6 +11,7 @@ use Symfony\Component\Httpfoundation\Response;
  * Ldc\EventBundle\Entity\Event
  *
  * @ORM\Table()
+ * @ORM\Table(name="event")
  * @ORM\Entity(repositoryClass="Ldc\EventBundle\Entity\EventRepository")
  * @Assert\Callback(methods={"dateValide"})
  */
