@@ -272,13 +272,13 @@ class SliderImage
      */
     public function uploadImage() {
      
-        // -------------- Cas de l'Ajout ou Edition d'article ===> Image chargee
+        // -------------- Cas de l'Ajout ou Edition de slider & Image chargee
         if ($this->image !== null) {     
 	        if(!$this->id){
 	            $this->image->move($this->getTmpUploadRootDir(), $this->image->getClientOriginalName());
 	        } 
 			
-	        //------- Cas de l'Edition d'article ===> Image changee	
+	        //------- Cas de l'Edition de slider ===> Image changee	
 	        else{
 				if($this->previous_image !== "default.jpg"){
 					@unlink($this->getUploadRootDir() .$this->previous_image);
@@ -288,7 +288,7 @@ class SliderImage
 	        $this->setImage($this->image->getClientOriginalName());
         }
 	
-		// -------------- Cas de l'Edition d'article ===> Image inchangee
+		// -------------- Cas de l'Edition de slider ===> Image inchangee
 		else if($this->previous_image !== null){	
 			$this->setImage($this->previous_image);
 		}

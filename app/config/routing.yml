@@ -4,7 +4,7 @@
 #    prefix:   /_internal
 WmsIntroductionBundle:
     resource: "@WmsIntroductionBundle/Resources/config/routing.yml"
-    prefix: /wms
+    prefix: /
 
 #======== ==================== ====================       
 # ---------------- ROUTES POUR LDC

@@ -271,6 +271,11 @@
     
     .cl-panel{
       width:@width-panel-calendar;
+      display: none;
+      
+      &.selected{
+        display: block;
+      }
     }  
     
   // ============   Styles specifiques au calendrier
@@ -466,10 +471,11 @@
 
 } // FIn de #articles-summary
 
-
+@width-panel-survey: 250px;
 //__________________ ----------------- SONDAGES
 #survey{
-  width: @width-droite;
+  //__________________ VOTES
+  width: @width-panel-survey;
   
   
   form{
@@ -479,7 +485,31 @@
   .bt-wrapper-survey-validation{
     margin-top: 10px;
     .bt-wrapper-validation(100px, 33px);
-      
+    text-align:center;
   }
+  
+  @width-survey-result:@width-panel-survey - 2*@padding-container-horizontal;
+  //__________________ RESULTATS
+  #survey-result{
+    width: @width-survey-result;
+     
+   .img-answer{
+      display:inline-block;
+      width:150px;
+      height:20px;
+    }
 
+    li:nth-child(1) .img-answer{
+      background: #66CDAA;
+    }
+    li:nth-child(2) .img-answer{
+      background: #F0E68C;
+    }
+    li:nth-child(3) .img-answer{
+      background: #FA8072;
+    }
+    li:nth-child(4) .img-answer{
+      background: #98FB98;
+    }
+  }
 } 

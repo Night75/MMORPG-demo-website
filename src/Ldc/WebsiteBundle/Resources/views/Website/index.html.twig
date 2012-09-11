@@ -98,7 +98,7 @@
 						{% for events in eventGroups %}
 							{% set month = "month." ~ events[0].dateEvent | date("F") | lower %}
 				
-							<div class="cl-panel cl-{{loop.index}}">
+							<div class="cl-panel cl-{{loop.index}} {% if loop.index == 1  %}selected{% endif %}">
 								<div class="calendar-month">    
 									<div class="title-small">{{ month|trans({}) }}</div>
 									<div><div class="hr-line-right"></div></div>

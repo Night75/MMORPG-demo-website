@@ -456,6 +456,14 @@ nav>ul > li {
   display:inline-block;
   position:relative;
 }
+nav>ul > li .unavailable {
+  position:absolute;
+  top:25px;
+  left:80px;
+  font-size:18px;
+  font-weight:bold;
+  color:#d33d26;
+}
 nav>ul > li a {
   font-weight:bold;
   font-size:20px;
@@ -869,7 +877,11 @@ footer #copyright p {
   margin:0 auto;
 }
 #calendar #cl-panel > div.cl-panel { float:left; }
-#calendar .cl-panel { width:360px; }
+#calendar .cl-panel {
+  width:360px;
+  display:none;
+}
+#calendar .cl-panel.selected { display:block; }
 #calendar .calendar-month {
   display:-moz-box;
   display:-webkit-box;

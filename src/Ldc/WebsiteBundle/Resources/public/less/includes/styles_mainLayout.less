@@ -126,8 +126,16 @@ nav{
   &>ul > li{
     display: inline-block;
     position:relative;
-
-
+  
+    .unavailable{
+        position: absolute;
+        top: 25px;
+        left: 80px;
+        font-size: 18px;
+        font-weight: bold;
+        color: rgb(211,61,38);
+    }
+    
     a{
       .txt-nav;
       display: table-cell;
@@ -160,7 +168,6 @@ nav{
         display:none;
         border: 1px solid #B4B4B4;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        border-radius: 0px 0px 10px 10px;
         left: 0;
         margin: 0;
         padding: 0;

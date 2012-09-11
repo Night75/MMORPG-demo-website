@@ -12,8 +12,9 @@ $(document).ready(function(){
 	});
 
 //__________________ ----------------- ************ CALENDRIER
-
-	 var heightMask = $('.cl-panel').eq(0).height();
+	$('.cl-panel').css({"display" : "block"}); 							// On a laisse le temps au float de faire effet
+	$('.cl-panel').removeClass('selected');							// On ne s'est servi de cette classe que pour permettre un affichage du premier element'
+	var heightMask = $('.cl-panel').eq(0).height();
 	$('#cl-mask').scrollTo(".cl-1", 400);  							// Remise a la position initiale du calendrier
     $('#cl-mask').css({'height':heightMask});   					// Initialisation de la hauteur du masque 
      panelSelected = 1;													// Initialisation du panel selectionne 
@@ -24,7 +25,6 @@ $(document).ready(function(){
         var $nextPanel = $(".cl-"+ (panelSelected+1));
         if($nextPanel.length>0){
         	 var panelheight = $nextPanel.height();
-	        //Resize the height
 	        $('#cl-mask').animate({'height':panelheight},{queue:false, duration:500});   // Redimensionnement vertical
 	        $('#cl-mask').scrollTo($nextPanel, 400);   											 // Defilement de l'evenement
 	       	panelSelected +=1;  

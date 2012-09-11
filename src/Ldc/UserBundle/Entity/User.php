@@ -16,6 +16,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User extends BaseUser
 {
+	
+	const DEFAULT_IMAGE = "default.png";
+	
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -79,7 +82,8 @@ class User extends BaseUser
 	protected $previous_image;
 	
 	public function __construct(){
-		$this->register_date = new \Datetime();
+		$this->setRegisterDate(new \Datetime());
+		$this->setLastLogin(new \Datetime());
 		parent::__construct(); 
 	}
 
@@ -237,9 +241,11 @@ class User extends BaseUser
      * @ORM\PreUpdate()
      */
     public function uploadImage() {
-  		
+    	
+  		//L'utilisateur vient de se connecter, le PreUpdate() n'a lieu que pour mettre a jour la date de connection
+  		//Il n'est meme pas dans la page d'edition de profil pour uploader une image! 
 		if((!empty($this->id)) && empty($this->previous_image)){
-			return; //L'utilisateur vient de se connecter, l'update n'a lieu que pour mettre a jour la date de connection
+			return; 
 		}	
 		
         // -------------- Cas de l'Ajout ou Edition d'article ===> Image chargee
@@ -253,17 +259,19 @@ class User extends BaseUser
 			
 	        //------- Cas de l'Edition d'article ===> Image changee	
 	        else{
-				if($this->previous_image !== "default.jpg"){
+				if($this->previous_image !== self::DEFAULT_IMAGE){
 					@unlink($this->getUploadRootDir() .$this->previous_image);
 				}
 	            $this->image->move($this->getUploadRootDir(),$imageName);
 	        }
 	        $this->setImage($imageName); //Nom de l'image precede d'un prefixe
         }
-	
 		// -------------- Cas de l'Edition d'article ===> Image inchangee
 		else if($this->previous_image !== null){	
 			$this->setImage($this->previous_image);
+		}
+		else{
+			$this->setImage(self::DEFAULT_IMAGE);
 		}
     }
 	
@@ -272,7 +280,7 @@ class User extends BaseUser
      */
     public function moveImage()
     {
-        if (null === $this->image) {
+        if ($this->image === null || $this->image === self::DEFAULT_IMAGE ) {
             return;
         }
         if(!is_dir($this->getUploadRootDir())){

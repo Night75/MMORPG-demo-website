@@ -12,6 +12,14 @@
 	{% block script %}
 		<script type="text/javascript" src="{{path_public}}js/jquery.js"></script>
 		<script type="text/javascript" src="{{path_public}}js/ldc.js"></script>
+		<script type="text/javascript" src="{{path_public}}js/modernizr.custom.39781.js"></script>
+		<script >	
+			//*************** --------------  ___________  DECTECTION DE LA COMPATIBILITE DU NAVIGATEUR ___________--------------*************** 
+			if(!Modernizr.cssgradients || !Modernizr.textshadow || !Modernizr.boxshadow){
+					alert("Veuillez mettre a jour votre navigateur, ou telecharger un navigateur plus recent.");
+					window.location.href = "http://www.google.fr/chrome/index.html?hl=fr&brand=CHNG&utm_source=fr-hpp&utm_medium=hpp&utm_campaign=fr";
+			}		
+		</script>
 	{% endblock%}
 </head>
 
@@ -47,12 +55,14 @@
 						</ul>
 					</li><!--
 				--><li class="bt-menu-light">
+						<span class="unavailable">A venir</span>
 						<a href="">Guides</a>
 					</li><!--
 				--><li class="bt-menu-light">
+						<span class="unavailable">A venir</span>
 						<a href="">Forum</a>
 					</li>
-						{% if is_granted('ROLE_USER') %}
+						{% if is_granted('ROLE_ADMIN') %}
 						<li class="bt-gold">
 							<a href="{{path('ldcwebsitebundle_admin_index')}}">Espace admin</a>
 						</li>
@@ -111,7 +121,7 @@
 					</ul>
 				</div>
 			</div>	
-			<div id="copyright"><p>Copyright © 2009-2011 Lightning Demons Chronicles. All Rights Reserved.</p></div>
+			<div id="copyright"><p>Copyright © 2009-2011 Vengeful Spirits Evanescence. All Rights Reserved.</p></div>
 		</footer>
 		{% endblock footer %}
 </body>

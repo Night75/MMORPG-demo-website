@@ -162,31 +162,28 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/wms')) {
-            // wmsintroduction_accueil
-            if (rtrim($pathinfo, '/') === '/wms') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'wmsintroduction_accueil');
-                }
-
-                return array (  '_controller' => 'Wms\\IntroductionBundle\\Controller\\IntroductionController::accueilAction',  '_route' => 'wmsintroduction_accueil',);
+        // wmsintroduction_accueil
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'wmsintroduction_accueil');
             }
 
-            // wmsintroduction_cv
-            if ($pathinfo === '/wms/cv') {
-                return array (  '_controller' => 'Wms\\IntroductionBundle\\Controller\\IntroductionController::cvAction',  '_route' => 'wmsintroduction_cv',);
-            }
+            return array (  '_controller' => 'Wms\\IntroductionBundle\\Controller\\IntroductionController::accueilAction',  '_route' => 'wmsintroduction_accueil',);
+        }
 
-            // wmsintroduction_apropos
-            if ($pathinfo === '/wms/apropos') {
-                return array (  '_controller' => 'Wms\\IntroductionBundle\\Controller\\IntroductionController::aproposAction',  '_route' => 'wmsintroduction_apropos',);
-            }
+        // wmsintroduction_cv
+        if ($pathinfo === '/cv') {
+            return array (  '_controller' => 'Wms\\IntroductionBundle\\Controller\\IntroductionController::cvAction',  '_route' => 'wmsintroduction_cv',);
+        }
 
-            // wmsintroduction_contact
-            if ($pathinfo === '/wms/contact') {
-                return array (  '_controller' => 'Wms\\IntroductionBundle\\Controller\\IntroductionController::contactAction',  '_route' => 'wmsintroduction_contact',);
-            }
+        // wmsintroduction_apropos
+        if ($pathinfo === '/apropos') {
+            return array (  '_controller' => 'Wms\\IntroductionBundle\\Controller\\IntroductionController::aproposAction',  '_route' => 'wmsintroduction_apropos',);
+        }
 
+        // wmsintroduction_contact
+        if ($pathinfo === '/contact') {
+            return array (  '_controller' => 'Wms\\IntroductionBundle\\Controller\\IntroductionController::contactAction',  '_route' => 'wmsintroduction_contact',);
         }
 
         if (0 === strpos($pathinfo, '/ldc')) {

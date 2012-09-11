@@ -14,6 +14,7 @@ namespace Ldc\UserBundle\Controller;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Response;
 use FOS\UserBundle\Model\UserInterface;
 
 /**
@@ -54,7 +55,6 @@ class ProfileController extends ContainerAware
         $process = $formHandler->process($user);
         if ($process) {
             $this->setFlash('fos_user_success', 'profile.flash.updated');
-
             return new RedirectResponse($this->getRedirectionUrl($user));
         }
 

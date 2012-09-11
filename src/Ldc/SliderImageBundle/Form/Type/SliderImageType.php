@@ -12,7 +12,7 @@ class SliderImageType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder
-			->add("image","file")
+			->add("image","file",array("required" => false))
 			->add("title","text", array(	"trim" => true))
 			->add("description","text",array(	"trim" => true))
 			->add("url","text");
