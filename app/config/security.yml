@@ -25,9 +25,6 @@ security:
             pattern:  ^/ldc$
             security: false
 
-        login_check:
-            check_path:  /login_check
-
         main:
             access_denied_url: ldc/unauthorized
             pattern: ^/
@@ -37,6 +34,7 @@ security:
                 remember_me: true            # On active la possibilité du "Se souvenir de moi" (désactivé par défaut)
                 success_handler: authentication_handler
                 failure_handler: authentication_handler
+                check_path: /login_check
             logout:
                 success_handler: authentication_handler
             anonymous:    true

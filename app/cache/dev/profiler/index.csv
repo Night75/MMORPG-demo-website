@@ -471,3 +471,7 @@
 505267f686212,127.0.0.1,GET,http://localhost/Symfony_/www/app_dev.php/w,1347577846,
 505267fa430a3,127.0.0.1,GET,http://localhost/Symfony_/www/app_dev.php/w/,1347577850,
 505359e72f62e,127.0.0.1,GET,http://localhost/Symfony_/www/app_dev.php/w/,1347639783,
+505587bf5d3f7,127.0.0.1,GET,http://localhost/Symfony_/www/app_dev.php/ldc/,1347782591,
+505587ce7441a,127.0.0.1,POST,http://localhost/Symfony_/www/app_dev.php/login_check,1347782606,
+505587cfd188d,127.0.0.1,GET,http://localhost/Symfony_/www/app_dev.php/ldc/,1347782607,
+50559573584e3,127.0.0.1,GET,http://localhost/Symfony_/www/app_dev.php/ldc/,1347786099,
