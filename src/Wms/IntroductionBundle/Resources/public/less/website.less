@@ -1,0 +1,1398 @@
+//================ ================================================== ====================
+//									   PARAMETRES GENERAUX
+//================ ================================================== ====================
+
+//__________________ ----------------- ************	 VARIABLES GENERALES
+
+//__________________ ----------------- DIMENSIONS
+@width_screen_min: 1000px;
+@width_screen_max: 1400px;
+@width_fixed_content: 1000px;
+@width_img_display: 565px;
+@height_img_display: 333px;
+
+//__________________ ----------------- COULEURS
+@color_background_main: rgb(227, 227, 226);
+@color_blue_light: rgb(174, 221, 236);
+@color_orange_fruit: rgb(249, 178, 51);
+@color_yellow_light: rgb(252, 243, 161);
+@color_black_almost: rgb(60, 60, 59);
+@color_blue_ocean: rgb(80, 82, 159);
+@color_blue_vigor: rgb(39, 52, 139);
+@color_red_magenta: rgb(221, 78, 85);
+@color_red_blood: rgb(191, 100, 91);
+@color_red_vigor: rgb(186, 38, 48);
+//__________________ ----------------- ************	 POLICE
+
+//__________________ -----------------   VARIABLES  
+@path_fonts: "../fonts";
+@path_img: "../images";
+@font_name: "Gentium Book Basic";
+@font_standard: "GenBkBasR-webfont";
+@font_bold: "GenBkBasB-webfont";
+@font_italic: "GenBkBasI-webfont";
+@font_bold_italic: "GenBkBasBI-webfont";
+
+//__________________ -----------------   MIXIN  
+
+//__________________Generaux
+.transition(@type)
+{
+  -webkit-transition: @type;
+  -moz-transition: @type;
+  -o-transition: @type;
+  -ms-transition: @type;
+  transition: @type;
+}
+
+.box(@direction = horizontal){
+	display: -moz-box;
+	display: -webkit-box;
+	display: box;
+	-moz-box-orient: @direction;
+	-webkit-box-orient: @direction;
+	box-orient: @direction;
+}
+
+.box-flex(@indice){
+	-moz-box-flex: @indice;
+	-webkit-box-flex: @indice;
+	box-flex: @indice;
+}
+
+.box-ordinal-group(@indice){
+	-moz-box-ordinal-group: @indice;
+	-webkit-box-ordinal-group: @indice;
+	box-ordinal-group: @indice;
+}
+
+.transform-rotate(@angle){
+	-moz-transform: rotate(@angle);
+	-webkit-transform: rotate(@angle);
+	transform: rotate(@angle);
+}
+
+//__________________Speciaux
+
+/**
+     *  Charge le fichier contenant les polices compatibles avec le navigateur. 
+    *
+     * @param string $filename  Nom du fichier
+*/
+.src_fonts(@filename) {
+  //	src: url("@{path_fonts}/@{filename}.eot");
+	src: url("@{path_fonts}/@{filename}.ttf");
+   /*src: url('@{path_fonts}/@{filename}.eot?#iefix') format('embedded-opentype'),
+         url('@{path_fonts}/@{filename}.woff') format('woff'),
+         url('@{path_fonts}/@{filename}.ttf') format('truetype'),
+         url('@{path_fonts}/@{filename}.svg#GentiumBasicRegular') format('svg');*/
+}
+
+/**
+     *  Cree une ligne verticale aux formes courbes 
+     *
+     * @param size $height  Hauteur de la ligne
+     * @param size  $width  Largeur de la ligne
+*/
+.vline_separator(@height, @width){
+	height: @height;
+	width: @width;
+	border-top-left-radius: @width (@height/3);
+	border-bottom-right-radius: @width (@height/3);	
+}
+
+/**
+     *  Cree une ligne horizontale aux formes courbes 
+     *
+     * @param size $width  Largeur de la ligne
+     * @param size  $hieght  Hauteur de la ligne
+*/
+.hline_separator(@width, @height){
+	height: @height;
+	width: @width;
+	border-top-left-radius: (@width/3) @height;
+	border-bottom-right-radius: (@width/3) @height;	
+}
+
+/**
+     * Cree un bloc aux formes arrondies. 
+    *
+     * @param size $height  La taille du bloc
+     * @param size  $width  La largeur du bloc
+	* @param size $font_size  La taille de la police
+     * @param size  $border_radius  Le rayon de courbure des bordures
+*/
+.bloc_curved_v1(@height, @width, @font_size, @border_radius)
+{
+	@border_s1: 3px;
+	@border_s2: 6px;
+	@border_s3: 3px;
+	@border_s1s2: (@border_s1 + @border_s2);
+
+	@border_radius_s2: @border_radius + @border_s1;
+	@border_radius_s3: @border_radius + @border_s1s2;
+
+	height: @font_size;
+	padding: (@height - @font_size)/2 (2*@border_radius/3);
+	width: @width - (4*@border_radius/3);
+	background: rgba(0, 0, 0, 0.75);
+	color: white;	
+	font-weight: normal;
+	line-height: @font_size;
+	font-size: @font_size;
+	border:@border_s1 solid black;
+	border-top-left-radius: @border_radius @border_radius;
+	border-bottom-right-radius: @border_radius @border_radius;
+	position: relative;
+	text-align: center;
+
+	&:before {
+        content: '';
+        left: -(@border_s1s2);  /* Les points de references sont les extremites de la figure sans les bordures */
+		top: -(@border_s1s2); 
+      	height: (@height + 2*@border_s1);
+ 		width: (@width + 2*@border_s1);
+ 		border: @border_s2 solid white;
+ 		border-top-left-radius: @border_radius_s2 @border_radius_s2;
+ 		border-bottom-right-radius: @border_radius_s2 @border_radius_s2;
+ 		position: absolute;
+    }  
+      
+    &:after {  
+        content: '';
+        left: -(@border_s1s2 + @border_s3);  
+		top: -(@border_s1s2 + @border_s3); 
+      	height: (@height + 2*@border_s1s2);		
+ 		width: (@width + 2*@border_s1s2);
+ 		border: @border_s3 solid black;
+ 		border-top-left-radius: @border_radius_s3 @border_radius_s3;
+ 		border-bottom-right-radius: @border_radius_s3 @border_radius_s3;
+ 		position: absolute;
+    }
+}
+
+
+/**
+     * Cree un bloc aux formes arrondies. 
+    *
+     * @param size $height  La taille du bloc
+     * @param size  $width  La largeur du bloc
+*/
+.bloc_description(@height, @width)
+{
+	height: @height;
+	width: @width;
+	background: white;
+	border: 4px solid @color_background_main;
+}
+
+//__________________ -----------------   DECLARATION DES POLICES
+@font-face {
+	font-family: @font_name;
+	font-style: normal;
+	font-weight: normal;
+	.src_fonts(@font_standard);
+}
+
+@font-face {
+	font-family: @font_name;
+	font-style: normal;
+	font-weight: bold;
+	.src_fonts(@font_bold);
+}
+@font-face {
+	font-family: @font_name;
+	font-style: italic;
+	font-weight: normal;
+	.src_fonts(@font_italic);
+}
+@font-face {
+	font-family: @font_name;
+	font-style: italic;
+	font-weight: bold;
+	.src_fonts(@font_bold_italic);
+}
+
+
+//__________________ ----------------- ************	 STYLES DE TEXTE
+div, h1, h2, h3, h4, p, a, span, ul, li, input, td{
+	margin: 0;
+	padding: 0;
+	font-family: @font_name;
+	font-size: 19px;
+	color: @color_black_almost;
+	font-style: italic;
+}
+
+.txt_light{
+	font-style: italic;
+	color: @color_yellow_light;
+}
+
+.txt_title_black{
+	color: @color_black_almost;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.title_small{
+	text-decoration: underline;
+	font-weight: bold;
+	font-style: italic;
+	display: inline-block;
+	margin-top: 5px;
+}
+
+.no_margin{
+	margin: 0;
+	padding: 0;
+}
+
+
+//__________________ ----------------- ************	 STYLES  INDEPENDANTS
+
+//__________________ Infobulle
+.infobulle_tog{
+	position: absolute;
+	display: inline-block;
+	background: @color_black_almost;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 4px;
+}
+
+//__________________  Champs masque et bouton
+
+.optionnal{
+	display: none;
+}
+
+.bt_toggle{ 
+
+	&:hover{
+		background: rgb(244,239,164);
+	}
+}
+
+.bt_yellow
+{
+	display: inline-block;
+	height: 22px;
+	width: 24px;
+	line-heigth: 26px;
+	text-align: center;
+	border: 1px solid gray;
+	border-radius: 4px;
+	cursor: pointer;
+	background: rgb(249,246,162);
+	font-family: "Times New Roman";
+
+
+}
+
+//================ ================================================== ====================
+//											  HEADER
+//================ ================================================== ====================
+
+body{
+	margin: 0;
+	padding: 0;
+}
+//__________________ ----------------- ************	 MENU TOP
+@height_menu: 60px;
+@number_bt_menu: 5;
+@width_bt_menu: 100px;
+@color_background_menu: rgba(0,0,0,0.8);
+@color_menu_hover: rgba(255, 255, 255, 0.9);
+@width_head_menu: 140px;
+
+nav#menu_top{
+	width: 100%;
+	height: @height_menu;
+	position: fixed;
+	z-index: 10000;
+	background-color: @color_background_menu;
+
+	&>div{
+		height: @height_menu;
+		
+		&.wrapper{ //Wrapper
+			width: @width_screen_min;
+			margin: 0 auto;
+			
+			&>div{
+				
+			}
+	
+			//__________________ ----------------- HEADER
+			div#header_website{ 
+				width: 340px;
+				float: left;
+				
+				img{
+					height: @height_menu;
+					vertical-align: top;
+				}
+
+				h1{
+					margin: 0;
+					padding: 0 0 0 5px;
+					display: inline-block;
+					line-height: @height_menu;
+					color: rgb(237, 237, 237);
+					font-size: 26px;
+					font-weight: bold;
+					font-style: italic;
+					text-shadow: 0 0 5px gray;
+				}
+			}
+		
+			div.margin_menu{
+				//width: @width_screen_min - (@number_bt_menu * @width_bt_menu) - @width_head_menu;
+			}
+
+			//__________________ ----------------- MENU
+			div#menu_links{
+				width: 5*@width_bt_menu;
+				float: right;
+
+				ul{
+					display: table;
+					height: @height_menu;
+					padding: 0;
+					margin: 0;
+
+					li{
+						display: inline-block;
+						text-align: center;
+						width: @width_bt_menu;
+						position: relative;
+						background-color: transparent;
+
+						a{
+							line-height: @height_menu;
+							display: inline-block;
+							width: @width_bt_menu;
+							color: white;
+							font-weight: bold;
+							text-decoration: none;
+
+							&:hover{
+								color: @color_black_almost;
+							}
+
+							&.selected{
+								background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.9) 1%, rgba(255,255,255,0.4) 100%); /* FF3.6+ */
+								background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,0.9)), color-stop(1%,rgba(255,255,255,0.9)), color-stop(100%,rgba(255,255,255,0.4))); /* Chrome,Safari4+ */
+								background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.9) 1%,rgba(255,255,255,0.4) 100%); /* Chrome10+,Safari5.1+ */
+								background: -o-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.9) 1%,rgba(255,255,255,0.4) 100%); /* Opera 12+ */
+								background: -ms-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.9) 1%,rgba(255,255,255,0.4) 100%); /* IE10+ */
+								background: radial-gradient(ellipse at center,  rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.9) 1%,rgba(255,255,255,0.4) 100%); /* W3C */
+								filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6ffffff', endColorstr='#66ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+								color: @color_black_almost;
+
+								&:after{
+									background-color: @color_black_almost;
+								}
+							}
+
+							// ------------------ LIGNE SEPARATRICE 
+							@height_vline_menu: 30px;
+							&:after {  
+								content: "";
+								display: inline-block;
+								position: absolute;
+								right: 0;
+								top: (@height_menu - @height_vline_menu)/2;
+								background-color: white;
+								.vline_separator(30px, 4px);
+							}  		
+						}
+					} // ===== Fin de li
+
+					li:last-child{
+						a:after{
+							display: none;
+						}
+					}
+				}
+			}// Fin de #menu_links
+		}// FIn de .wrapper
+	}// Fin de div
+}
+
+//__________________ ----------------- ************	 PANNEAU DE PRESENTATION
+@padding_horizontal_hi: 30px;
+@padding_vertical_hi: 40px;
+@border_size_hi: 8px;
+#header_info{
+	background: -moz-linear-gradient(top, rgba(227,227,226,1) 1%, rgba(255,255,255,1) 51%, rgba(227,227,226,1) 100%); /* FF3.6+ */
+	background: -webkit-linear-gradient(top, rgba(227,227,226,1) 1%,rgba(255,255,255,1) 50%,rgba(227,227,226,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(227,227,226,1) 1%,rgba(255,255,255,1) 50%,rgba(227,227,226,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(227,227,226,1) 1%,rgba(255,255,255,1) 51%,rgba(227,227,226,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(227,227,226,1) 1%,rgba(255,255,255,1) 51%,rgba(227,227,226,1) 100%); /* W3C */
+	padding: (20px + @height_menu) 50px 20px 50px;
+	
+	//__________________ ----------------- PANNEAU DE PRESENTATION
+
+	&>div{
+		background: -moz-linear-gradient(-45deg, rgba(191,100,91,1) 1%, rgba(178,65,65,1) 50%, rgba(191,100,91,1) 100%); /* FF3.6+ */
+		background: -webkit-linear-gradient(-45deg, rgba(191,100,91,1) 1%,rgba(178,65,65,1) 50%,rgba(191,100,91,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(-45deg,  rgba(191,100,91,1) 1%,rgba(178,65,65,1) 50%,rgba(191,100,91,1) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(-45deg, rgba(191,100,91,1) 1%,rgba(178,65,65,1) 50%,rgba(191,100,91,1) 100%); /* IE10+ */
+		background: linear-gradient(135deg, rgba(191,100,91,1) 1%,rgba(178,65,65,1) 50%,rgba(191,100,91,1) 100%); /* W3C */
+		width: @width_fixed_content - 2*@padding_horizontal_hi - 2*@border_size_hi;
+		margin: 0 auto;
+		padding: (@padding_horizontal_hi -2px) @padding_vertical_hi;
+		border-radius: 10px;
+		border: 8px double white;
+
+		p, span{		
+			font-size: 22px;
+			font-style: italic;
+		}
+		
+		p{
+			color: white;
+		}
+		
+	}
+
+	
+}
+
+//__________________ ----------------- ************	 MENU VITRINE
+@padding_horizontal_md_cell: 30px;
+@padding_vertical_md_cell: 20px;
+@width_md_cell: 200px;
+@height_md_description: 100px;
+@width_md_img: @width_md_cell;
+@height_md_img: (@height_img_display/@width_img_display)*@width_md_cell;
+@height_md_vline: (@height_md_description+@height_md_img);
+@width_md_vline: 8px;
+
+#menu_display{
+	background-color: @color_background_main;
+	height: 600px;
+
+	ul{
+		display: table;
+		margin: 0 auto;
+		
+		li{
+			display: table-cell;
+			width: @width_md_cell;
+	
+			a{ 
+				width: @width_md_cell;
+				display: block;
+				padding: @padding_vertical_md_cell @padding_horizontal_md_cell;
+				position: relative;
+				cursor: pointer;
+				background: @color_background_main;
+				text-decoration: none;
+				.transition(all 0.2s linear);
+
+				span:first-child{
+					font-size: 40px;
+					line-height: 50px;
+					font-weight: bold;
+					display: block;
+				}
+				
+			
+				span:nth-child(2){
+					color: @color_black_almost;
+					font-size: 18px;
+					font-weight: normal;
+					display: block;
+					height: @height_md_description;
+				}
+				
+				
+				img{
+					width: @width_md_img;
+					height: @height_md_img;
+					opacity: 0.8;
+				}
+				
+				&:hover{
+					text-shadow: 0px 1px 1px @color_black_almost;
+
+					img{
+						opacity: 1;
+					}
+					
+				}
+				// ------------------ LIGNE SEPARATRICE 
+				&:after{
+					content: "";
+					display: inline-block;
+					position: absolute;
+					right: 0;
+					top: (@height_md_description + @height_md_img + 50 - @height_md_img)/2;
+					background-color: @color_black_almost;
+					.vline_separator(@height_md_vline, @width_md_vline);
+				}
+				
+			
+			}
+		}  // ====== Fin de li
+
+		li:last-child{
+			a:after{
+				display: none;
+			}
+		}
+	}
+}
+
+//================ ================================================== ====================
+//											  CONTAINER
+//================ ================================================== ====================
+
+@height_hs: 370px; 
+@width_hline: 100px;
+@height_hline: 5px;
+@padding_vertical_title: 30px;
+
+//__________________ ----------------- ************	 STYLES COMMUNS ************ ----------------- __________________
+
+//__________________ ----------------- ************ INTRO DE TRANSITION
+.page{
+	position: relative;
+
+	&:after{
+		content: "";
+		background: white;
+		width: 100%;
+		height: 10px;
+		position: absolute;
+		top: 0;
+		display: block;
+		box-shadow: 0px 5px 15px 0px white;
+	}
+
+	.header_section{
+		width: 100%;
+		height: @height_hs;
+		overflow: hidden;
+		position: relative;
+		background: -moz-linear-gradient(-45deg,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+		background: -webkit-linear-gradient(-45deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(-45deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(-45deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+		background: linear-gradient(135deg,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C */
+
+		&:after{
+			content: "";
+			background: white;
+			width: 100%;
+			height: 10px;
+			position: absolute;
+			bottom: 0;
+			display: block;
+			box-shadow: 0 -5px 15px 0px white;
+		}
+
+		.wrapper_hs{
+			width: @width_fixed_content;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-position: 50% 0; 
+			margin: 0 auto;
+			padding-top: 70px;
+			height: (@height_hs - 70px);	
+
+			h2{	
+				.bloc_curved_v1(100px, 450px, 80px, 100px);
+			}
+		}
+	}
+}
+
+//__________________ -----------------  ************ PANNEAU DE  CONTENU
+@width_container: 1000px;
+@width_description_aside: 320px;
+@width_margin_container: 40px;
+@margin_bot_content: 55px;
+.wrapper_container{
+
+	.container{
+		margin: 0 auto;
+		width: @width_container;
+		//max-width: @width_screen_max;
+		margin: 0 auto;
+		padding: 60px 0 100px 0;
+		display: table;
+
+
+		div.margin_container{
+			width: @width_margin_container;
+		}
+
+		h3{
+			.txt_title_black;
+			position: relative;
+			margin: 0 0 @padding_vertical_title 0;
+			display: inline-block;
+
+			&:before{
+				content: "";
+				display: inline-block;
+				position: absolute;
+				left: 0;
+				top: -5px;
+				background-color: rgb(221, 78, 85);
+				.hline_separator(@width_hline, @height_hline);
+			}
+
+			&:after{
+				content: "";
+				display: inline-block;
+				position: absolute;
+				right: 0;
+				bottom: -5px;
+				background-color: rgb(221, 78, 85);
+				.hline_separator(@width_hline, @height_hline);
+			}
+		}
+
+		.content_multiple, .content_unique{
+			margin-bottom: @margin_bot_content;
+		}
+		//__________________ Contenu avec un bloc de description
+		.content_multiple{
+			//.box(horizontal);
+			display: table;
+			width: 100%;
+
+			&>div{
+				display: table-cell;
+				vertical-align: top;
+
+				&.content{
+					//.box-flex(1);
+					//.box-ordinal-group(1);
+
+				}
+
+				&.description_aside{
+					width: @width_description_aside;
+					//.box-ordinal-group(2);
+				}	
+			}
+		}
+		//__________________ Contenu avec un contenu sans description
+		.content_unique{
+			//margin-left: @width_description_aside;
+			p{
+
+			}
+		}
+
+	}
+}
+
+//__________________ ----------------- PANNEAU DE  DESCRIPTION
+.description_aside{
+
+	.margin_da{
+		display: block;
+		height: 50px;
+	}
+	
+	.question_da{
+		border-radius: 10px;
+		border: 2px solid @color_background_main;
+		padding: 5px 10px;
+		display: inline-block;
+
+		div, p{
+			font-size: 18px;
+			font-weight: bold;
+			color: @color_blue_ocean;
+		}
+
+		.bt_da{
+			font-size: 18px;
+			font-weight: bold;
+			color: @color_black_almost;
+			display: inline-block;
+			padding-left: 2px;
+			border-color: @color_background_main;
+		}
+	}
+
+	.wrapper_da{
+		width: 300px;
+		background-color: white;
+		border-radius: 10px;
+		border: 1px solid @color_background_main;
+		padding: 5px;
+		position: relative;
+		display: none;
+
+		.container_da{
+			padding: 15px;
+			border-radius: 10px;
+			border: 4px solid  @color_background_main;
+			background: rgb(247, 247, 247);
+
+			// ========= Guillemets ouvrants
+			&:before{
+				content: "";
+				display: inline-block;
+				height: 27px;
+				width: 38px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background: url('@{path_img}/quotes_open.png');
+			}
+
+			// ========= Guillemets fermants
+			&:after{
+				content: "";
+				display: inline-block;
+				height: 27px;
+				width: 38px;
+				position: absolute;
+				right: -5px;
+				bottom: 5px;
+				background-image: url('@{path_img}/quotes_close.png');
+			}
+
+			p{
+				color: @color_black_almost;
+
+				&:first-child{
+					font-size: 18px;
+					margin-bottom: 2px;
+					font-weight: bold;
+					color: @color_blue_ocean;
+				}
+
+				font-size: 17px;
+			}
+
+		}
+	}
+}
+
+
+//__________________ ----------------- ************	 STYLES UNIQUE AU CV ************ ----------------- __________________
+section#cv{
+	font-size: 20px;
+	
+	&.page:after{
+		height: 15px;
+		box-shadow: none;
+		background: -moz-linear-gradient(top,  rgba(227,227,226,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(227,227,226,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  rgba(227,227,226,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  rgba(227,227,226,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  rgba(227,227,226,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  rgba(227,227,226,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e3e3e2', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+	}
+
+	.header_section{
+
+		&:before{
+			background-color: @color_background_main;
+		}
+
+		.wrapper_hs{
+			background-image: url('@{path_img}/screen.png');
+		}
+
+	}
+	
+	table{
+
+		tr{
+			
+			td{
+				vertical-align: top;
+				
+				&:first-child{
+					width: 110px;
+					text-align: center;
+				}
+
+				&:last-child{
+					padding-bottom: 2px;
+				}	
+
+				.description{
+					color: rgb(135, 135, 135);
+				}
+				
+				&.double_cell{ // Cellule avec colspan=2
+					text-align: left;
+				}
+			}
+		}
+	}
+
+	.container{
+		
+		//__________________ Competences
+		#competences{
+			margin-bottom: 0px;
+
+			table{
+				tr{
+					td:first-child{
+						width: 150px;
+						text-align: left;
+					}
+				}
+			}
+		}
+		
+		//__________________ Certifications
+		#certifications{
+
+			div{
+				text-align: center;
+				margin-top: 10px;
+				
+				img{
+					box-shadow: 0px 1px 1px gray;
+					vertical-align: middle;
+
+					&.ciw{
+						width: 80px;
+						opacity: 0.5;		
+					}
+
+					&.oracle{
+						width: 90px;
+						opacity: 0.7;
+						box-shadow: 0px 1px 1px gray;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+//__________________ ----------------- ************	 STYLES UNIQUE A PROJETS ************ ----------------- __________________
+
+//__________________ ----------------- ************	 SLIDER
+@width_slider: 615px; //Largeur de la gallerie
+@height_slider: 410px; //Hauteur de la gallerie
+@width_excerpt: 300px;
+@padding_excerpt: 10px;
+@number_slides: 2;
+@height_bt_slider: 50px;
+@border_radius_slider: 15px;
+
+#slider {
+	width: @width_slider + @width_excerpt;
+	height: @height_slider + @height_bt_slider;
+	position: relative;	
+	overflow: hidden;
+	border: 2px ridge gray;
+	border-radius: @border_radius_slider 0 0 @border_radius_slider;
+
+	//__________________ GALLERIE D'IMAGES
+	#mask-gallery {
+		overflow: hidden;	
+		width: @width_slider;
+		height: @height_slider;
+		position: absolute;
+		left :@width_excerpt;
+		
+		ul.gallery {
+			list-style: none;
+			margin:0;
+			padding:0;
+			display: block;
+			z-index:0;
+			width: (@width_slider * @number_slides);
+			height: @height_slider;
+			overflow: hidden;
+
+			 li {
+				float: left;
+				
+				 img{
+					width: @width_slider;
+					height: @height_slider;
+				}
+			}
+		}
+	}
+
+	//__________________ EXTRAITS
+	#mask-excerpt {
+		position: absolute;	
+		top: 0;
+		left: 0;
+		z-index: 500;
+		width: @width_excerpt;
+		height: @height_slider + @height_bt_slider;
+		overflow: hidden;	
+		
+		ul.excerpt {
+			list-style: none;
+			margin: 0;
+			display: inline-block;
+			z-index: 10;
+			overflow: hidden;
+			font-size: 10px;
+			color: black;	
+			background: none;
+
+			 li {
+				display: block;
+				height:(@height_slider + @height_bt_slider); 
+				background-color:  rgba(226,226,227,1);
+				position: relative;
+				border-radius: @border_radius_slider 0 0 @border_radius_slider;
+
+				div, p{
+					color: @color_black_almost;
+					font-weight: bold;
+					font-size: 20px;
+					margin-bottom: 15px;
+					
+					.excerpt_description{	
+						font-weight: normal;
+					}
+				}
+				
+				.excerpt_content, .excerpt_foot, .excerpt_footer{
+					padding-left: @padding_excerpt;
+					padding-right: @padding_excerpt;
+					width: (@width_excerpt - 2*@padding_excerpt);
+
+					div, p, a{
+						display: block;
+						width: (@width_excerpt - 2*@padding_excerpt);
+					}	
+				}
+
+				.excerpt_content{
+					
+					.excerpt_title{
+						padding-top: 15px;
+						color: @color_black_almost;
+						text-transform: uppercase;
+						margin-bottom: 20px;
+						font-weight: bold;
+						font-size: 20px;
+						text-decoration: underline;
+					}
+				}
+
+				.excerpt_foot{
+					position: absolute;
+					bottom: @height_bt_slider;
+
+					a{
+						color: rgb(80, 82, 159);
+
+						&:hover{
+							color: @color_orange_fruit;
+						}
+
+						&.offline{	
+							&:hover{
+								color: rgb(80, 82, 159);
+							}
+						}
+					}
+					
+				
+				}
+				
+				.excerpt_footer{
+					height: @height_bt_slider;
+					width:  (@width_excerpt - 2*@padding_excerpt);
+					padding: 0 @padding_excerpt;	
+					position: absolute;
+					bottom: 0;
+					border-radius: 0 0 0 @border_radius_slider;			
+					background-color: @color_red_blood;
+					margin: 0;
+					
+					span{
+						display: inline-block;
+						color: white;
+						line-height: @height_bt_slider;
+						text-transform: uppercase;
+					}
+				}
+			}
+		}
+	}
+
+
+	//__________________ BOUTONS
+	#buttons{
+		margin: 0 auto;
+		z-index: 1000;
+		position: absolute;
+		bottom: 0px;
+		left:@width_excerpt;
+		width: @width_slider;
+		height: @height_bt_slider;
+		display: table;
+
+		 a.btn-margin{
+			width: @width_excerpt;
+		}
+
+		 a{
+			display: table-cell;
+			height: @height_bt_slider;
+			font-size: @height_bt_slider;
+			font-weight: bold;
+			color: black;
+			text-decoration: none;
+			line-height: @height_bt_slider;
+			text-align: center;
+			transition: all ease-in 0.3s;
+		}
+		
+		.btn-margin{
+			border-radius: 0 0 0 @border_radius_slider;
+		}
+
+		#btn-prev{
+			border-right: 2px solid gray;	
+			background: -moz-linear-gradient(-45deg,  rgba(255,255,255,0) 0%, rgba(227,227,226,0.5) 50%, rgba(227,227,226,1) 100%); /* FF3.6+ */
+			background: -webkit-linear-gradient(-45deg,  rgba(255,255,255,0) 0%,rgba(227,227,226,0.5) 50%,rgba(227,227,226,1) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(-45deg,  rgba(255,255,255,0) 0%,rgba(227,227,226,0.5) 50%,rgba(227,227,226,1) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(-45deg,  rgba(255,255,255,0) 0%,rgba(227,227,226,0.5) 50%,rgba(227,227,226,1) 100%); /* IE10+ */
+			background: linear-gradient(135deg,  rgba(255,255,255,0) 0%,rgba(227,227,226,0.5) 50%,rgba(227,227,226,1) 100%); /* W3C */
+		}
+		
+		#btn-next{
+			background: -moz-linear-gradient(-45deg,  rgba(227,227,226,1) 0%, rgba(227,227,226,0.5) 50%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+			background: -webkit-linear-gradient(-45deg,  rgba(227,227,226,1) 0%,rgba(227,227,226,0.5) 50%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(-45deg,  rgba(227,227,226,1) 0%,rgba(227,227,226,0.5) 50%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(-45deg,  rgba(227,227,226,1) 0%,rgba(227,227,226,0.5) 50%,rgba(255,255,255,0) 100%); /* IE10+ */
+			background: linear-gradient(135deg,  rgba(227,227,226,1) 0%,rgba(227,227,226,0.5) 50%,rgba(255,255,255,0) 100%); /* W3C */
+		}
+
+		#btn-next:hover ,#btn-prev:hover{
+			background: rgb(255,255,255);
+		}
+	}
+}
+
+
+section#projets{
+
+	.wrapper_hs{
+		background-image: url('@{path_img}/keyboard.png');
+	}
+	
+	.content_unique{
+		p{
+		
+		}
+	}
+}
+
+
+//__________________ ----------------- ************	 STYLES UNIQUE DE APROPOS ************ ----------------- __________________
+
+//__________________ ----------------- PANNEAU DE  DESCRIPTION
+@width_description_info: 300px;
+@padding_di: 25px;
+.description_info{
+	width: @width_description_info - (2*@padding_di);
+	padding: @padding_di;
+	min-height: 150px;
+	border-bottom-left-radius: @padding_di (@padding_di * 2);
+	border-top-right-radius: @padding_di (@padding_di * 2);
+	border: 4px solid  @color_background_main;
+	background: rgb(247, 247, 247);
+	
+	.wrapper_di{
+		position: relative;
+
+		.container_di{
+			// ========= Guillemets ouvrants
+			&:before{
+				content: "";
+				display: inline-block;
+				height: 27px;
+				width: 38px;
+				position: absolute;
+				left: -40px;
+				top: -20px;
+				background: url('@{path_img}/quotes_open.png');
+			}
+
+			// ========= Guillemets fermants
+			&:after{
+				content: "";
+				display: inline-block;
+				height: 27px;
+				width: 38px;
+				position: absolute;
+				right: -40px;
+				bottom: -20px;
+				background-image: url('@{path_img}/quotes_close_y.png');
+			}
+
+			h4{
+				margin-bottom: 2px;
+				font-weight: bold;
+				color: @color_blue_ocean;
+				text-transform: uppercase;
+			}
+
+			p{
+				color: @color_black_almost;
+				font-weight: normal;
+				font-size: 18px;
+			}
+		}
+	}
+}
+
+
+@space_di: @width_description_info + 50;
+@height_di: 212px;
+section#apropos{
+
+	.wrapper_hs{
+		background-image: url('@{path_img}/mouse.png');
+	}
+
+	.content_special{
+		position: relative;
+		height: (@height_di + 100);
+
+		.description_info{
+			height: @height_di;
+			position: absolute;
+			opacity: 0;
+
+			&:nth-child(1){
+				left: 0;
+				top: 0;
+			}
+			
+			&:nth-child(2){
+				left: @space_di;
+				top: 0;
+			}
+
+			&:nth-child(3){
+				left: (2*@space_di);
+				top: 0;
+			}
+
+			.wrapper_di{
+				.container_di{
+					// ========= Guillemets ouvrants
+					&:before{
+					
+					}
+
+					&:after{
+						
+					}
+				}
+			}
+		}
+	}
+}
+
+//__________________ ----------------- ************	 STYLES UNIQUE DE APROPOS ************ ----------------- __________________
+section#contact{
+
+	.wrapper_hs{
+		background-image: url('@{path_img}/headset.png');
+	}
+	
+	.wrapper_container{
+		background-color: @color_background_main;
+	}
+	.container{
+
+	}
+
+	.content_unique{
+		height: 300px;
+		
+	}
+}
+
+
+//__________________ ----------------- ************	 STYLES UNIQUE DE CONTACT ************ ----------------- __________________
+section#contact{
+	
+	.header_section{
+
+		&:after{
+			height: 15px;
+			box-shadow: none;
+			background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(227,227,226,1) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(227,227,226,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(227,227,226,1) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(227,227,226,1) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(227,227,226,1) 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(227,227,226,1) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#e3e3e2',GradientType=0 ); /* IE6-9 */
+		}
+
+		.wrapper_hs{
+			background-image: url('@{path_img}/headset.png');
+		}
+	}
+	
+	
+	//__________________ ----------------- CONTAINER
+	@width_icon_panel: 300px;
+	@height_icon_panel: 300px;
+	@height_vcard_panel: 224px;
+
+	@line_height_vcard: @height_vcard_panel/4;
+	@width_icon_pointer: 110px;
+	@height_icon_pointer: 28px;
+	@size_icon_contact: 56px;
+
+	.wrapper_container{
+		background: rgb(255,255,255); /* Old browsers */
+		background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%, rgba(227,227,226,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(227,227,226,1))); /* Chrome,Safari4+ */
+		background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(227,227,226,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(227,227,226,1) 100%); /* Opera 12+ */
+		background: -ms-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(227,227,226,1) 100%); /* IE10+ */
+		background: radial-gradient(ellipse at center,  rgba(255,255,255,1) 0%,rgba(227,227,226,1) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e3e3e2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+		height: 400px;
+		position: relative;
+	
+		.container{
+			padding: 50px 0;
+			position: relative;
+			display: table;
+
+			>div{
+				display: inline-block;
+				position: relative;
+				vertical-align: top;
+			}
+
+			.vcard_icons{
+				width: @width_icon_panel;
+				height: @height_icon_panel;	
+			
+				img{
+					position: absolute;
+
+					&.icon_pointer{
+						width: @width_icon_pointer;
+						height: @height_icon_pointer;
+					}
+					
+					&.icon_contact{
+						width: @width_icon_contact;
+						height: @height_icon_contact;
+					}
+					
+					&#icon_pointer_red{
+						top: 0;
+						left: (@width_icon_panel - @width_icon_pointer)/2;
+					}
+					
+					&#icon_letter{
+						top: @height_icon_panel/2 + 8px;
+						left: (@width_icon_panel - @size_icon_contact)/2;
+					}
+					
+					&#icon_phone{
+						top:@height_icon_panel/2 - @size_icon_contact - 6px;
+						left: (@width_icon_panel - @size_icon_contact)/2;
+					}
+
+					&#icon_pointer_black{
+						bottom: 0;
+						left: (@width_icon_panel - @width_icon_pointer)/2;
+						.transform-rotate(180deg);
+					}
+				}
+			} // Fin de .vcard_icons
+
+			.vcard{
+				margin-top: (@height_icon_panel - @height_vcard_panel)/2;
+				
+				div, a, span{
+					display: block;
+					font-size: 34px;
+					line-height: 56px;
+					font-weight: bold;
+					font-style: italic;
+					color: black;
+				}
+
+				.fn{
+					//color: @color_black_almost;
+				}
+
+				.email{
+					color: @color_blue_vigor;
+					display: inline-block;
+					.transition(all 0.2s linear);
+					text-decoration: none;
+
+					&:hover{
+						color: @color_orange_fruit;
+					}
+				}
+
+				.tel{
+					color: @color_red_vigor;
+				}
+
+				.adr{
+					span{
+						display: inline;
+					}
+				}
+			}
+		} //Fin de .container
+	} // Fin de .wrapper_container
+
+	
+
+	.content_unique{
+		height: 300px;
+		
+	}
+}
+
+
+//================ ================================================== ====================
+//											  HEADER
+//================ ================================================== ====================
+@height_footer: 60px;
+footer{
+	background-color: @color_background_menu;
+	height: @height_footer;
+
+	p{
+		display: inline-block;
+		margin: 0 auto;
+		width: 100%;
+		text-align: center;
+		height: @height_footer;
+		line-height: @height_footer;
+		color: white;
+	}
+}

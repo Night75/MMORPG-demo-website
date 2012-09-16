@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="{{path_public}}css/ldc.css" type="text/css" />
 	{% endblock %}
 	{% block script %}
-		<script type="text/javascript" src="{{path_public}}js/jquery.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="{{path_public}}js/ldc.js"></script>
 		<script type="text/javascript" src="{{path_public}}js/modernizr.custom.39781.js"></script>
 		<script >	
@@ -55,12 +55,10 @@
 						</ul>
 					</li><!--
 				--><li class="bt-menu-light">
-						<span class="unavailable">A venir</span>
-						<a href="">Guides</a>
+						<a class="unavailable"  href="">Guides</a>
 					</li><!--
-				--><li class="bt-menu-light">
-						<span class="unavailable">A venir</span>
-						<a href="">Forum</a>
+				--><li class="bt-menu-light">	
+						<a class="unavailable" href="">Forum</a>
 					</li>
 						{% if is_granted('ROLE_ADMIN') %}
 						<li class="bt-gold">

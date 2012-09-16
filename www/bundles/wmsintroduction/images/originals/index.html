@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		
+		<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.22.custom.js"></script>
+		<script type="text/javascript" src="js/my_jquery_functions.js"></script>
+		<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+		<script type="text/javascript" src="js/modernizr.custom.39781.js"></script>
+		<script type="text/javascript" src="js/jquery.scrollTo-1.4.2-min.js"></script>
+		<script type="text/javascript" src="js/jquery.parallax-1.1.3.js"></script>
+		<script type="text/javascript" src="js/waypoints.min.js"></script>
+		<script type="text/javascript" src="js/event_handlers.js"></script>
+		<script >	
+			//*************** --------------  ___________  DECTECTION DE LA COMPATIBILITE DU NAVIGATEUR ___________--------------*************** 
+			if(!Modernizr.cssgradients || !Modernizr.textshadow || !Modernizr.boxshadow){
+					alert("Veuillez mettre a jour votre navigateur, ou telecharger un navigateur plus recent.");
+					window.location.href = "http://www.google.fr/chrome/index.html?hl=fr&brand=CHNG&utm_source=fr-hpp&utm_medium=hpp&utm_campaign=fr";
+			}	
+		</script>
+		<link rel="stylesheet" href="css/website.css">
+	</head>
+	<body>
+		
+		<header id="accueil">
+			
+			<nav id="menu_top">
+				<div class="wrapper">	
+					<div id="header_website"></div>
+					<div class="margin_menu"></div>
+					<div id="menu_links">
+						<ul>
+							<li><a href="#accueil">Accueil</a></li><!--
+							--><li><a href="#cv">CV</a></li><!--
+							--><li><a href="#projets">Projets</a></li><!--
+							--><li><a href="#apropos">A propos</a></li><!--
+							--><li><a href="#contact">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			
+			<div id="header_info">
+				
+				<div >
+					<p>Bonjour, je m'appelle <span class="txt_light">LAI Jean-Francois</span>, je suis <span class="txt_light">developpeur Web</span>. 
+Tout juste a mes debuts, mais reellement <span class="txt_light">passionne par les technologies web</span>, je suis entraine chaque jour a <span class="txt_light">m'enrichir de nouveaux savoirs</span>. Envieux de participer a des projets divers et varies, <span class="txt_light">je recevrai toute proposition avec enthousiasme!</span></p>
+				</div>
+				
+			</div>
+			
+			<nav id="menu_display">
+				<ul>
+					<li>
+						<a href="#cv"><span class="txt_title_black">CV</span><span>Decouvrez mes experiences, mes competences acquises au cours de mon parcours atypique!</span><img src="images/screen.png"/></a> 
+					</li>
+					<li>
+						<a href="#projets"><span class="txt_title_black">PROJETS</span><span>Mes projets personnels realises</span><img src="images/keyboard.png"/></a> 
+					</li>
+					<li>
+						<a href="#apropos"><span class="txt_title_black">A PROPOS</span><span>Parlons de ma personnalite, mes projets d'avenirs... bref... des histoires captivantes en vue! </span><img src="images/mouse.png"/></a>
+					</li>
+					<li><a href="#cv"><span class="txt_title_black">CONTACT</span><span>Interesse par mon profil? Contactez moi. </span><img src="images/headset.png"/></a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<!-- *======================================================================================================== -->
+		<!-- *************** ------------------- _____________________ PAGE CV _____________________ ------------------ ***************-->		
+		<!-- *======================================================================================================== -->
+		<section id="cv">
+			
+			<!-- *************** ------------------- _____________________INTRO DE TRANSITION ________ ------------------ ***************-->	
+			<div class="header_section"/>		
+				<div class="wrapper_hs">
+					<h2>CV</h2>
+					<div class="img_hs"></div>
+				</div>	
+			</div>
+			
+			<div class="wrapper_container">
+				<div class="container">
+					<div class="margin_container"></div>
+
+
+					<!-- *************** ------------------- _____________________ FORMATION  _____________________ ------------------ ***************-->		
+					<div id="formation" class="content_multiple">
+
+						<div class="content">
+							<h3>FORMATION</h3>	
+							<table>
+								<tbody>
+									<tr>
+										<td>2011-2012</td>
+										<td>
+											<p>Formation en alternance Développement Web - PHP/SQL</p>
+											<p class="description">Institut des Technologies du Système d'Information</p>
+										</td>
+									</tr>
+									<tr>
+										<td>2008-2010</td>
+										<td>
+											<p>M1 et M2 Génie civil et Infrastructures</p>
+											<p class="description">Université de Cergy Pontoise</p>
+										</td>
+									</tr>
+									<tr>
+										<td>2004-2008</td>
+										<td>
+											<p>Licence de Physique</p>
+											<p class="description">Universite Paris 7 Denis Diderot</p>
+										</td>
+									</tr>
+									<tr>
+										<td>2003-2004</td>
+										<td>
+											<p>Baccalaureat général scientifique</p>
+											<p class="description">Lycée Charlemagne</p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>	
+
+						<div class="description_aside">
+							<div class="wrapper_da">
+								<div class="container_da">
+									<p>Pourquoi cette reorientation vers le web?</p>
+									<p>Je n'ai jamais vraiment été intéressé par le génie civil, bien que j'ai tenu a en obtenir le diplôme. Aujourd'hui je mesure l'importance de travailler d'une chose qui me passionne. Depuis que je suis dans le web, je suis plus motivé, plus efficace, de meilleure humeur! </p>
+								</div>	 
+							</div>
+						</div>
+
+					</div>	<!-- ===== Fin de #formation ====== -->
+
+
+					<!-- *************** ------------------- _____________________ EXPERIENCES  _____________________ ------------------ ***************-->		
+					<div id="experiences" class="content_unique">
+
+						<h3>EXPERIENCES</h3>	
+
+						<table>
+							<tbody>
+								<tr>
+									<td colspan="2" class="double_cell">
+										<span class="title_small no_margin">Dans le web:</span>
+									</td>
+								</tr>
+								<tr>
+									<td>2011-2012</td>
+									<td>
+										<p>Développeur web en contrat de professionalisation</p>
+										<p class="description">	
+											Contrat de 1 an chez I-GEO-BLG. Formation en parallèle à IT-SI <br>
+											Développement d'applications SIG (Systèmes d'information géographique)<br>
+											Conception et développement d'applications internes <br>
+											Langages principaux utilisés: Mapguide viewer API, javascript, ASP, PHP
+										</p>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" class="double_cell"><span class="title_small">Autres experiences: </span> 
+										<a class="bt_toggle" data-title="Afficher/Masquer les autres experiences" data-class=".opt-exp">
+											&#9658;
+										</a>
+									</td>
+								</tr>
+								<tr class="optionnal opt-exp" data-name="autres experiences">
+									<td>2010</td>
+									<td>
+										<p>Stage conducteur de travaux</p>
+										<p class="description">5 mois chez Levaux - Logements étudiants à Bobigny(93)</p>
+									</td>
+								</tr>
+								<tr class="optionnal opt-exp" data-name="autres experiences">
+									<td>2009</td>
+									<td>
+										<p>Stage conducteur de travaux</p>
+										<p class="description">3 mois chez Fayolles et Fils - Secteur voirie à Paris 12ème</p>
+									</td>
+								</tr>
+								<tr class="optionnal opt-exp" data-name="autres experiences">
+									<td>2008</td>
+									<td>
+										<p>Equipier polyvalent chez Macdonald's</p>
+									</td>
+								</tr>
+								<tr class="optionnal opt-exp" data-name="autres experiences">
+									<td>2007-2010</td>
+									<td>
+										<p>Professeur particulier de Maths, Physique-Chimie</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div> <!-- ===== Fin de #experiences ====== -->
+
+					<!-- *************** ------------------- _____________________ COMPETENCES  _____________________ ------------------ ***************-->	
+					<div id="competences" class="content_multiple">
+
+						<div class="content">
+							<h3>COMPETENCES</h3>	
+							<table>
+								<tbody>
+									<tr>
+										<td><u>Langages:</u></td>
+										<td>
+											<p>
+												HTML5, CSS3 ,Javascript, XML <br>
+												PHP 5, ASP, MySQL 
+											</p>
+										</td>
+									</tr>
+									<tr>
+										<td><u>Frameworks</u></td>
+										<td><p>Symfony 2, jQuery</p></td>
+									</tr>
+									<tr>
+										<td><u>Infographie</u></td>
+										<td><p>Adobe Illustrator CS5</p></td>
+									</tr>
+									<tr>
+										<td><u>Editeurs de texte</u></td>
+										<td><p>Netbeans, Aptana Studio, Notepad++</p></td>
+									</tr>
+									<tr>
+										<td><u>Autres</u></td>
+										<td><p>
+												Git, Mercurial, Lessphp <br>
+												Mapguide Maestro, Mapguide Author
+											</p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="description_aside">
+							<div class="wrapper_da">
+								<div id="certifications" class="container_da" >
+									<p>Certifications:</p>
+									<div>
+										<img class="ciw" src="images/site_dev_assoc.jpg"/>
+										<img class="ciw" src="images/javascript_sp.jpg"/>
+									</div>
+									<div>
+										<img class="oracle" src="images/OCA_MySQL5.0_5.1_5.5_clr.bmp"/>
+									</div>
+								</div>	 
+							</div>
+						</div>
+
+					</div> <!-- ===== Fin de #competences ====== -->
+
+					<div class="margin_container"></div>
+				</div> <!-- ===== Fin de .container ====== -->
+			</div>
+		</section> <!-- ===== Fin de la page CV ====== -->
+		
+		<!-- *======================================================================================================== -->
+		<!-- *************** ------------------- _____________________ PAGE PROJETS _____________________ ------------------ ***************-->		
+		<!-- *======================================================================================================== -->
+		<section id="projets">
+			
+			<!-- *************** ------------------- _____________________INTRO DE TRANSITION ________ ------------------ ***************-->	
+			<div class="header_section"/>			
+				<div class="wrapper_hs">
+					<h2>PROJETS</h2>
+					<div class="img_hs"></div>
+				</div>	
+			</div>
+			
+			<div class="wrapper_container">
+				<div class="container">
+					<div class="margin_container"></div>
+				<!-- *************** ------------------- _____________________SLIDER________ ------------------ ***************-->
+						<div id="projets">
+
+							<div class="content_unique">
+								<h3>PROJETS PERSONNELS</h3>
+								<p>
+									Les projets ont été réalisés dans un but personnel. Ils m'ont permis de m'exercer a la programmation,
+									de travailler sur des langages et des applications auxquelles je n'ai pas été confronté dans mon milieu professionnel.
+									Les fichiers codés sont open source et mis en ligne (liens dans le slider).
+								</p>
+							</div>
+							<div id="slider">
+								<!-- *************** ------------------- GALLERIE D'IMAGES -->
+								<div id="mask-gallery">
+									<!-- *************** Gallerie 1 -->
+									<ul id="tt" class="gallery">
+										<li><img src="images/gallery_1_1.png" alt=""/></li>
+										<li><img src="images/gallery_1_3.png" alt=""/></li>
+									</ul>
+									<!-- *************** Gallerie 2 -->
+									<ul class="gallery">
+										<li><img src="images/pier1.jpg" alt=""/></li>
+										<li><img src="images/pier3.jpg" alt=""/></li>
+									</ul>
+								</div>
+
+								<!-- *************** ------------------- DESCRIPTIONS DES GALLERIES  -->
+								<div id="mask-excerpt">
+									<!-- *************** Description de la gallerie 1 -->
+									<ul class="excerpt">
+										<li>
+											<div class="excerpt_content">
+												<div>
+													<p class="excerpt_title">Site de demo d'un jeu video:</p>
+													<p><u>Objectifs de l'application:</u><br>
+													<span class="excerpt_description">
+														Site d'une guilde d'un jeu vidéo du type MMO. 
+														Les membres pourraient consulter des news, participer à des évènements, discuter entre eux.
+													</span>
+													</p>
+													<p><u>Technologies utilisés:</u><br>
+														-Design: <span class="excerpt_description">Adobe illustrator CS5</span><br>
+														-Programmation: 
+														<span class="excerpt_description">Symfony2 (Twig, Doctrine2), jQuery, LessPHP, html</span>
+													</p>
+												</div>
+											</div>
+											<div class="excerpt_foot">
+												<div>
+													<u>Code source:</u> <br>
+													<a href="https://github.com/Night75/Symfony-2-Project">https://github.com/Night75/Symfony-2-Project</a>
+												</div>
+											</div>
+											<div class="excerpt_footer">
+												<div>Projet 1/2</div>
+											</div>
+										</li>
+										
+										<li>
+											<div class="excerpt_content">
+												<div>
+													<p class="excerpt_title">Site de demo d'un jeu video:</p>
+													<p><u>Infos complementaires:</u> <br>
+														<span class="excerpt_description">- Forum non implémenté</span> <br>
+														<span class="excerpt_description">- Images utilisées libres de droits pour un usage non commercial</span> <br>
+														<span class="excerpt_description">- Back office non accessible aux utilisateurs anonymes</span> <br>
+														<span class="excerpt_description">- Améliorations a venir!</span
+													</p>
+												</div>
+											</div>
+											<div class="excerpt_foot">
+												<div>			
+													<u>Code source:</u> <br>
+													<a href="https://github.com/Night75/Symfony-2-Project">https://github.com/Night75/Symfony-2-Project</a>
+												</div>
+											</div>
+											<div class="excerpt_footer">
+												<div>Projet 1/2</div>
+											</div>
+										</li>
+									</ul>
+									<!-- *************** Description de la gallerie 2 -->
+									<ul class="excerpt">
+										<li>
+											<div class="excerpt_content">
+												<div>
+													<p class="excerpt_title">Webmail:</p>
+													<p><u>Objectifs de l'application:</u><br>
+													<span class="excerpt_description">
+														Webmail qui serait implémenté dans un intranet d'une société de type PME. 
+														Le webmail assure les fonctionnalités de base telles que la consultation et l'envoi de messages Html.
+													</span>
+													</p>
+													<p><u>Technologies utilisés:</u><br>
+														-Programmation: 
+														<span class="excerpt_description">PHP, Javascript, jQuery, HTML, CSS</span>
+													</p>	
+												</div>
+											</div>
+											<div class="excerpt_foot">
+												<div>			
+													<u>Code source:</u> <br>
+													<a href="https://github.com/Night75/Symfony-2-Project">https://github.com/Night75/Symfony-2-Project</a>
+												</div>
+											</div>
+											<div class="excerpt_footer">
+												<div>Projet 2/2</div>
+											</div>
+										</li>
+										
+										<li>
+											<div class="excerpt_content">
+												<div>
+													<p class="excerpt_title">Webmail:</p>
+													<p><u>Infos complementaires:</u> <br>
+														<span class="excerpt_description">- Ma première application PHP! (Plusieurs reworks integraux effectués)</span> <br>
+														<span class="excerpt_description">- </span> <br>
+													</p>
+												</div>
+											</div>
+											<div class="excerpt_foot">
+												<div>			
+													<u>Code source:</u> <br>
+													<a href="https://github.com/Night75/Symfony-2-Project">https://github.com/Night75/Symfony-2-Project</a>
+												</div>
+											</div>
+											<div class="excerpt_footer">
+												<div>Projet 2/2</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div id="buttons">
+									<a href="#" id="btn-prev"><</a> 
+									<a href="#" id="btn-next">></a>
+								</div>
+							</div> <!-- ===== Fin de #slider ====== -->
+
+						</div>
+					<div class="margin_container"></div>
+				</div> <!-- ===== Fin de .container ====== -->
+			</div>
+		</section> <!-- ===== Fin de la page PROJETS ====== -->
+		
+		
+		<!-- *======================================================================================================== -->
+		<!-- *************** ------------------- _____________________ PAGE A PROPOS _____________________ ------------------ ***************-->		
+		<!-- *======================================================================================================== -->
+		<section id="apropos">
+			
+			<!-- *************** ------------------- _____________________INTRO DE TRANSITION ________ ------------------ ***************-->	
+			<div class="header_section"/>			
+				<div class="wrapper_hs">
+					<h2>A PROPOS</h2>
+					<div class="img_hs"></div>
+				</div>	
+			</div>
+			
+			<div class="wrapper_container">
+				<div class="container">
+					<div class="margin_container"></div>
+
+						<div class="content_unique">
+
+							<h3> A PROPOS DE ... MOI</h3>
+
+							<div class="content_special">
+
+								<!-- *************** ------------------- PANNEAU LOISIRS -->
+								<div class="description_info" id="loisirs">
+									<div class="wrapper_di">
+										<div class="container_di">
+											<h4>Mes passions</h4>
+											<p>
+												J’aime me dépenser <b>toute sorte de sport</b>, mais je n'ai malheuresement plus l'occasion d'exercer toutes les activités que je souhaite. 
+												Mes sports du moment sont <b>le football, roller</b> (slalom) et <b>natation</b>.
+												Mes autres passions sont <b>les jeux vidéos, les séries TV, la culture japonaise</b> et bien sûr <b>l’informatique</b> !
+											</p>
+										</div>	 
+									</div>
+								</div>	
+
+								<!-- *************** ------------------- PANNEAU PERSONNALITE -->
+								<div class="description_info" id="personnalite">
+									<div class="wrapper_di">
+										<div class="container_di">
+											<h4>Ma personnalite</h4>
+											<p>
+												En ce qui concerne mes qualites, je me vois comme quelqu’un de <b>calme et réfléchi, motivé et investi</b> 
+												dans tous les projets que j'entreprends. De <b>nature curieuse</b>, j’apprécie les activités riches en enseignements.
+												Quant à mes défauts... je ne préfère pas tout dévoiler en ligne sous les yeux de tous!
+											</p>
+										</div>	 
+									</div>
+								</div>	
+
+								<!-- *************** ------------------- PANNEAU REVES -->
+								<div class="description_info" id="reves">
+									<div class="wrapper_di">
+										<div class="container_di">
+											<h4>Mes reves/ projets futurs:</h4>
+											<p>										
+												Mon rêve est de <b>maîtriser toutes les technologies du web</b> possibles. La route vers l'aboutissement
+												de ce rêve ne prendra sûrement jamais fin, mais cela me va très bien puisque cette route est parsemée
+												de decouvertes intéressantes et d'énigmes a résoudre!  
+											</p>
+										</div>	 
+									</div>
+								</div>	
+
+							</div> <!-- ===== Fin de .content_special ====== -->
+						</div> <!-- ===== Fin de .content_unique ====== -->
+					<div class="margin_container"></div>
+				</div> <!-- ===== Fin de .container ====== -->
+			</div>  <!-- ===== Fin de .wrapper_container ====== -->
+			
+		</section> <!-- ===== Fin de la page A PROPOS ====== -->
+	
+		<!-- *======================================================================================================== -->
+		<!-- *************** ------------------- _____________________ PAGE CONTACT _____________________ ------------------ ***************-->		
+		<!-- *======================================================================================================== -->
+		<section id="contact">
+			
+			<!-- *************** ------------------- _____________________INTRO DE TRANSITION ________ ------------------ ***************-->	
+			<div class="header_section"/>			
+				<div class="wrapper_hs">
+					<h2>CONTACT</h2>
+					<div class="img_hs"></div>
+				</div>	
+			</div>
+			
+			<div class="wrapper_container">
+				<div class="container">
+					
+					<div class="vcard_icons">
+						<img id="icon_pointer_red"  class= "icon_pointer" src="images/icon_pointer_red.png" />
+						<img id="icon_letter" class="icon_contact" src="images/icon_letter.png" />
+						<img id="icon_phone" class="icon_contact" src="images/icon_phone.png" />
+						<img  id="icon_pointer_black"  class="icon_pointer" src="images/icon_pointer_black.png" />
+					</div>	
+					
+					<div class="vcard">
+						<span class="fn">Jean-Francois Lai</span>
+						<a class="email" href="mailto:jfrancois.lai@gmail.com">jfrancois.lai@gmail.com</a>
+						<span class="tel">06 49 65 58 04</span>
+						 <span class="adr">
+							 <span class="street-address">127 Avenue de Flandre</span>,
+							<span class="postal-code">75019</span>
+							<span class="locality">Paris</span>
+						 </span>
+					</div>
+					
+				</div> <!-- ===== Fin de .container ====== -->
+			</div>
+			
+		</section> <!-- ===== Fin de la page A PROPOS ====== -->
+	</body>
+</html>

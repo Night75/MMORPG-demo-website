@@ -1,15 +1,3 @@
-wmsintroduction_accueil:
+wmsintroduction_index:
     pattern:  /
-    defaults: { _controller: WmsIntroductionBundle:Introduction:accueil }
-  
-wmsintroduction_cv:
-    pattern:  /cv
-    defaults: { _controller: WmsIntroductionBundle:Introduction:cv }
-
-wmsintroduction_apropos:
-    pattern:  /apropos
-    defaults: { _controller: WmsIntroductionBundle:Introduction:apropos }
-    
-wmsintroduction_contact:
-    pattern:  /contact
-    defaults: { _controller: WmsIntroductionBundle:Introduction:contact }
+    defaults: { _controller: WmsIntroductionBundle:Introduction:index }

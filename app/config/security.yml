@@ -25,6 +25,9 @@ security:
             pattern:  ^/ldc$
             security: false
 
+        login_check:
+            check_path:  /login_check
+
         main:
             access_denied_url: ldc/unauthorized
             pattern: ^/

@@ -28,7 +28,6 @@
       <parameter key="LdcArticleBundle">Ldc\ArticleBundle\LdcArticleBundle</parameter>
       <parameter key="LdcSliderImageBundle">Ldc\SliderImageBundle\LdcSliderImageBundle</parameter>
       <parameter key="LdcSurveyBundle">Ldc\SurveyBundle\LdcSurveyBundle</parameter>
-      <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
       <parameter key="SensioGeneratorBundle">Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle</parameter>
@@ -383,7 +382,6 @@
       <parameter>LdcArticleBundle</parameter>
       <parameter>LdcSliderImageBundle</parameter>
       <parameter>LdcSurveyBundle</parameter>
-      <parameter>AcmeDemoBundle</parameter>
       <parameter>WebProfilerBundle</parameter>
       <parameter>SensioDistributionBundle</parameter>
       <parameter>SensioGeneratorBundle</parameter>
@@ -741,14 +739,6 @@
         <argument type="collection">
           <argument>fos_user.security.interactive_login_listener</argument>
           <argument>onSecurityInteractiveLogin</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
-      <call method="addListenerService">
-        <argument>kernel.controller</argument>
-        <argument type="collection">
-          <argument>acme.demo.listener</argument>
-          <argument>onKernelController</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -2379,7 +2369,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>501fd16c3dd21</argument>
+            <argument>50525ecc0b431</argument>
           </service>
         </argument>
       </argument>
@@ -2607,7 +2597,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>501fd16c3dd21</argument>
+            <argument>50525ecc0b431</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2803,7 +2793,6 @@
               <argument>LdcArticleBundle</argument>
               <argument>LdcSliderImageBundle</argument>
               <argument>LdcSurveyBundle</argument>
-              <argument>AcmeDemoBundle</argument>
               <argument>WebProfilerBundle</argument>
               <argument>SensioDistributionBundle</argument>
               <argument>SensioGeneratorBundle</argument>
@@ -2819,9 +2808,6 @@
             <argument type="service" id="security.context"/>
           </service>
         </argument>
-      </call>
-      <call method="addExtension">
-        <argument type="service" id="twig.extension.acme.demo"/>
       </call>
     </service>
     <service id="twig.loader" class="Symfony\Bundle\TwigBundle\Loader\FilesystemLoader">
@@ -3420,33 +3406,6 @@
                   <argument type="service" id="templating.loader"/>
                   <argument>LdcSurveyBundle</argument>
                   <argument>C:\wamp\www\Symfony_\src\Ldc\SurveyBundle/Resources/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-            </argument>
-          </service>
-        </argument>
-        <argument>twig</argument>
-      </call>
-      <call method="addResource">
-        <argument type="service">
-          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
-            <tag name="assetic.templating.twig"/>
-            <tag name="assetic.formula_resource" loader="twig"/>
-            <argument type="collection">
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>AcmeDemoBundle</argument>
-                  <argument>C:/wamp/www/Symfony_/app/Resources/AcmeDemoBundle/views</argument>
-                  <argument>/\.[^.]+\.twig$/</argument>
-                </service>
-              </argument>
-              <argument type="service">
-                <service class="%assetic.directory_resource.class%" public="false">
-                  <argument type="service" id="templating.loader"/>
-                  <argument>AcmeDemoBundle</argument>
-                  <argument>C:\wamp\www\Symfony_\src\Acme\DemoBundle/Resources/views</argument>
                   <argument>/\.[^.]+\.twig$/</argument>
                 </service>
               </argument>
@@ -4086,14 +4045,6 @@
         <argument key="expiration">60</argument>
         <argument key="quality">15</argument>
       </argument>
-    </service>
-    <service id="twig.extension.acme.demo" class="Acme\DemoBundle\Twig\Extension\DemoExtension" public="false">
-      <tag name="twig.extension"/>
-      <argument type="service" id="twig.loader"/>
-    </service>
-    <service id="acme.demo.listener" class="Acme\DemoBundle\EventListener\ControllerListener">
-      <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController"/>
-      <argument type="service" id="twig.extension.acme.demo"/>
     </service>
     <service id="web_profiler.debug_toolbar" class="Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener">
       <tag name="kernel.event_subscriber"/>
