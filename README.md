@@ -5,7 +5,6 @@ I have done this application mostly for personnal purposes. It allowed me to try
 So the website isn't owned by any group of players. The demo is available here: [http://webmixingshapes.net/ldc/][1].
 
 ### Application aims:
-----------------------------------
 
 Website of a video game guild, MMORPG kind. The members would read community or game related news,
 join events, discuss about anything.
