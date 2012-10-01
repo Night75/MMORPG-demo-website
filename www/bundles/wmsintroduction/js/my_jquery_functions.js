@@ -28,8 +28,9 @@ function highlight(event, item, colorBackground, colorLight, diameter, diameterL
 
 	var bgWebKit = "-webkit-gradient(radial, " + xy + ", " + diameter +", " + xy + ", "+ diameterLight + ", from(" +  colorLight +"), to( " + colorBackground + ")) ";
 	var bgMoz    = "-moz-radial-gradient(" + x + "px " + y + "px 45deg, circle, " + colorLight +  diameter +"px, " + colorBackground + " " + diameterLight + "px)";
+	var bgNotCompatible = colorLight;
 
-	$(item).css({ background: bgWebKit }).css({ background: bgMoz });
+	$(item).css({ background: bgNotCompatible }).css({ background: bgWebKit }).css({ background: bgMoz });
 }
 
 // ========================================= ========================================= =========================================

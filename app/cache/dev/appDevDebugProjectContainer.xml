@@ -621,14 +621,6 @@
     </parameter>
   </parameters>
   <services>
-    <service id="ldc_user.registration.form.type" class="Ldc\UserBundle\Form\Type\RegistrationFormType">
-      <tag name="form.type" alias="ldc_user_registration"/>
-      <argument>Ldc\UserBundle\Entity\User</argument>
-    </service>
-    <service id="ldc_user.profile.form.type" class="Ldc\UserBundle\Form\Type\ProfileFormType">
-      <tag name="form.type" alias="ldc_user_profile"/>
-      <argument>Ldc\UserBundle\Entity\User</argument>
-    </service>
     <service id="authentication_handler" class="Ldc\UserBundle\Handler\AuthenticationHandler"/>
     <service id="twig.extension.debug" class="Twig_Extensions_Extension_Debug">
       <tag name="twig.extension"/>
@@ -1839,8 +1831,6 @@
           <service class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
             <argument type="service" id="service_container"/>
             <argument type="collection">
-              <argument key="ldc_user_registration">ldc_user.registration.form.type</argument>
-              <argument key="ldc_user_profile">ldc_user.profile.form.type</argument>
               <argument key="field">form.type.field</argument>
               <argument key="form">form.type.form</argument>
               <argument key="birthday">form.type.birthday</argument>
@@ -1875,6 +1865,8 @@
               <argument key="fos_user_change_password">fos_user.change_password.form.type</argument>
               <argument key="fos_user_resetting">fos_user.resetting.form.type</argument>
               <argument key="captcha">captcha.type</argument>
+              <argument key="ldc_user_registration">ldc_user.registration.form.type</argument>
+              <argument key="ldc_user_profile">ldc_user.profile.form.type</argument>
             </argument>
             <argument type="collection">
               <argument key="form" type="collection">
@@ -2369,7 +2361,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>505587aba8db3</argument>
+            <argument>5069fcbf55e3a</argument>
           </service>
         </argument>
       </argument>
@@ -2597,7 +2589,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>505587aba8db3</argument>
+            <argument>5069fcbf55e3a</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
@@ -2808,6 +2800,9 @@
             <argument type="service" id="security.context"/>
           </service>
         </argument>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="ldc_website_extension"/>
       </call>
     </service>
     <service id="twig.loader" class="Symfony\Bundle\TwigBundle\Loader\FilesystemLoader">
@@ -4045,6 +4040,17 @@
         <argument key="expiration">60</argument>
         <argument key="quality">15</argument>
       </argument>
+    </service>
+    <service id="ldc_website_extension" class="Ldc\WebsiteBundle\Twig\Extensions\LdcWebsiteExtension">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="ldc_user.registration.form.type" class="Ldc\UserBundle\Form\Type\RegistrationFormType">
+      <tag name="form.type" alias="ldc_user_registration"/>
+      <argument>Ldc\UserBundle\Entity\User</argument>
+    </service>
+    <service id="ldc_user.profile.form.type" class="Ldc\UserBundle\Form\Type\ProfileFormType">
+      <tag name="form.type" alias="ldc_user_profile"/>
+      <argument>Ldc\UserBundle\Entity\User</argument>
     </service>
     <service id="web_profiler.debug_toolbar" class="Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener">
       <tag name="kernel.event_subscriber"/>

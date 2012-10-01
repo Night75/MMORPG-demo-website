@@ -20,13 +20,27 @@
 {% block stylesheets %}
 	<link rel="stylesheet" type="text/css" href="{{path_public}}css/website.css"/>
 	<link rel="shortcut icon" href="{{path_public}}images/favicon.png" />
+	<style>
+			.no-cssgradients #menu_top #menu_links li a:hover{
+			    background: rgba(255,255,255,0.9);
+			}
+			.no-cssgradients #menu_display li a:hover{
+			    background: white;
+			}
+		</style>
+		<!--[if gte IE 9]>
+		  <style type="text/css">
+		    .gradient {
+		       filter: none;
+		    }
+	  </style>
+	<![endif]-->
 {% endblock %}
 
 {% block javascripts %}
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="{{path_public}}js/jquery-ui-1.8.22.custom.js"></script>
 		<script type="text/javascript" src="{{path_public}}js/my_jquery_functions.js"></script>
-		<script type="text/javascript" src="{{path_public}}js/jquery.easing.1.3.js"></script>
 		<script type="text/javascript" src="{{path_public}}js/modernizr.custom.39781.js"></script>
 		<script type="text/javascript" src="{{path_public}}js/jquery.scrollTo-1.4.2-min.js"></script>
 		<script type="text/javascript" src="{{path_public}}js/jquery.parallax-1.1.3.js"></script>
@@ -35,11 +49,13 @@
 		<script type="text/javascript" src="{{path_public}}js/jQueryRotateCompressed.2.2.js"></script>
 		<script type="text/javascript" src="{{path_public}}js/event_handlers.js"></script>
 		<script >	
-			//*************** --------------  ___________  DECTECTION DE LA COMPATIBILITE DU NAVIGATEUR ___________--------------*************** 
-			if(!Modernizr.cssgradients || !Modernizr.textshadow || !Modernizr.boxshadow){
-					alert("Veuillez mettre a jour votre navigateur, ou telecharger un navigateur plus recent.");
-					window.location.href = "http://www.google.fr/chrome/index.html?hl=fr&brand=CHNG&utm_source=fr-hpp&utm_medium=hpp&utm_campaign=fr";
-			}		
+			$(function(){
+				if(!Modernizr.cssgradients || !Modernizr.textshadow || !Modernizr.boxshadow){
+					alert("Votre navigateur ne semble pas être en mesure d'afficher le rendu complet du site. Si vous souhaitez afficher le contenu de manière optimale, veuillez utiliser une version récente de firefox, chrome ou safari.")
+					//alert("Ce site utilise des technologies web récentes. Veuillez mettre à jour votre navigateur, ou télécharger un navigateur plus recent.\nMerci pour votre compréhension.");
+					//window.location.href = "http://www.mozilla.org/fr/firefox/new/";
+				}	
+			})
 		</script>
 {% endblock %}
 
@@ -68,12 +84,12 @@
 				</div>
 			</nav>
 			
-			<div id="header_info">	
-				<div >
+			<div id="header_info" class="gradient">	
+				<div class="gradient">
 					<p>
 						Bonjour, je m'appelle <span class="txt_light">LAI Jean-François</span>, je suis <span class="txt_light">développeur Web</span>. 
 						Tout juste à mes débuts, mais réellement <span class="txt_light">passionné par les technologies web</span>, 
-						je suis entrainé chaque jour à <span class="txt_light">m'enrichir de nouveaux savoirs</span>.
+						je suis entrainé chaque jour à m'enrichir de nouveaux savoirs.
 						Envieux de participer à des projets divers et variés, <span class="txt_light">je recevrai toute proposition avec enthousiasme!</span>
 					</p>
 				</div>
@@ -92,7 +108,7 @@
 						<a href="#apropos"><span class="txt_title_black">A PROPOS</span><span>Parlons de ma personnalité, mes projets d'avenirs... bref... des histoires captivantes en vue! </span>
 						<img src="{{path_public}}images/mouse.png"/></a>
 					</li>
-					<li><a href="#cv"><span class="txt_title_black">CONTACT</span><span>Intéressé par mon profil? Contactez moi. </span>
+					<li><a href="#contact"><span class="txt_title_black">CONTACT</span><span>Intéressé par mon profil? Contactez moi. </span>
 					<img src="{{path_public}}images/headset.png"/></a></li>
 				</ul>
 			</nav>
@@ -104,7 +120,7 @@
 		<section id="cv" class="page">
 			
 			<!-- *************** ------------------- _____________________INTRO DE TRANSITION ________ ------------------ ***************-->	
-			<div class="header_section"/>		
+			<div class="header_section" class="gradient">		
 				<div class="wrapper_hs" id="cv_img">
 					<h2>CV</h2>
 				</div>	
@@ -306,7 +322,7 @@
 		<section id="projets" class="page">
 			
 			<!-- *************** ------------------- _____________________INTRO DE TRANSITION ________ ------------------ ***************-->	
-			<div class="header_section"/>			
+			<div class="header_section" class="gradient">			
 				<div class="wrapper_hs">
 					<h2>PROJETS</h2>
 				</div>	
@@ -450,7 +466,7 @@
 		<section id="apropos" class="page">
 			
 			<!-- *************** ------------------- _____________________INTRO DE TRANSITION ________ ------------------ ***************-->	
-			<div class="header_section"/>			
+			<div class="header_section" class="gradient">			
 				<div class="wrapper_hs">
 					<h2>A PROPOS</h2>
 					<div class="img_hs"></div>
@@ -523,14 +539,14 @@
 		<section id="contact" class="page">
 			
 			<!-- *************** ------------------- _____________________INTRO DE TRANSITION ________ ------------------ ***************-->	
-			<div class="header_section"/>			
+			<div class="header_section" class="gradient">			
 				<div class="wrapper_hs">
 					<h2>CONTACT</h2>
 					<div class="img_hs"></div>
 				</div>	
 			</div>
 			
-			<div class="wrapper_container">
+			<div class="wrapper_container" class="gradient">
 				<div class="container">
 					
 					<div id="contact_panel">

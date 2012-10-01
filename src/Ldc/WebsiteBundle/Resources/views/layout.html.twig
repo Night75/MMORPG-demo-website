@@ -15,10 +15,13 @@
 		<script type="text/javascript" src="{{path_public}}js/modernizr.custom.39781.js"></script>
 		<script >	
 			//*************** --------------  ___________  DECTECTION DE LA COMPATIBILITE DU NAVIGATEUR ___________--------------*************** 
-			if(!Modernizr.cssgradients || !Modernizr.textshadow || !Modernizr.boxshadow){
-					alert("Veuillez mettre a jour votre navigateur, ou telecharger un navigateur plus recent.");
-					window.location.href = "http://www.google.fr/chrome/index.html?hl=fr&brand=CHNG&utm_source=fr-hpp&utm_medium=hpp&utm_campaign=fr";
-			}		
+			$(function(){
+				if(!Modernizr.cssgradients || !Modernizr.textshadow || !Modernizr.boxshadow){
+					alert("Votre navigateur ne semble pas être en mesure d'afficher le rendu complet du site. Si vous souhaitez afficher le contenu de manière optimale, veuillez utiliser une version récente de firefox, chrome ou safari.")
+					//alert("Ce site utilise des technologies web récentes. Veuillez mettre à jour votre navigateur, ou télécharger un navigateur plus recent.\nMerci pour votre compréhension.");
+					//window.location.href = "http://www.mozilla.org/fr/firefox/new/";
+				}	
+			})	
 		</script>
 	{% endblock%}
 </head>

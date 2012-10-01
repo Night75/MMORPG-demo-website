@@ -19,25 +19,25 @@ class LdcWebsiteExtension extends \Twig_Extension
         $duration = "";
         if ($delta < 60)
         {
-            // Seconds
+            // Secondes
             $time = $delta;
             $duration ="Il y a " .$time . " seconde" . (($time > 1) ? "s" : "");
         }
         else if ($delta <= 3600)
         {
-            // Mins
+            // Minutes
             $time = floor($delta / 60);
             $duration = "Il y a " .$time . " minute" . (($time > 1) ? "s" : "");
         }
         else if ($delta <= 86400)
         {
-            // Hours
+            // Heures
             $time = floor($delta / 3600);
             $duration ="Il y a " .$time . " heure" . (($time > 1) ? "s" : "");
         }
         else
         {
-            // Days
+            // Jours
             $time = floor($delta / 86400);
             $duration = "Il y a " .$time . " jour" . (($time > 1) ? "s" : "");
         }
